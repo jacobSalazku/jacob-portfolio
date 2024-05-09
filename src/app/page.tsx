@@ -1,113 +1,139 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import Image from 'next/image';
+import NextLink from 'next/link';
+import { Link } from '@/components';
+import { useToggle } from 'react-use';
+
+export function page() {
+  const [isOpen, toggleMenu] = useToggle(false);
+  const [isActive, setIsActive] = useState(false);
+  const handleToggleMenu = () => {
+    setIsActive(!isActive);
+    toggleMenu(!isOpen);
+  };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <main className="mx-auto my-0 flex min-h-screen max-w-[1440px] flex-col items-center">
+      <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
+        <div className="flex w-full max-w-[1440px] flex-col justify-center">
+          <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-6 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
+            <a className="w-1/3 text-lg">Jacob Salazaku</a>
+            <nav className="hidden h-20 max-w-[1440px] flex-row items-center justify-between transition-all duration-75 ease-in-out lg:flex lg:w-1/2">
+              <NextLink
+                href="/"
+                className="flex flex-col items-center py-5 text-lg"
+              >
+                Home
+              </NextLink>
+              <NextLink
+                href="/about"
+                className="flex flex-col items-center py-5 text-lg"
+              >
+                About
+              </NextLink>
+              <NextLink
+                href="/projects"
+                className="flex flex-col items-center py-5 text-lg"
+              >
+                Projects
+              </NextLink>
+            </nav>
+            <Link
+              variant="ghost"
+              label="Linkedin"
+              href="https://www.linkedin.com/in/jacob-salazaku-8a20142b5/"
             />
-          </a>
+            <button
+              onClick={handleToggleMenu}
+              className="flex flex-col gap-1 transition-all duration-75 ease-in-out lg:hidden"
+            >
+              {isActive ? (
+                <>
+                  <span className="block h-1 w-8 bg-gray-600 transition-transform duration-75"></span>
+                  <span className="block h-1 w-8 bg-gray-600 opacity-100 transition-all duration-75"></span>
+                  <span className="block h-1 w-8 bg-gray-600 transition-transform duration-75"></span>
+                </>
+              ) : (
+                <>
+                  <span className="absolute block h-1 w-8 rotate-45 transform bg-gray-600 transition-transform duration-75"></span>
+                  <span className="absolute block h-1 w-8 bg-gray-600 opacity-0"></span>
+                  <span className="absoluteb lock h-1 w-8 -rotate-45 transform bg-gray-600 transition-transform duration-75"></span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
+      <nav
+        className={`no-scroll fixed z-20 mt-20 h-screen w-screen bg-white transition-all duration-75 ease-in-out lg:hidden ${isOpen ? '-translate-x-full overflow-hidden' : 'translate-x-0'}`}
+      >
+        <ul className="flex w-full flex-col items-center border-t-2">
+          <NextLink
+            href="/"
+            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+          >
+            Home
+          </NextLink>
+          <NextLink
+            href="/about"
+            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+          >
+            About
+          </NextLink>
+          <NextLink
+            href="/projects"
+            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+          >
+            Projects
+          </NextLink>
+        </ul>
+      </nav>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      <section className="lg:bg-blue-1 from-purple-1 to-purple-2 flex h-full w-screen flex-col items-center bg-gradient-to-b px-12 py-24">
+        <div className="relative flex w-full max-w-[1440px] flex-col items-center lg:flex-row lg:justify-between">
+          {/* <div className="mx-auto my-0 w-1/2">
+          <img
+            alt="Jared Palmer"
+            className="mx-auto w-full max-w-[300px] rounded-full border-2 shadow-md shadow-slate-700"
+            height={500}
+            src="/placeholder.svg"
+            style={{
+              aspectRatio: '1000/1000',
+              objectFit: 'cover',
+            }}
+            width={500}
+          />
+        </div> */}
+          <div className="flex h-[730px] w-1/2 flex-col items-start justify-center gap-3 px-12 py-24">
+            <h1 className="text-3xl font-medium text-white transition-transform lg:text-6xl">
+              Jacob Salazaku
+            </h1>
+            <h2 className="mb-4 text-lg font-light text-white transition-transform lg:text-4xl">
+              Front-end Webdeveloper
+            </h2>
+            {/* <p>
+            Hi, I'm Jacob, a Front-end Webdeveloper from Antwerp who has been
+            fascinated by technology and computers since forever. I am currently
+            attending Karel de Grote Hogeschool, studying Multimedia and
+            Creative Technology.
+    </p>*/}
+          </div>
+          <div className="absolute left-72 top-0 hidden flex-col items-center md:flex">
+            <Image
+              src="/headerpicture.png"
+              alt="Mijn Portfolio"
+              width={2000}
+              height={1080}
+            />
+          </div>
+        </div>
+      </section>
+      <section className="flex h-full w-screen flex-col items-center bg-slate-200 bg-gradient-to-b px-12 py-24">
+        Skills
+      </section>
+      <section>Project</section>
     </main>
   );
 }
+export default page;
