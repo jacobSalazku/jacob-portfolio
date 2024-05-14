@@ -16,6 +16,8 @@ const config: Config = {
       colors: {
         'purple-1': '#1E1F2A',
         'purple-2': '#37394E',
+        'purple-3': '#EEF0FF',
+        'beige-1': '#fff0db',
       },
     },
   },

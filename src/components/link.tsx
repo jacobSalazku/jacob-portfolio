@@ -20,18 +20,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-blue border-blue text-white shadow-sm shadow-blue transition-all hover:border-dark-blue hover:bg-dark-blue',
+          'bg-blue border-blue text-beige-1 shadow-sm shadow-blue transition-all hover:border-dark-blue hover:bg-dark-blue',
         secondary:
-          'border-white bg-green text-black drop-shadow-md transition-all hover:bg-dark-blue hover:text-white',
+          'border-white bg-green text-black drop-shadow-md transition-all hover:bg-dark-blue hover:text-beige-1',
         outline:
           'border border-gray-200 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:text-gray-100',
         ghost:
-          'bg-transparent border-purple-1 text-purple-1 transition-all hover:border-dark-blue hover:bg-purple-1 hover:text-white',
-        'ghost-secondary':
-          'bg-transparent border-green text-white transition-all hover:border-dark-blue hover:bg-dark-blue hover:text-white',
+          'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
         link: 'bg-transparent text-blue decoration-blue  underline-offset-8 hover:bg-transparent hover:underline dark:bg-transparent dark:text-gray-300 dark:hover:bg-transparent border-none',
         'link-white':
-          'bg-transparent text-white decoration-white  underline-offset-8 hover:bg-transparent hover:underline dark:bg-transparent dark:text-gray-300 dark:hover:bg-transparent border-none',
+          'bg-transparent text-beige-1 decoration-white  underline-offset-8 hover:bg-transparent hover:underline dark:bg-transparent dark:text-gray-300 dark:hover:bg-transparent border-none',
         disabled:
           'bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed',
         navlink:
