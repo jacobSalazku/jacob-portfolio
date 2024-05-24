@@ -15,7 +15,7 @@ type ButtonProps = {
   VariantProps<typeof buttonVariants>;
 
 const buttonVariants = cva(
-  'flex flex-row items-center justify-center gap-2 cursor-pointer rounded border h-[42px] transition-transform ease-in-out',
+  'flex flex-row items-center justify-center gap-2 cursor-pointer rounded border h-[60px] transition-transform ease-in-out',
   {
     variants: {
       variant: {
@@ -27,11 +27,6 @@ const buttonVariants = cva(
           'border border-gray-200 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:text-gray-100',
         ghost:
           'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
-        link: 'bg-transparent text-blue decoration-blue  underline-offset-8 hover:bg-transparent hover:underline dark:bg-transparent dark:text-gray-300 dark:hover:bg-transparent border-none',
-        'link-white':
-          'bg-transparent text-beige-1 decoration-white  underline-offset-8 hover:bg-transparent hover:underline dark:bg-transparent dark:text-gray-300 dark:hover:bg-transparent border-none',
-        disabled:
-          'bg-gray-200 text-gray-400 border-gray-200 cursor-not-allowed',
         navlink:
           'bg-white border-none transition-colors hover:text-blue hover:ease-in-out',
       },
