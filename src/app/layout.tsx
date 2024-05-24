@@ -16,7 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-[1440px] flex-col items-center scroll-smooth">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
