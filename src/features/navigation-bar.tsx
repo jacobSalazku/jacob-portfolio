@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Expertise, Header, ProjectCard } from '@/components';
-import { MenuButton } from '@/features';
 import { useToggle } from 'react-use';
+import { MenuButton } from './menu-button';
 
-const Homepage: React.FC = () => {
+const Navigation: React.FC = () => {
   const [isOpen, toggleMenu] = useToggle(true);
   const [isActive, setIsActive] = useState(false);
   const handleToggleMenu = () => {
@@ -18,8 +17,8 @@ const Homepage: React.FC = () => {
       <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
         <div className="flex w-full max-w-[1440px] flex-col justify-center">
           <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-            <a className="w-auto text-lg">Jacob Salazaku</a>
-            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between transition-all duration-75 ease-in-out lg:flex lg:w-1/2">
+            <a className="w-1/2 text-lg">Jacob Salazaku</a>
+            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
               <Link
                 href="/"
                 className="flex flex-col items-center py-5 text-lg"
@@ -33,7 +32,7 @@ const Homepage: React.FC = () => {
                 About
               </Link>
               <Link
-                href="/projects"
+                href="#projects"
                 className="flex flex-col items-center py-5 text-lg"
               >
                 Projects
@@ -71,17 +70,8 @@ const Homepage: React.FC = () => {
           </Link>
         </ul>
       </nav>
-      <Header />
-      <Expertise />
-      <section className="flex h-full w-screen flex-col items-center gap-8 bg-purple-2 lg:px-12 lg:py-24">
-        <h2 className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl">
-          Featured Projects
-        </h2>
-        <div className="flex flex-wrap">
-          <ProjectCard />
-        </div>
-      </section>
     </>
   );
 };
-export { Homepage };
+
+export { Navigation };

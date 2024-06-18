@@ -24,11 +24,14 @@ const buttonVariants = cva(
         secondary:
           'border-white bg-green text-black drop-shadow-md transition-all hover:bg-dark-blue hover:text-beige-1',
         outline:
-          'border border-gray-200 bg-transparent hover:bg-gray-100 dark:border-gray-700 dark:text-gray-100',
+          'border border-white bg-transparent hover:bg-gray-100 hover:text-purple-2 transition-colors duration-300 ease-in-out',
         ghost:
           'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
         navlink:
           'bg-white border-none transition-colors hover:text-blue hover:ease-in-out',
+        github: 'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
+        linkedin:
+          'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
       },
       size: {
         default: 'px-4 py-3',

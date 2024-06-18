@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lexend } from 'next/font/google';
+import { Footer } from '@/components';
+import { Navigation } from '@/features';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
-
+const Lexendfont = Lexend({ weight: ['400', '300'], subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Jacob Salazaku',
   description: 'Mijn portfolio website',
@@ -16,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={Lexendfont.className}>
+        <Navigation />
         <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-[1440px] flex-col items-center scroll-smooth">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

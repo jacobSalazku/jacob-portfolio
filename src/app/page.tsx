@@ -1,39 +1,35 @@
-'use client';
-
-import { useState } from 'react';
-import NextLink from 'next/link';
-import { Expertise, Header, ProjectCard } from '@/components';
-import { useToggle } from 'react-use';
+import {
+  Expertise,
+  Header,
+  ProjectSection,
+  TechnologiesUsed,
+  WorkExperience,
+} from '@/components';
+import { SpotWorkshopStack } from '@/data';
 
 export function Page() {
-  const [isOpen, toggleMenu] = useToggle(true);
-  const [isActive, setIsActive] = useState(false);
-  const handleToggleMenu = () => {
-    setIsActive(!isActive);
-    toggleMenu(!isOpen);
-  };
   return (
     <>
-      <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
+      {/* <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm shadow-beige-1 drop-shadow-lg">
         <div className="flex w-full max-w-[1440px] flex-col justify-center">
           <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-            <a className="w-1/2 text-lg">Jacob Salazaku</a>
-            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
+            <a className="w-1/2 text-lg font-bold">Jacob Salazaku</a>
+            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between bg-white text-purple-1 transition-all ease-in-out lg:flex lg:w-1/2">
               <NextLink
                 href="/"
-                className="flex flex-col items-center py-5 text-lg"
+                className="flex flex-col items-center py-5 text-lg font-bold"
               >
                 Home
               </NextLink>
               <NextLink
-                href="/about"
-                className="flex flex-col items-center py-5 text-lg"
+                href="#about"
+                className="flex flex-col items-center py-5 text-lg font-bold"
               >
                 About
               </NextLink>
               <NextLink
                 href="#projects"
-                className="flex flex-col items-center py-5 text-lg"
+                className="flex flex-col items-center py-5 text-lg font-bold"
               >
                 Projects
               </NextLink>
@@ -84,26 +80,27 @@ export function Page() {
             Projects
           </NextLink>
         </ul>
-      </nav>
+      </nav> */}
       <Header />
       <Expertise />
-      <section className="flex h-full w-screen  flex-col items-center gap-8 bg-purple-2 py-24 lg:px-12">
-        <h2
-          id="projects"
-          className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl"
-        >
-          Featured Projects
-        </h2>
-        <div className="transform-all flex max-w-[1440px] flex-col flex-wrap justify-center gap-12 px-4 transition-all duration-150 ease-in-out lg:flex-row">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+      <ProjectSection />
+      <WorkExperience title="Work Experience">
+        <div className="flex flex-col gap-8">
+          <p>
+            Momenteel werk ik als student bij Spotworkshops als frontend
+            developer, een platform dat mensen helpt bij het vinden en boeken
+            van unieke en inspirerende workshops. Hier draag ik bij aan de
+            ontwikkeling van gebruiksvriendelijke en aantrekkelijke interfaces.
+          </p>
+          <p>
+            Met deze studentenjob krijg ik de kans om veel bij te leren en
+            tegelijkertijd extra geld te verdienen, wat ideaal is als student.
+          </p>
+          <p>De technologieen die hier worden gerbuikt zijn:</p>
+
+          <TechnologiesUsed techStack={SpotWorkshopStack} />
         </div>
-        <div className="transform-all flex max-w-[1440px] flex-col justify-center gap-12 px-4 transition-all duration-150 ease-in-out lg:flex-row">
-          <div>hey</div>
-          <div>hey</div>
-        </div>
-      </section>
+      </WorkExperience>
     </>
   );
 }

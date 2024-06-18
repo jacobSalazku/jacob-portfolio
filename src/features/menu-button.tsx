@@ -1,38 +1,32 @@
-import React from 'react';
-
-type MenuButtonProps = {
+interface MenuButtonProps {
+  handleToggleMenu: () => void;
   isActive: boolean;
-} & React.HTMLAttributes<HTMLButtonElement>;
+}
 
 const MenuButton: React.FC<MenuButtonProps> = ({
+  handleToggleMenu,
   isActive,
-  onClick,
   ...rest
 }) => {
   return (
     <button
       {...rest}
-      className={`${
-        isActive ? 'active' : ''
-      } order-2 mb-4 flex h-auto w-16 rotate-180 transform cursor-pointer flex-col justify-start space-y-1 self-end border-none bg-transparent p-1`}
-      onClick={onClick}
-      type="button"
+      onClick={handleToggleMenu}
+      className="flex flex-col gap-1 transition-all duration-200 ease-in-out lg:hidden"
     >
-      <div
-        className={`${
-          isActive ? 'translate-y-2 rotate-45' : ''
-        } h-5 w-2/4 bg-slate-800 transition-all duration-500 ease-in-out`}
-      />
-      <div
-        className={`${
-          isActive ? 'opacity-0' : ''
-        } h-5 w-2/4 bg-slate-800 transition-all duration-500 ease-in-out`}
-      />
-      <div
-        className={`${
-          isActive ? 'translate-y-[-0.5rem] -rotate-45' : ''
-        } h-5 w-2/4 bg-slate-800 transition-all duration-500 ease-in-out`}
-      />
+      {isActive ? (
+        <>
+          <span className="absolute block h-1 w-8 rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
+          <span className="absolute block h-1 w-8 bg-gray-600 opacity-0"></span>
+          <span className="absoluteb lock h-1 w-8 -rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
+        </>
+      ) : (
+        <>
+          <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
+          <span className="block h-1 w-8 bg-gray-600 opacity-100 transition-all duration-200"></span>
+          <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
+        </>
+      )}
     </button>
   );
 };
