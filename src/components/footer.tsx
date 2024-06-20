@@ -38,7 +38,7 @@ const Footer: React.FC = () => {
             <NextLink href="/#projects">Projects</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="/#experience">Work Experience"</NextLink>
+            <NextLink href="/#experience">Work Experience</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
             <NextLink href="mailto:jacob.salazaku@student.kdg.be">
