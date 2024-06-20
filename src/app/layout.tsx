@@ -17,14 +17,14 @@ export const metadata: Metadata = {
   ],
 
   description:
-    'Portfolio van Jacob Salazaku, een student aan de Karel de Grote Hogeschool',
+    'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
   keywords: ['developer, front-end develop,'],
   openGraph: {
     type: 'website',
     url: `${process.env.NEXT_LOCAL_BASE_URL}/blog`,
-    title: 'Blog',
+    title: 'Website Jacob Salazaku',
     description:
-      'Ontdek meer over ResQControl en lees onze blog over de laatste ontwikkelingen',
+      'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
   },
 };
 export default function RootLayout({

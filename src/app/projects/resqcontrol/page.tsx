@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: `${process.env.NEXT_LOCAL_BASE_URL}/blog`,
-    title: 'Blog',
+    title: 'ResQControl',
     description: 'ontdek meer over het Project ResqControl',
   },
 };
