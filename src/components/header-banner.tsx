@@ -43,7 +43,7 @@ const Header = () => {
             />
             <Link
               variant="primary"
-              label="Github"
+              label="My Resume"
               href="/resume.pdf"
               size="md"
             />
