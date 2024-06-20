@@ -22,23 +22,25 @@ const Navigation: React.FC = () => {
               <Link
                 href="/"
                 className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
               >
                 Home
               </Link>
               <Link
-                href="/about"
+                href="/#projects"
                 className="flex flex-col items-center py-5 text-lg"
-              >
-                About
-              </Link>
-              <Link
-                href="#projects"
-                className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
               >
                 Projects
               </Link>
+              <Link
+                href="/#experience"
+                className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
+              >
+                Work Experience
+              </Link>
             </nav>
-
             <MenuButton
               handleToggleMenu={handleToggleMenu}
               isActive={isActive}
@@ -53,20 +55,23 @@ const Navigation: React.FC = () => {
           <Link
             href="/"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
           >
             Home
           </Link>
           <Link
-            href="/about"
+            href="/#projects"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
-          >
-            About
-          </Link>
-          <Link
-            href="/projects"
-            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
           >
             Projects
+          </Link>
+          <Link
+            href="/#experience"
+            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
+          >
+            Work Experience
           </Link>
         </ul>
       </nav>

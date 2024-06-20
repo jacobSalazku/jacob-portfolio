@@ -5,7 +5,7 @@ import type { Sectionprops } from '@/types/types';
 
 const WorkExperience: React.FC<Sectionprops> = ({ title, children }) => {
   return (
-    <div className="flex w-screen justify-center bg-purple-3">
+    <div id="experience" className="flex w-screen justify-center bg-purple-3">
       <div className="flex w-full max-w-[1440px] flex-col items-center justify-center border-t border-beige-1 px-8 py-20 md:px-12 lg:flex-row lg:justify-between lg:gap-8">
         <div className="flex flex-row items-center justify-center py-20 lg:w-1/2">
           <div className="flex w-full justify-center">

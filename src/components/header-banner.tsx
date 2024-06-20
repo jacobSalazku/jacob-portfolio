@@ -29,8 +29,9 @@ const Header = () => {
             className="block transition-transform lg:hidden"
           />
           <p className="pb-4 text-center text-white lg:text-left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in eros elementum tristique.
+            I'm a 22 year old Multimedia and Creative Technology student from
+            Antwerp, Belgium. I have a passion for creating beautiful and
+            functional websites.
           </p>
           <div className="z-10 flex flex-col gap-6 sm:flex-row">
             <Link

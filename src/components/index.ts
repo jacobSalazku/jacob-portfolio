@@ -3,6 +3,7 @@ export * from './footer';
 export * from './header-banner';
 export * from './link';
 export * from './project-card';
+export * from './project-features';
 export * from './project-section';
 export * from './tech-stack-card';
 export * from './technologies-used';

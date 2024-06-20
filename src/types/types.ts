@@ -1,10 +1,15 @@
+export type MenuButtonProps = {
+  handleToggleMenu: () => void;
+  isActive: boolean;
+};
+
 export type Cardprops = {
-  image: React.ReactNode;
+  imageSrc: string;
   title: string;
   children: React.ReactNode;
   description: string;
-  mobileImage?: React.ReactNode;
   route: string;
+  imageAlt: string;
 };
 export type Project = {
   id: number;
@@ -24,6 +29,6 @@ export type TechnologiesUsed = {
 };
 
 export type Sectionprops = {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import NextLink from 'next/link'; // Renamed the imported 'Link' component to 'NextLink'
+import NextLink from 'next/link'; 
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils';
 

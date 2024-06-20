@@ -2,11 +2,19 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Expertise, Header, ProjectCard } from '@/components';
-import { MenuButton } from '@/features';
+import {
+  Expertise,
+  Header,
+  ProjectSection,
+  TechnologiesUsed,
+  WorkExperience,
+} from '@/components';
+import { SpotWorkshopStack } from '@/data';
+import { MenuButton } from '@/features/menu-button';
+import { Navigation } from '@/features/navigation';
 import { useToggle } from 'react-use';
 
-const Homepage: React.FC = () => {
+const HomePage = () => {
   const [isOpen, toggleMenu] = useToggle(true);
   const [isActive, setIsActive] = useState(false);
   const handleToggleMenu = () => {
@@ -18,28 +26,30 @@ const Homepage: React.FC = () => {
       <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
         <div className="flex w-full max-w-[1440px] flex-col justify-center">
           <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-            <a className="w-auto text-lg">Jacob Salazaku</a>
-            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between transition-all duration-75 ease-in-out lg:flex lg:w-1/2">
+            <a className="w-1/2 text-lg">Jacob Salazaku</a>
+            <nav className="hidden h-16 max-w-[1440px] flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
               <Link
                 href="/"
                 className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
               >
                 Home
               </Link>
               <Link
-                href="/about"
+                href="projects"
                 className="flex flex-col items-center py-5 text-lg"
-              >
-                About
-              </Link>
-              <Link
-                href="/projects"
-                className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
               >
                 Projects
               </Link>
+              <Link
+                href="#experience"
+                className="flex flex-col items-center py-5 text-lg"
+                onClick={handleToggleMenu}
+              >
+                Work Experience
+              </Link>
             </nav>
-
             <MenuButton
               handleToggleMenu={handleToggleMenu}
               isActive={isActive}
@@ -54,34 +64,48 @@ const Homepage: React.FC = () => {
           <Link
             href="/"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
           >
             Home
           </Link>
           <Link
-            href="/about"
+            href="#experience"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
           >
-            About
+            Work Experience
           </Link>
           <Link
             href="/projects"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+            onClick={handleToggleMenu}
           >
             Projects
           </Link>
         </ul>
       </nav>
+      <Navigation />
       <Header />
       <Expertise />
-      <section className="flex h-full w-screen flex-col items-center gap-8 bg-purple-2 lg:px-12 lg:py-24">
-        <h2 className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl">
-          Featured Projects
-        </h2>
-        <div className="flex flex-wrap">
-          <ProjectCard />
+      <ProjectSection />
+      <WorkExperience title="Work Experience">
+        <div className="flex flex-col gap-8">
+          <p>
+            Momenteel werk ik als student bij Spotworkshops als frontend
+            developer, een platform dat mensen helpt bij het vinden en boeken
+            van unieke en inspirerende workshops. Hier draag ik bij aan de
+            ontwikkeling van gebruiksvriendelijke en aantrekkelijke interfaces.
+          </p>
+          <p>
+            Met deze studentenjob krijg ik de kans om veel bij te leren en
+            tegelijkertijd extra geld te verdienen, wat ideaal is als student.
+          </p>
+          <p>De technologieen die hier worden gerbuikt zijn:</p>
+
+          <TechnologiesUsed techStack={SpotWorkshopStack} />
         </div>
-      </section>
+      </WorkExperience>
     </>
   );
 };
-export { Homepage };
+export { HomePage };

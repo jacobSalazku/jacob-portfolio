@@ -1,7 +1,4 @@
-interface MenuButtonProps {
-  handleToggleMenu: () => void;
-  isActive: boolean;
-}
+import { MenuButtonProps } from '@/types/types';
 
 const MenuButton: React.FC<MenuButtonProps> = ({
   handleToggleMenu,
