@@ -35,13 +35,15 @@ const Footer: React.FC = () => {
             <NextLink href="/">Home</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="#projects">Projects</NextLink>
+            <NextLink href="/#projects">Projects</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="#experience">Work Experience"</NextLink>
+            <NextLink href="/#experience">Work Experience"</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="contact">Contact</NextLink>
+            <NextLink href="mailto:jacob.salazaku@student.kdg.be">
+              Contact Me
+            </NextLink>
           </div>
         </div>
         <div className="flex h-full justify-center gap-3 px-6 py-6 sm:w-full lg:w-1/4">
