@@ -15,7 +15,6 @@
     "eslint:recommended",
     "@vercel/style-guide/eslint/typescript",
     "eslint-config-prettier",
-    "prettier",
     "@vercel/style-guide/eslint/typescript",
     "@vercel/style-guide/eslint/reac",
     "@vercel/style-guide/eslint/next",

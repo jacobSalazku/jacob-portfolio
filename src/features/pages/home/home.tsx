@@ -11,7 +11,6 @@ import {
 } from '@/components';
 import { SpotWorkshopStack } from '@/data';
 import { MenuButton } from '@/features/menu-button';
-import { Navigation } from '@/features/navigation';
 import { useToggle } from 'react-use';
 
 const HomePage = () => {
@@ -84,7 +83,6 @@ const HomePage = () => {
           </Link>
         </ul>
       </nav>
-      <Navigation />
       <Header />
       <Expertise />
       <ProjectSection />
