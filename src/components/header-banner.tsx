@@ -44,7 +44,7 @@ const Header = () => {
             <Link
               variant="primary"
               label="Github"
-              href="https://github.com/jacobSalazku"
+              href="/resume.pdf"
               size="md"
             />
           </div>
