@@ -13,49 +13,48 @@ const ProjectSection = () => {
         <ProjectCard
           title="ResQControl"
           route="resqcontrol"
-          description="Resqcontrol is een bedrijf dat diverse diensten aanbiedt, zoals
-              een dispatchplatform voor eerste hulp bij festivals. Daarnaast
-              bieden ze ook diensten aan op het gebied van human resource
-              management en Pcare"
+          description=" Resqcontrol is a company that offers various services, including a
+              dispatch platform for first aid at festivals. In addition they
+              also offer services in human resource management and Pcare"
           imageSrc="/detail-resq.png"
           imageAlt="Resqcontrol website"
         >
           <div>
             <p>
-              Resqcontrol is een bedrijf dat diverse diensten aanbiedt, zoals
-              een dispatchplatform voor eerste hulp bij festivals. Daarnaast
-              bieden ze ook diensten aan op het gebied van human resource
-              management en Pcare"
+              Resqcontrol is a company that offers various services, including a
+              dispatch platform for first aid at festivals. In addition they
+              also offer services in human resource management and Pcare
             </p>
             <br />
             <p>
-              Ze hadden nog één ding nodig: een website. Hier heb ik aan de
-              frontend gewerkt.
+              They needed one more thing: a website. This is where I worked on
+              the frontend.
             </p>
           </div>
         </ProjectCard>
         <ProjectCard
           title="KDG Stage site"
           route="/kdg-stage"
-          description="Momenteel ervaren studenten veel moeilijkheden bij het verkrijgen van een overzicht van alle bedrijven die op zoek zijn naar stagiairs. 
-          Ons project richt zich op het oplossen van dit probleem door het ontwikkelen van een eenvoudig maar overzichtelijk platform waar bedrijven zich kunnen registreren. Tijdens de registratie kunnen bedrijven duidelijk aangeven in welke sector zij actief zijn en welke vaardigheden zij zoeken in stagiairs."
+          description="  A clear internship platform where companies can register and
+              detail the sectors in which they are active and what skills they
+              have"
           imageSrc="/detail-stage.png"
           imageAlt="Karel de Grote stage website"
         >
           <div>
             <p>
-              Een overzichtelijk stageplatform waar bedrijven zich kunnen
-              registreren en gedetailleerd kunnen aangeven in welke sectoren ze
-              actief zijn en welke vaardigheden
+              A clear internship platform where companies can register and
+              detail the sectors in which they are active and what skills they
+              have
             </p>
             <br />
             <p>
-              Dit platform biedt bedrijven de mogelijkheid om hun stageplaatsen
-              op een gestructureerde manier te presenteren, waardoor potentiële
-              stagiaires gemakkelijk kunnen zien welke bedrijven stages
-              aanbieden die aansluiten bij hun studie en vaardigheden.
+              This platform allows companies to present their internships
+              presented in a structured way, allowing potential interns can
+              easily see which companies offer internships offer that match
+              their studies and skills.
             </p>
-            <p> hier heb ik vooral aan de ui gewerkt van de site</p>
+            <p> here I worked mainly on the user interface of the site</p>
           </div>
         </ProjectCard>
       </div>

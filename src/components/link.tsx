@@ -20,9 +20,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-blue border-blue text-beige-1 shadow-sm shadow-blue transition-all hover:border-dark-blue hover:bg-dark-blue',
-        secondary:
-          'border-white bg-green text-black drop-shadow-md transition-all hover:bg-dark-blue hover:text-beige-1',
+          'bg-beige-1 border-blue text-purple-1 shadow-sm shadow-blue transition-all hover:border hover:border-beige-1 hover:text-beige-1 hover:bg-transparent',
+
         outline:
           'border border-white bg-transparent hover:bg-gray-100 hover:text-purple-2 transition-colors duration-300 ease-in-out',
         ghost:
@@ -71,6 +70,7 @@ const Link: FC<ButtonProps> = ({
     )}
     href={rest.href || ''}
     {...rest}
+    aria-label={label}
   >
     <span>{icon}</span>
     {labelVisability ? (

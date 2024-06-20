@@ -1,15 +1,32 @@
 import type { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import { Footer } from '@/components';
-import { Navigation } from '@/features';
 import './globals.css';
 
 const Lexendfont = Lexend({ weight: ['400', '300'], subsets: ['latin'] });
 export const metadata: Metadata = {
-  title: 'Jacob Salazaku',
-  description: 'Mijn portfolio website',
-};
+  metadataBase: new URL(process.env.NEXT_LOCAL_BASE_URL ?? ''),
+  title: {
+    default: 'Jacob Salazaku ',
+    template: ' %s | Jacob Salazaku',
+  },
+  icons: [
+    {
+      url: '/logo.png',
+    },
+  ],
 
+  description:
+    'Portfolio van Jacob Salazaku, een student aan de Karel de Grote Hogeschool',
+  keywords: ['developer, front-end develop,'],
+  openGraph: {
+    type: 'website',
+    url: `${process.env.NEXT_LOCAL_BASE_URL}/blog`,
+    title: 'Blog',
+    description:
+      'Ontdek meer over ResQControl en lees onze blog over de laatste ontwikkelingen',
+  },
+};
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -18,7 +35,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={Lexendfont.className}>
-        <Navigation />
         <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-[1440px] flex-col items-center scroll-smooth">
           {children}
           <Footer />
