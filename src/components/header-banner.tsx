@@ -3,7 +3,7 @@ import { Link } from './link';
 
 const Header = () => {
   return (
-    <section className="lg:bg-blue-1 transotion-all mt-20 flex h-screen w-screen flex-row items-center overflow-hidden bg-gradient-to-b from-purple-1 to-purple-2 md:h-full lg:flex-col lg:px-12 lg:py-16">
+    <section className="lg:bg-blue-1 mt-20 flex h-screen w-screen flex-row items-center overflow-hidden bg-gradient-to-b from-purple-1 to-purple-2 transition-all md:h-full lg:flex-col lg:px-12 lg:py-16">
       <div className="relative flex w-full max-w-[1440px] flex-col items-center pb-4 lg:flex-row lg:justify-between">
         <div className="flex h-[730px] w-full flex-col items-center justify-center gap-3 px-12 py-28 lg:w-1/2 lg:items-start">
           <div className="absolute top-32 z-0 h-full w-full flex-col items-center overflow-hidden lg:hidden">
@@ -40,12 +40,14 @@ const Header = () => {
               label="Linkedin"
               href="https://www.linkedin.com/in/jacob-salazaku-8a20142b5/"
               size="md"
+              target="_blank"
             />
             <Link
               variant="primary"
               label="My Resume"
               href="/resume.pdf"
               size="md"
+              target="_blank"
             />
           </div>
         </div>

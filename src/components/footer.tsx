@@ -3,7 +3,6 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
-  IconPhone,
 } from '@tabler/icons-react';
 import { Link } from './link';
 
@@ -16,12 +15,6 @@ const Footer: React.FC = () => {
             Jacob Salazaku
           </p>
           <div className="flex flex-col justify-center gap-8 sm:flex-row lg:flex-col">
-            <div className="flex flex-row items-center gap-4 text-lg">
-              <div>
-                <IconPhone color="#ffffff" height={16} width={16} />
-              </div>
-              <p>0485781799</p>
-            </div>
             <div className="flex flex-row items-center gap-3">
               <div>
                 <IconMail color="#ffffff" height={16} width={16} />
@@ -41,7 +34,10 @@ const Footer: React.FC = () => {
             <NextLink href="/#experience">Work Experience</NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="mailto:jacob.salazaku@student.kdg.be">
+            <NextLink
+              href="mailto:jacob.salazaku@student.kdg.be"
+              target="_blank"
+            >
               Contact Me
             </NextLink>
           </div>
@@ -53,6 +49,7 @@ const Footer: React.FC = () => {
                 label="Linked In"
                 variant="linkedin"
                 href="https://www.linkedin.com/in/jacob-salazaku-8a20142b5/"
+                target="_blank"
               >
                 <IconBrandLinkedin color="#fff0db" height={40} width={40} />
               </Link>
@@ -62,6 +59,7 @@ const Footer: React.FC = () => {
                 label="Github"
                 variant="github"
                 href="https://github.com/jacobSalazku"
+                target="_blank"
               >
                 <IconBrandGithub color="#fff0db" height={40} width={40} />
               </Link>

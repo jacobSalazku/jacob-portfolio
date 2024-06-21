@@ -96,6 +96,7 @@ const Navigation: React.FC = () => {
             label="Contact me"
             href="mailto:jacob.salazaku@student.kdg.be"
             variant="github"
+            target="_blank"
           />
         </ul>
       </nav>
