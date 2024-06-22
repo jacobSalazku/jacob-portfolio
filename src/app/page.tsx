@@ -25,7 +25,9 @@ function page() {
       <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
         <div className="flex w-full max-w-screen-2xl flex-col justify-center">
           <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-            <a className="w-1/2 text-lg">Jacob Salazaku</a>
+            <NextLink className="w-1/2 text-lg" href="/">
+              Jacob Salazaku
+            </NextLink>
             <nav className="hidden h-16 max-w-screen-2xl flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
               <NextLink
                 href="/"
