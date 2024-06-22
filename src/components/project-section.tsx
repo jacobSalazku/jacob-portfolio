@@ -9,7 +9,7 @@ const ProjectSection = () => {
       >
         Featured Projects
       </h2>
-      <div className="transform-all flex max-w-[1440px] flex-col flex-wrap justify-center gap-12 px-4 transition-all duration-150 ease-in-out sm:flex-row lg:flex-row">
+      <div className="transform-all flex max-w-screen-2xl flex-col flex-wrap justify-center gap-12 px-4 transition-all duration-150 ease-in-out sm:flex-row lg:flex-row">
         <ProjectCard
           title="ResQControl"
           route="resqcontrol"

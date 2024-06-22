@@ -11,7 +11,7 @@ const Stage: React.FC = () => {
     <>
       <Navigation />
       <section className="mt-20 flex flex-col items-start">
-        <div className="flex w-full max-w-[1440px] flex-col items-center justify-center gap-8">
+        <div className="flex w-full max-w-screen-2xl flex-col items-center justify-center gap-8">
           <div className="flex flex-col justify-between gap-10 px-4 py-12 md:py-16 lg:flex-row lg:gap-0 lg:px-0 lg:py-20">
             <div className="flex justify-center md:w-2/3 lg:hidden">
               <Image
@@ -60,7 +60,7 @@ const Stage: React.FC = () => {
             </div>
           </div>
           <div className="flex w-screen flex-row justify-center bg-purple-2 py-12 md:py-16 lg:py-12">
-            <div className="flex w-full max-w-[1440px] flex-col justify-start space-y-6  px-12">
+            <div className="flex w-full max-w-screen-2xl flex-col justify-start space-y-6  px-12">
               <h2 className="text-2xl font-bold text-beige-1 md:text-3xl lg:text-4xl">
                 Frontend
               </h2>

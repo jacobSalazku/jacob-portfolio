@@ -9,7 +9,7 @@ import { Link } from './link';
 const Footer: React.FC = () => {
   return (
     <div className="w-screen bg-purple-1 py-8 md:py-12 lg:py-24">
-      <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between px-4 py-6 lg:flex-row">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center justify-between px-4 py-6 lg:flex-row">
         <div className="flex w-full flex-col justify-start gap-8 px-4 py-6 text-white sm:px-12 lg:w-1/3">
           <p className="justofy-start flex w-full text-2xl text-white sm:justify-center lg:justify-start">
             Jacob Salazaku

@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={Lexendfont.className}>
-        <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-[1440px] flex-col items-center scroll-smooth">
+        <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-screen-2xl flex-col items-center scroll-smooth">
           {children}
           <Footer />
         </main>
