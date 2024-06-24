@@ -25,6 +25,7 @@ const Navigation: React.FC = () => {
                 href="/"
                 className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
+                aria-label="Home"
               >
                 Home
               </NextLink>
@@ -32,6 +33,7 @@ const Navigation: React.FC = () => {
                 href="/#projects"
                 className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
+                aria-label="Projects"
               >
                 Projects
               </NextLink>
@@ -39,6 +41,7 @@ const Navigation: React.FC = () => {
                 href="/#experience"
                 className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
+                aria-label="Work Experience"
               >
                 Work Experience
               </NextLink>
@@ -46,11 +49,13 @@ const Navigation: React.FC = () => {
                 label="Contact me"
                 href="mailto:jacob.salazaku@student.kdg.be"
                 variant="github"
+                aria-label="Contact me"
               />
             </nav>
             <button
               onClick={handleToggleMenu}
               className="flex flex-col gap-1 transition-all duration-200 ease-in-out lg:hidden"
+              aria-label="Menu button"
             >
               {isActive ? (
                 <>
@@ -77,6 +82,7 @@ const Navigation: React.FC = () => {
             href="/"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
             onClick={handleToggleMenu}
+            aria-label="Home"
           >
             Home
           </NextLink>
@@ -84,6 +90,7 @@ const Navigation: React.FC = () => {
             href="/#projects"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
             onClick={handleToggleMenu}
+            aria-label="Projects"
           >
             Projects
           </NextLink>
@@ -91,6 +98,7 @@ const Navigation: React.FC = () => {
             href="/#experience"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
             onClick={handleToggleMenu}
+            aria-label="Experience"
           >
             Work Experience
           </NextLink>
@@ -98,6 +106,7 @@ const Navigation: React.FC = () => {
             label="Contact me"
             href="mailto:jacob.salazaku@student.kdg.be"
             variant="github"
+            aria-label="Contect me"
             target="_blank"
           />
         </ul>

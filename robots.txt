@@ -1,0 +1,6 @@
+User-agent: *
+Disallow:
+Sitemap: Sitemap: https://jacobsalazaku.vercel.app//sitemap.xml
+
+User Agent : Twitterbot
+Disallow:
