@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
               <div>
                 <IconMail color="#ffffff" height={16} width={16} />
               </div>
-              <p>jacob.salazaku@student.kdg.be</p>
+              <p>jacob.ssalazaku@gmail.com</p>
             </div>
           </div>
         </div>
