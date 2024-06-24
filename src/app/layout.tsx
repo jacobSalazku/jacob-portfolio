@@ -5,6 +5,7 @@ import './globals.css';
 
 const Lexendfont = Lexend({ weight: ['400', '300'], subsets: ['latin'] });
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_LOCAL_BASE_URL || ''),
   title: {
     default: 'Jacob Salazaku ',
     template: ' %s | Jacob Salazaku',
