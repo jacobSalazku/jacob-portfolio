@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     description: 'ontdek meer over het Project ResqControl',
     images: [
       {
-        url: '/jacob-open-graph.png',
+        url: '/jacob-og.png',
         width: 567,
         height: 444,
         alt: 'Jacob Salazaku Website',

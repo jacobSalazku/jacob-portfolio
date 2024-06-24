@@ -26,7 +26,7 @@ export const metadata: Metadata = {
       'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
     images: [
       {
-        url: '/jacob-open-graph.png',
+        url: '/jacob-og.png',
         width: 567,
         height: 444,
         alt: 'Jacob Salazaku Website',
