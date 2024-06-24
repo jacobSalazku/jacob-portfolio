@@ -1,5 +1,10 @@
+import { Metadata } from 'next';
 import { Navigation } from '@/features';
 
+export const metadata: Metadata = {
+  metadataBase: new URL(`${process.env.NEXT_LOCAL_BASE_URL}/not-found`),
+  title: 'Page not found',
+};
 function page() {
   return (
     <>
