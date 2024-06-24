@@ -11,6 +11,7 @@ export type Cardprops = {
   route: string;
   imageAlt: string;
 };
+
 export type Project = {
   id: number;
   title: string;

@@ -85,7 +85,7 @@ function page() {
       <nav
         className={`no-scroll fixed z-20 mt-20 h-screen w-screen bg-white transition-all duration-75 ease-in-out lg:hidden ${!isOpen ? 'translate-x-0' : '-translate-x-full overflow-hidden'}`}
       >
-        <ul className="flex w-full flex-col items-center border-t-2">
+        <li className="flex w-full flex-col items-center border-t-2">
           <NextLink
             href="/"
             className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
@@ -119,7 +119,7 @@ function page() {
               target="_blank"
             />
           </div>
-        </ul>
+        </li>
       </nav>
       <Header />
       <Expertise />
