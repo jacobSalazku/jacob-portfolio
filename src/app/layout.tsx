@@ -12,10 +12,9 @@ export const metadata: Metadata = {
   },
   icons: [
     {
-      url: '/logo.png',
+      url: '/jacob-app-icon.png',
     },
   ],
-
   description:
     'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
   keywords: ['developer, front-end develop,'],
@@ -25,6 +24,14 @@ export const metadata: Metadata = {
     title: 'Website Jacob Salazaku',
     description:
       'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
+    images: [
+      {
+        url: '/jacob-open-graph.png',
+        width: 567,
+        height: 444,
+        alt: 'Jacob Salazaku Website',
+      },
+    ],
   },
 };
 export default function RootLayout({

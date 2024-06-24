@@ -78,39 +78,41 @@ const Navigation: React.FC = () => {
       <nav
         className={`no-scroll fixed z-20 mt-20 h-screen w-screen bg-white transition-all duration-75 ease-in-out lg:hidden ${!isOpen ? 'translate-x-0' : '-translate-x-full overflow-hidden'}`}
       >
-        <li className="flex w-full flex-col items-center border-t-2">
-          <NextLink
-            href="/"
-            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
-            onClick={handleToggleMenu}
-            aria-label="Home"
-          >
-            Home
-          </NextLink>
-          <NextLink
-            href="/#projects"
-            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
-            onClick={handleToggleMenu}
-            aria-label="Projects"
-          >
-            Projects
-          </NextLink>
-          <NextLink
-            href="/#experience"
-            className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
-            onClick={handleToggleMenu}
-            aria-label="Experience"
-          >
-            Work Experience
-          </NextLink>
-          <Link
-            label="Contact me"
-            href="mailto:jacob.salazaku@student.kdg.be"
-            variant="github"
-            aria-label="Contect me"
-            target="_blank"
-          />
-        </li>
+        <ul>
+          <li className="flex w-full flex-col items-center border-t-2">
+            <NextLink
+              href="/"
+              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+              onClick={handleToggleMenu}
+              aria-label="Home"
+            >
+              Home
+            </NextLink>
+            <NextLink
+              href="/#projects"
+              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+              onClick={handleToggleMenu}
+              aria-label="Projects"
+            >
+              Projects
+            </NextLink>
+            <NextLink
+              href="/#experience"
+              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
+              onClick={handleToggleMenu}
+              aria-label="Experience"
+            >
+              Work Experience
+            </NextLink>
+            <Link
+              label="Contact me"
+              href="mailto:jacob.salazaku@student.kdg.be"
+              variant="github"
+              aria-label="Contect me"
+              target="_blank"
+            />
+          </li>
+        </ul>
       </nav>
     </>
   );

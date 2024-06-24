@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     url: `${process.env.NEXT_BASE_URL}/projects/kdg-stage`,
     title: 'KDG Stage Site',
     description: 'ontdek meer over het Project KDG Stage Site',
+    images: [
+      {
+        url: '/jacob-open-graph.png',
+        width: 567,
+        height: 444,
+        alt: 'Jacob Salazaku Website',
+      },
+    ],
   },
 };
 export default Stage;
