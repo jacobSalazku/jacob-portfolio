@@ -25,18 +25,25 @@ const Footer: React.FC = () => {
         </div>
         <div className="flex h-full w-full flex-col items-start gap-3 px-4 py-6 text-white sm:flex-row sm:justify-center sm:px-12 lg:w-1/3 lg:flex-col">
           <div className="flex flex-row items-center gap-3 text-center">
-            <NextLink href="/">Home</NextLink>
+            <NextLink href="/" aria-label="Home">
+              Home
+            </NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="/#projects">Projects</NextLink>
+            <NextLink href="/#projects" aria-label="Projects">
+              Projects
+            </NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
-            <NextLink href="/#experience">Work Experience</NextLink>
+            <NextLink href="/#experience" aria-label="Work Experience">
+              Work Experience
+            </NextLink>
           </div>
           <div className="flex flex-row items-center gap-3">
             <NextLink
               href="mailto:jacob.salazaku@student.kdg.be"
               target="_blank"
+              aria-label="Contact Me"
             >
               Contact Me
             </NextLink>
