@@ -8,6 +8,7 @@ import { useToggle } from 'react-use';
 const Navigation: React.FC = () => {
   const [isOpen, toggleMenu] = useToggle(true);
   const [isActive, setIsActive] = useState(false);
+
   const handleToggleMenu = () => {
     setIsActive(!isActive);
     toggleMenu(!isOpen);
