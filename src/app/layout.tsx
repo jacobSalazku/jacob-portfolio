@@ -5,7 +5,7 @@ import './globals.css';
 
 const Lexendfont = Lexend({ weight: ['400', '300'], subsets: ['latin'] });
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_LOCAL_BASE_URL || ''),
+  metadataBase: new URL(process.env.NEXT_BASE_URL ?? ''),
   title: {
     default: 'Jacob Salazaku ',
     template: ' %s | Jacob Salazaku',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   keywords: ['developer, front-end develop,'],
   openGraph: {
     type: 'website',
-    url: `${process.env.NEXT_LOCAL_BASE_URL}`,
+    url: `${process.env.NEXT_BASE_URL}`,
     title: 'Website Jacob Salazaku',
     description:
       'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
