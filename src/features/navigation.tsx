@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import NextLink from 'next/link';
-import { Link } from '@/components';
+import { Link } from '@/components/link';
 import { useToggle } from 'react-use';
 
 const Navigation: React.FC = () => {

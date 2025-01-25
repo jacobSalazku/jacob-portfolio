@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Navigation } from '@/features';
+import { Navigation } from '@/features/navigation';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_BASE_URL}/not-found`),

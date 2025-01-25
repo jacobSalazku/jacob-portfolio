@@ -1,13 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
-import { Cardprops } from '../types/types';
+import { AppPathnames } from '@/navigation';
 import { Link } from './link';
+
+export type Cardprops = {
+  imageSrc: string;
+  title: string;
+  children: React.ReactNode;
+  description: string;
+  route: AppPathnames;
+  imageAlt: string;
+};
 
 const ProjectCard: React.FC<Cardprops> = ({
   imageSrc,
   children,
   description,
-
   title,
   imageAlt,
   route,
@@ -35,7 +43,7 @@ const ProjectCard: React.FC<Cardprops> = ({
           </div>
           <Link
             label="Lees meer over dit project"
-            href={`/projects/${route || ''}`}
+            href={route}
             variant="github"
             className="mb-8 rounded-lg"
           />
@@ -61,7 +69,7 @@ const ProjectCard: React.FC<Cardprops> = ({
             variant="outline"
             size="xl"
             className="mt-2 h-14"
-            href={`/projects/${route || ''}`}
+            href={route}
           />
         </div>
       </div>

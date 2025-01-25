@@ -2,14 +2,12 @@
 
 import { useState } from 'react';
 import NextLink from 'next/link';
-import {
-  Expertise,
-  Header,
-  Link,
-  ProjectSection,
-  TechnologiesUsed,
-  WorkExperience,
-} from '@/components';
+import { Expertise } from '@/components/expertise';
+import Header from '@/components/header-banner';
+import { Link } from '@/components/link';
+import { ProjectSection } from '@/components/project-section';
+import { TechnologiesUsed } from '@/components/projects/technologies-used';
+import { WorkExperience } from '@/components/work-experience';
 import { SpotWorkshopStack } from '@/data';
 import { useToggle } from 'react-use';
 
@@ -29,30 +27,28 @@ function page() {
               Jacob Salazaku
             </NextLink>
             <nav className="hidden h-16 max-w-screen-2xl flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
-              <NextLink
+              <Link
                 href="/"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Home"
-              >
-                Home
-              </NextLink>
-              <NextLink
+                label="Home"
+                variant="menuItem"
+              />
+              <Link
                 href="/#projects"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Projects"
-              >
-                Projects
-              </NextLink>
-              <NextLink
+                label="Projects"
+                variant="menuItem"
+              />
+              <Link
                 href="/#experience"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Work Experience"
-              >
-                Work Experience
-              </NextLink>
+                label="Work Experience"
+                variant="menuItem"
+              />
+
               <Link
                 label="Contact me"
                 href="mailto:jacob.salazaku@student.kdg.be"
@@ -87,30 +83,28 @@ function page() {
       >
         <ul>
           <li className="flex w-full flex-col items-center border-t-2">
-            <NextLink
+            <Link
               href="/"
-              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Home"
-            >
-              Home
-            </NextLink>
-            <NextLink
+              variant="menuItem"
+              label="Home"
+            />
+            <Link
               href="/#projects"
-              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Projects"
-            >
-              Projects
-            </NextLink>
-            <NextLink
+              label="Projects"
+              variant="menuItem"
+            />
+            <Link
               href="/#experience"
               className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Work Experience"
-            >
-              Work Experience
-            </NextLink>
+              label="Work Experience"
+              variant="menuItem"
+            />
             <div className="pt-10">
               <Link
                 label="Contact me"
@@ -139,7 +133,6 @@ function page() {
             tegelijkertijd extra geld te verdienen, wat ideaal is als student.
           </p>
           <p>De technologieen die hier worden gerbuikt zijn:</p>
-
           <TechnologiesUsed techStack={SpotWorkshopStack} />
         </div>
       </WorkExperience>

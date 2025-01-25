@@ -3,15 +3,6 @@ export type MenuButtonProps = {
   isActive: boolean;
 };
 
-export type Cardprops = {
-  imageSrc: string;
-  title: string;
-  children: React.ReactNode;
-  description: string;
-  route: string;
-  imageAlt: string;
-};
-
 export type Project = {
   id: number;
   title: string;
