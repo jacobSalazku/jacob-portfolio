@@ -3,16 +3,16 @@ import { ProjectCard } from './project-card';
 const ProjectSection = () => {
   return (
     <section className="flex h-full w-screen flex-col items-center gap-8 bg-purple-2 py-24 lg:px-12">
-      <h2
-        id="projects"
-        className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl"
-      >
+      <h2 className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl">
         Featured Projects
       </h2>
-      <div className="transform-all flex max-w-screen-2xl flex-col flex-wrap justify-center gap-12 px-4 transition-all duration-150 ease-in-out sm:flex-row lg:flex-row">
+      <div
+        id="projects"
+        className="transform-all flex max-w-screen-2xl flex-col flex-wrap justify-center gap-12 px-4 transition-all duration-150 ease-in-out sm:flex-row lg:flex-row"
+      >
         <ProjectCard
           title="ResQControl"
-          route="resqcontrol"
+          route="/projects/resqcontrol"
           description=" Resqcontrol is a company that offers various services, including a
               dispatch platform for first aid at festivals. In addition they
               also offer services in human resource management and Pcare"
@@ -34,7 +34,7 @@ const ProjectSection = () => {
         </ProjectCard>
         <ProjectCard
           title="KDG Stage site"
-          route="/kdg-stage"
+          route="/projects/kdg-stage"
           description="  A clear internship platform where companies can register and
               detail the sectors in which they are active and what skills they
               have"

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Resqcontrol } from '@/features';
+import { Resqcontrol } from '@/features/pages/projects/resqcontrol';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_BASE_URL}/projects/resqcontrol`),

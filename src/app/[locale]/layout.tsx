@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
-import { Footer } from '@/components';
-import './globals.css';
+import { Footer } from '@/components/footer';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import '../globals.css';
 
 const Lexendfont = Lexend({ weight: ['400', '300'], subsets: ['latin'] });
 export const metadata: Metadata = {
@@ -34,18 +36,24 @@ export const metadata: Metadata = {
     ],
   },
 };
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={Lexendfont.className}>
-        <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-screen-2xl flex-col items-center scroll-smooth">
-          {children}
-          <Footer />
-        </main>
+        <NextIntlClientProvider messages={messages}>
+          <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-screen-2xl flex-col items-center scroll-smooth">
+            {children}
+            <Footer />
+          </main>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

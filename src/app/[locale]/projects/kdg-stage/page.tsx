@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Stage } from '@/features';
+import { Stage } from '@/features/pages/projects/kdg-stage';
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${process.env.NEXT_BASE_URL}/projects/kdg-stage`),
@@ -21,4 +21,5 @@ export const metadata: Metadata = {
     ],
   },
 };
+
 export default Stage;

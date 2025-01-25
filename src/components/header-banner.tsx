@@ -1,7 +1,12 @@
+'use client';
+
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Link } from './link';
 
 const Header = () => {
+  const t = useTranslations('Homepage');
+
   return (
     <section className="lg:bg-blue-1 mt-20 flex h-screen w-screen flex-row items-center overflow-hidden bg-gradient-to-b from-purple-1 to-purple-2 transition-all md:h-full lg:flex-col lg:px-12 lg:py-16">
       <div className="relative flex w-full max-w-screen-2xl flex-col items-center pb-4 lg:flex-row lg:justify-between">
@@ -19,7 +24,7 @@ const Header = () => {
             Jacob Salazaku
           </h1>
           <h2 className="mb-4 text-lg font-light text-white transition-transform lg:text-2xl">
-            Front-end Webdeveloper
+            {t('position')}
           </h2>
           <Image
             src="/header-phone-2.png"
@@ -29,10 +34,7 @@ const Header = () => {
             className="block transition-transform lg:hidden"
           />
           <p className="pb-4 text-center text-white lg:text-left">
-            Hi, I'm Jacob, a Front-end Webdeveloper from Antwerp who has been
-            fascinated by technology and computers since forever. I am currently
-            attending Karel de Grote Hogeschool, studying Multimedia and
-            Creative Technology.
+            {t('text')}
           </p>
           <div className="z-10 flex flex-col gap-6 sm:flex-row">
             <Link
@@ -65,4 +67,4 @@ const Header = () => {
   );
 };
 
-export { Header };
+export default Header;

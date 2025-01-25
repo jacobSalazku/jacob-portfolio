@@ -1,11 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { ProjectFeatures, TechnologiesUsed } from '@/components';
+import { ProjectFeatures } from '@/components/projects/project-features';
+import { TechnologiesUsed } from '@/components/projects/technologies-used';
 import { resqcontrolStack } from '@/data';
 import { Navigation } from '@/features/navigation';
+import { useTranslations } from 'next-intl';
 
 const Resqcontrol: React.FC = () => {
+  const t = useTranslations('Resqcontrol');
   return (
     <>
       <Navigation />
@@ -23,21 +26,14 @@ const Resqcontrol: React.FC = () => {
             </div>
             <div className="flex w-full flex-col items-start justify-center gap-4 px-4 lg:w-1/2 lg:px-12">
               <h1 className="mb-4 text-2xl font-bold lg:text-4xl">
-                Website ResQControl
+                {t('title')}
               </h1>
-              <p className="text-md">
-                Resqcontrol is a company that offers various services, including
-                a dispatch platform for first aid at festivals. In addition they
-                also offer services in human resource management and Pcare
-              </p>
-              <p className="text-md">
-                They needed one more thing: a website. This is where I worked on
-                the frontend.
-              </p>
+              <p className="text-md">{t('description-1')}</p>
+              <p className="text-md">{t('description-2')}</p>
             </div>
             <div className="hidden justify-center md:w-2/3 lg:flex">
               <Image
-                alt="Resqcontrol website"
+                alt={`${t('alt')}`}
                 src="/detail-resq.png"
                 width={600}
                 height={600}
@@ -50,10 +46,7 @@ const Resqcontrol: React.FC = () => {
               <h2 className="text-2xl font-bold text-beige-1 md:text-3xl lg:text-4xl">
                 Frontend
               </h2>
-              <p className="text-white">
-                In this project, I developed the frontend of the website. and
-                used the following technologies:
-              </p>
+              <p className="text-white">{t('technologies')}</p>
               <TechnologiesUsed techStack={resqcontrolStack} />
             </div>
           </div>
@@ -61,30 +54,26 @@ const Resqcontrol: React.FC = () => {
             <div className="flex flex-col gap-4 space-y-4">
               <div className="flex flex-col gap-3">
                 <h3 className="font-extrobold text-2xl text-black">
-                  Demo Request
+                  {t('ProjectFeatures.DemoRequest')}
                 </h3>
                 <p className="text-base text-gray-500 dark:text-gray-400">
-                  To ask questions or request a demo, there had to be a way to
-                  contact Resqcontrol. For that there had to be a function that
-                  stores and sends to the Resqcontrol email address. To prevent
-                  spam prevent spam, I also used Google Captcha.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3">
-                <h3 className="font-extrobold text-2xl text-black">Blogpost</h3>
-                <p className="text-gray-500 dark:text-gray-400">
-                  For the Blog , all blogpages were retrieved from the backend
-                  and displayed in the frontend as well as a detailpage
+                  {t('ProjectFeatures.DemoRequestDescription')}
                 </p>
               </div>
               <div className="flex flex-col gap-3">
                 <h3 className="font-extrobold text-2xl text-black">
-                  Internationalization and localization
+                  {t('ProjectFeatures.Blogpost')}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Each page was available in Dutch and English, French German.
-                  It detects which language the user and the website is
-                  automatically displayed in that language.
+                  {t('ProjectFeatures.BlogpostDescription')}
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <h3 className="font-extrobold text-2xl text-black">
+                  {t('ProjectFeatures.Internationalization')}
+                </h3>
+                <p className="text-gray-500 dark:text-gray-400">
+                  {t('ProjectFeatures.InternationalizationDescription')}
                 </p>
               </div>
             </div>

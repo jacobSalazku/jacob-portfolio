@@ -1,0 +1,39 @@
+{
+  "Homepage": {
+    "position": "Front-end Developer",
+    "text": "Hello, Im Jacob, a Front-end Web Developer from Antwerp who has always been fascinated by technology and computers. I am currently studying Multimedia and Creative Technology at Karel de Grote University of Applied Sciences.",
+    "cv": "my CV",
+    "expertise": "My Expertise",
+    "projects": "My Projects"
+  },
+  "Resqcontrol": {
+    "title": "Website Resqcontrol",
+    "description-1": " Resqcontrol is a company that offers various services, including a dispatch platform for first aid at festivals. In addition theyalso offer services in human resource management and Pcare",
+    "description-2": "They needed one more thing: a website. This is where I worked on the frontend.",
+    "alt": "Resqcontrol website",
+    "technologies": "In this project, I developed the frontend of the website. and used the following technologies:",
+    "ProjectFeatures": {
+      "DemoRequest": "Demo Request",
+      "DemoRequestDescription": "To ask questions or request a demo, there had to be a way to contact Resqcontrol. For that there had to be a function that stores and sends to the Resqcontrol email address. To prevent spam prevent spam, I also used Google Captcha.",
+      "Blogpost": "Blogpost",
+      "BlogpostDescription": "For the Blog , all blogpages were retrieved from the backend and displayed in the frontend as well as a detailpage",
+      "Internationalization": "Internationalization and localization",
+      "InternationalizationDescription": " Each page was available in Dutch and English, French German. It detects which language the user and the website is automatically displayed in that language."
+    }
+  },
+  "Stage": {
+    "title": "KDG Intern website",
+    "alt": "Karel de Grote intern website",
+    "description-1": " Currently, we students are experiencing many difficulties in obtaining a list of all the companies that are looking for interns. Therefore, in this project we focus on solving this problem by developing a simple but clear platform where companies can register.",
+    "description-2": "During registration, companies can clearly indicate in which sector they operate and what skills they are looking for intrainees. This platform allows us, students, to filter by our skills (such as Front-end, Back-end, UX/UI, and so on) and then displays the available internships that meet our criteria",
+    "technologies": "In this project, I developed the frontend of the website. and used the following technologies:",
+    "ProjectFeatures": {
+      "Registration": "Registration",
+      "RegistrationDescription": "Companies can register and clearly specify what sector and skills they are looking for.",
+      "Fitering": "Filtering System",
+      "FilterDescription": "As a student, you will be able to filter between the profiles UX/UI , Front-end, Back-end, 3D, Audio Video and will be displayed as a badge",
+      "Language": "Language toggle switch",
+      "LanguageDescription": "The website is available in several languages"
+    }
+  }
+}

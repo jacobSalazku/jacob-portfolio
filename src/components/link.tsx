@@ -1,14 +1,20 @@
 'use client';
 
 import type { FC } from 'react';
-import NextLink from 'next/link';
+import {
+  AppPathnames,
+  Locale,
+  locales,
+  Link as NavLink,
+  usePathname,
+} from '@/navigation';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils';
 
 type ButtonProps = {
   label: string;
   disabled?: boolean;
-  href?: string;
+  href?: AppPathnames | string; // App pathnames or external links
   icon?: React.ReactNode;
   labelVisability?: boolean;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -21,7 +27,6 @@ const buttonVariants = cva(
       variant: {
         primary:
           'bg-beige-1 border-blue text-purple-1 shadow-sm shadow-blue transition-all hover:border hover:border-beige-1 hover:text-beige-1 hover:bg-transparent',
-
         outline:
           'border border-white bg-transparent hover:bg-gray-100 hover:text-purple-2 transition-colors duration-300 ease-in-out',
         ghost:
@@ -31,6 +36,8 @@ const buttonVariants = cva(
         github: 'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
         linkedin:
           'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
+        menuItem:
+          'lg:text-lg lg:hover:bg-white lg:border-none hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out',
       },
       size: {
         default: 'px-4 py-3',
@@ -57,31 +64,43 @@ const Link: FC<ButtonProps> = ({
   label,
   children,
   icon,
+  href,
   labelVisability,
   ...rest
-}) => (
-  <NextLink
-    className={cn(
-      buttonVariants({
-        size: labelVisability ? 'visability' : size,
-        variant,
-        className,
-      }),
-    )}
-    href={rest.href || ''}
-    {...rest}
-    aria-label={label}
-  >
-    <span>{icon}</span>
-    {labelVisability ? (
-      <span className="hidden lg:inline" {...rest}>
-        {label}
-      </span>
-    ) : (
-      <span {...rest}>{label}</span>
-    )}
-    <span>{children}</span>
-  </NextLink>
-);
+}) => {
+  const pathname = usePathname(); // Get the current pathname
+  const currentLocale = (pathname.split('/')[1] as Locale) || 'nl'; // Ensure strict typing for locale
 
-export { Link, buttonVariants };
+  // Validate the locale
+  const isValidLocale = locales.includes(currentLocale);
+  const localeToUse = isValidLocale ? currentLocale : 'nl'; // Fallback to 'nl' if invalid
+
+  // Resolve the href dynamically
+
+  return (
+    <NavLink
+      className={cn(
+        buttonVariants({
+          size: labelVisability ? 'visability' : size,
+          variant,
+          className,
+        }),
+      )}
+      href={href as AppPathnames}
+      {...rest}
+      aria-label={label}
+    >
+      <span>{icon}</span>
+      {labelVisability ? (
+        <span className="hidden lg:inline" {...rest}>
+          {label}
+        </span>
+      ) : (
+        <span {...rest}>{label}</span>
+      )}
+      <span>{children}</span>
+    </NavLink>
+  );
+};
+
+export { buttonVariants, Link };
