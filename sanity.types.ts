@@ -415,7 +415,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/app/[locale]/_query.ts
 // Variable: POSTS_QUERY
-// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
+// Query: *[	_type == "post"	&& defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
 export type POSTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -423,9 +423,9 @@ export type POSTS_QUERYResult = Array<{
   publishedAt: string | null;
 }>;
 
-// Source: ./src/app/[locale]/projects/[slug]/query.ts
+// Source: ./src/app/[locale]/projects/[slug]/_query.ts
 // Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]
+// Query: *[_type == "project" && slug.current == $slug][0]{  ...,  tags[]->{    _id,    title,  }}
 export type PROJECT_QUERYResult = {
   _id: string;
   _type: 'project';
@@ -446,13 +446,10 @@ export type PROJECT_QUERYResult = {
     alt?: string;
     _type: 'image';
   };
-  tags?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: 'techStack';
-  }>;
+  tags: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
   publishedAt?: string;
   text?: Array<
     | {
@@ -524,7 +521,7 @@ export type PROJECT_QUERYResult = {
 
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[\n  _type == "post"\n  && defined(slug.current)\n]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}': POSTS_QUERYResult;
-    '*[_type == "project" && slug.current == $slug][0]': PROJECT_QUERYResult;
+    '*[\n\t_type == "post"\n\t&& defined(slug.current)\n]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}': POSTS_QUERYResult;
+    '*[_type == "project" && slug.current == $slug][0]{\n  ...,\n  tags[]->{\n    _id,\n    title,\n  }\n}': PROJECT_QUERYResult;
   }
 }

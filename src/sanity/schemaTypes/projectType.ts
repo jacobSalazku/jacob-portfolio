@@ -12,6 +12,17 @@ export const projectType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'language',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Nederlands', value: 'nl' },
+          { title: 'Francais', value: 'fr' },
+          { title: 'English', value: 'en' },
+        ],
+      },
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {

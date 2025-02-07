@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import { Footer } from '@/components/footer';
+import { Navigation } from '@/features/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
@@ -38,18 +39,20 @@ export const metadata: Metadata = {
 };
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body className={Lexendfont.className}>
         <NextIntlClientProvider messages={messages}>
-          <main className="oveflow-hidden mx-auto my-0 flex min-h-screen max-w-screen-2xl flex-col items-center scroll-smooth">
+          <main className="mx-auto my-0 flex min-h-screen max-w-screen-2xl flex-col items-center scroll-smooth">
+            <Navigation />
             {children}
             <Footer />
           </main>

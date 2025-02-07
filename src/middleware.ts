@@ -11,7 +11,6 @@ const NextIntlMiddleware = createMiddleware({
 });
 
 export function middleware(req: NextRequest): NextResponse {
-  console.log('Locale:', req.headers.get('Accept-Language'));
   return NextIntlMiddleware(req);
 }
 

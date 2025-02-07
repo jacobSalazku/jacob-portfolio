@@ -22,35 +22,33 @@ const Navigation: React.FC = () => {
               Jacob Salazaku
             </NextLink>
             <nav className="hidden h-16 max-w-screen-2xl flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
-              <NextLink
+              <Link
                 href="/"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Home"
-              >
-                Home
-              </NextLink>
-              <NextLink
+                label="Home"
+                variant="menuItem"
+              />
+              <Link
                 href="/#projects"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Projects"
-              >
-                Projects
-              </NextLink>
-              <NextLink
+                label="Projects"
+                variant="menuItem"
+              />
+              <Link
                 href="/#experience"
-                className="flex flex-col items-center py-5 text-lg"
                 onClick={handleToggleMenu}
                 aria-label="Work Experience"
-              >
-                Work Experience
-              </NextLink>
+                label="Work Experience"
+                variant="menuItem"
+              />
               <Link
-                label="Contact me"
+                label="Contact"
                 href="mailto:jacob.salazaku@student.kdg.be"
                 variant="github"
                 aria-label="Contact me"
+                size="lg"
               />
             </nav>
             <button
@@ -80,36 +78,34 @@ const Navigation: React.FC = () => {
       >
         <ul>
           <li className="flex w-full flex-col items-center border-t-2">
-            <NextLink
+            <Link
               href="/"
-              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Home"
-            >
-              Home
-            </NextLink>
-            <NextLink
+              label="Home"
+              variant="menuItem"
+            />
+            <Link
               href="/#projects"
-              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Projects"
-            >
-              Projects
-            </NextLink>
-            <NextLink
+              label="Projects"
+              variant="menuItem"
+            />
+            <Link
               href="/#experience"
-              className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
               onClick={handleToggleMenu}
               aria-label="Experience"
-            >
-              Work Experience
-            </NextLink>
+              label="Experience"
+              variant="menuItem"
+            />
             <Link
-              label="Contact me"
+              label="Contact"
               href="mailto:jacob.salazaku@student.kdg.be"
               variant="github"
               aria-label="Contect me"
               target="_blank"
+              size="lg"
             />
           </li>
         </ul>

@@ -1,15 +1,9 @@
 'use client';
 
 import type { FC } from 'react';
-import {
-  AppPathnames,
-  Locale,
-  locales,
-  Link as NavLink,
-  usePathname,
-} from '@/navigation';
+import { AppPathnames, Link as NavLink } from '@/navigation';
+import { cn } from '@/utils/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../utils';
 
 type ButtonProps = {
   label: string;
@@ -68,15 +62,6 @@ const Link: FC<ButtonProps> = ({
   labelVisability,
   ...rest
 }) => {
-  const pathname = usePathname(); // Get the current pathname
-  const currentLocale = (pathname.split('/')[1] as Locale) || 'nl'; // Ensure strict typing for locale
-
-  // Validate the locale
-  const isValidLocale = locales.includes(currentLocale);
-  const localeToUse = isValidLocale ? currentLocale : 'nl'; // Fallback to 'nl' if invalid
-
-  // Resolve the href dynamically
-
   return (
     <NavLink
       className={cn(

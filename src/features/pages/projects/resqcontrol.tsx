@@ -6,8 +6,9 @@ import { TechnologiesUsed } from '@/components/projects/technologies-used';
 import { resqcontrolStack } from '@/data';
 import { Navigation } from '@/features/navigation';
 import { useTranslations } from 'next-intl';
+import { Project } from '../../../../sanity.types';
 
-const Resqcontrol: React.FC = () => {
+const Resqcontrol: React.FC<{ project: Project }> = ({ project }) => {
   const t = useTranslations('Resqcontrol');
   return (
     <>
@@ -16,13 +17,13 @@ const Resqcontrol: React.FC = () => {
         <div className="flex w-full max-w-screen-2xl flex-col items-center justify-center gap-8">
           <div className="flex flex-col justify-between gap-10 px-4 py-12 md:py-16 lg:flex-row lg:gap-0 lg:px-0 lg:py-20">
             <div className="flex justify-center md:w-2/3 lg:hidden">
-              <Image
+              {/* <Image
                 alt="Resqcontrol website"
                 src="/detail-resq.png"
                 width={600}
                 height={600}
                 className="rounded-3xl border-4 border-beige-1 shadow-xl lg:w-full"
-              />
+              /> */}
             </div>
             <div className="flex w-full flex-col items-start justify-center gap-4 px-4 lg:w-1/2 lg:px-12">
               <h1 className="mb-4 text-2xl font-bold lg:text-4xl">
