@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { ProjectFeatures } from '@/components/projects/project-features';
 import { TechnologiesUsed } from '@/components/projects/technologies-used';
-import { Navigation } from '@/features/navigation';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { getTranslations } from 'next-intl/server';
@@ -27,9 +26,9 @@ export default async function ProjectPage({
 
   const projectText = project.text?.[locale];
   const featureText = project.features?.[locale];
+
   return (
     <>
-      <Navigation />
       <section className="mt-20 flex flex-col items-start">
         <div className="flex w-full max-w-screen-2xl flex-col items-center justify-center gap-8">
           <div className="flex flex-col justify-between gap-10 px-4 py-12 md:py-16 lg:flex-row lg:gap-0 lg:px-0 lg:py-20 lg:pr-12">
@@ -69,7 +68,16 @@ export default async function ProjectPage({
               </h2>
               <p className="text-white">{t('technologies')}</p>
 
-              {project.tags && <TechnologiesUsed techStack={project.tags} />}
+              {project.tags && (
+                <TechnologiesUsed
+                  techStack={
+                    project.tags.map((tag) => ({
+                      _id: tag._ref,
+                      title: tag._type,
+                    })) as { _id: string; title: string }[]
+                  }
+                />
+              )}
             </div>
           </div>
           <ProjectFeatures>

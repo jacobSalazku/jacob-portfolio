@@ -12,10 +12,12 @@ export const pathnames = {
   // If all locales use the  pathname
   // single external path can be provided.
   '/': '/',
-  '/projects/kdg-stage': '/projects/kdg-stage',
-  '/projects/resqcontrol': '/projects/resqcontrol',
+  '/resume.pdf': '/resume.pdf',
+  '/projects/[slug]': '/projects/[slug]',
   '/#projects': '/#projects',
   '/#experience': '/#experience',
+  'mailto:jacob.salazaku@student.kdg.be':
+    'mailto:jacob.salazaku@student.kdg.be',
 };
 
 const { Link, redirect, usePathname, useRouter } =

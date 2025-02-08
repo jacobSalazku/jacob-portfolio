@@ -8,7 +8,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 type ButtonProps = {
   label: string;
   disabled?: boolean;
-  href?: AppPathnames | string; // App pathnames or external links
+  href?: AppPathnames | ''; // App pathnames or external links
   icon?: React.ReactNode;
   labelVisability?: boolean;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -71,7 +71,7 @@ const Link: FC<ButtonProps> = ({
           className,
         }),
       )}
-      href={href as AppPathnames}
+      href={href!}
       {...rest}
       aria-label={label}
     >

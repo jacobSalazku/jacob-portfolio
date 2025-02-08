@@ -13,15 +13,17 @@ const Navigation: React.FC = () => {
     setIsActive(!isActive);
     toggleMenu(!isOpen);
   };
+
   return (
     <>
-      <header className="fixed z-20 flex w-screen flex-col items-center justify-between bg-white text-sm drop-shadow-md">
-        <div className="flex w-full max-w-screen-2xl flex-col justify-center">
-          <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-            <NextLink className="w-1/2 text-lg" href="/">
-              Jacob Salazaku
+      <header className="fixed top-0 z-20 flex w-screen items-center justify-center bg-white px-6 py-4 text-sm shadow-md lg:px-12 lg:py-6">
+        <div className="w-full max-w-screen-2xl justify-between">
+          <div className="flex w-full items-center justify-center bg-white p-4 lg:rounded-xl lg:border-none lg:px-12">
+            {/* <header className="fixed top-0 z-20 flex w-full items-center justify-between bg-white px-6 py-4 text-sm shadow-md lg:px-12 lg:py-6"> */}
+            <NextLink href="/" passHref>
+              <p className="text-lg">Jacob Salazaku</p>
             </NextLink>
-            <nav className="hidden h-16 max-w-screen-2xl flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
+            <nav className="hidden lg:flex lg:w-1/2 lg:flex-row lg:items-center">
               <Link
                 href="/"
                 onClick={handleToggleMenu}
@@ -53,20 +55,20 @@ const Navigation: React.FC = () => {
             </nav>
             <button
               onClick={handleToggleMenu}
-              className="flex flex-col gap-1 transition-all duration-200 ease-in-out lg:hidden"
+              className="lg:hidden"
               aria-label="Menu button"
             >
               {isActive ? (
                 <>
-                  <span className="absolute block h-1 w-8 rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
-                  <span className="absolute block h-1 w-8 bg-gray-600 opacity-0"></span>
-                  <span className="absoluteb lock h-1 w-8 -rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
+                  <span className="block h-1 w-8 rotate-45 transform bg-gray-600 transition duration-200"></span>
+                  <span className="block h-1 w-8 bg-gray-600 opacity-0 transition duration-200"></span>
+                  <span className="block h-1 w-8 -rotate-45 transform bg-gray-600 transition duration-200"></span>
                 </>
               ) : (
                 <>
-                  <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
-                  <span className="block h-1 w-8 bg-gray-600 opacity-100 transition-all duration-200"></span>
-                  <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
+                  <span className="block h-1 w-8 bg-gray-600 transition duration-200"></span>
+                  <span className="block h-1 w-8 bg-gray-600 opacity-100 transition duration-200"></span>
+                  <span className="block h-1 w-8 bg-gray-600 transition duration-200"></span>
                 </>
               )}
             </button>
@@ -74,10 +76,11 @@ const Navigation: React.FC = () => {
         </div>
       </header>
       <nav
-        className={`no-scroll fixed z-20 mt-20 h-screen w-screen bg-white transition-all duration-75 ease-in-out lg:hidden ${!isOpen ? 'translate-x-0' : '-translate-x-full overflow-hidden'}`}
+        className={`fixed top-20 z-20 h-screen w-full bg-white lg:hidden ${isOpen ? '-translate-x-full' : 'translate-x-0'}`}
+        onClick={handleToggleMenu}
       >
-        <ul>
-          <li className="flex w-full flex-col items-center border-t-2">
+        <ul className="flex h-full w-full flex-col items-center">
+          <li className="w-full border-t-2">
             <Link
               href="/"
               onClick={handleToggleMenu}
@@ -103,8 +106,7 @@ const Navigation: React.FC = () => {
               label="Contact"
               href="mailto:jacob.salazaku@student.kdg.be"
               variant="github"
-              aria-label="Contect me"
-              target="_blank"
+              aria-label="Contact me"
               size="lg"
             />
           </li>

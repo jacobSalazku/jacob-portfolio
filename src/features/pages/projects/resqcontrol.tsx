@@ -2,8 +2,6 @@
 
 import Image from 'next/image';
 import { ProjectFeatures } from '@/components/projects/project-features';
-import { TechnologiesUsed } from '@/components/projects/technologies-used';
-import { resqcontrolStack } from '@/data';
 import { Navigation } from '@/features/navigation';
 import { useTranslations } from 'next-intl';
 import { Project } from '../../../../sanity.types';
@@ -48,7 +46,7 @@ const Resqcontrol: React.FC<{ project: Project }> = ({ project }) => {
                 Frontend
               </h2>
               <p className="text-white">{t('technologies')}</p>
-              <TechnologiesUsed techStack={resqcontrolStack} />
+              {/* <TechnologiesUsed techStack={resqcontrolStack} /> */}
             </div>
           </div>
           <ProjectFeatures>
