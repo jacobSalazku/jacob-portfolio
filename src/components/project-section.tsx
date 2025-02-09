@@ -1,6 +1,9 @@
+import { Slug } from '../../sanity.types';
 import { ProjectCard } from './project-card';
 
-const ProjectSection = () => {
+const ProjectSection = ({ slugs }: { slugs: Slug[] }) => {
+  const projects = slugs.filter((slug) => slug.current?.includes('project'));
+  console.log(projects);
   return (
     <section className="flex h-full w-screen flex-col items-center gap-8 bg-purple-2 py-24 lg:px-12">
       <h2 className="pb-12 text-3xl font-light text-white transition-transform lg:text-5xl">
@@ -12,10 +15,10 @@ const ProjectSection = () => {
       >
         <ProjectCard
           title="ResQControl"
-          route="/projects/resqcontrol"
+          route={`/projects/resqcontrol`}
           description=" Resqcontrol is a company that offers various services, including a
-              dispatch platform for first aid at festivals. In addition they
-              also offer services in human resource management and Pcare"
+							dispatch platform for first aid at festivals. In addition they
+							also offer services in human resource management and Pcare"
           imageSrc="/detail-resq.png"
           imageAlt="Resqcontrol website"
         >
@@ -34,10 +37,10 @@ const ProjectSection = () => {
         </ProjectCard>
         <ProjectCard
           title="KDG Stage site"
-          route="/projects/kdg-stage"
+          route={`/projects/kdg-stage`}
           description="  A clear internship platform where companies can register and
-              detail the sectors in which they are active and what skills they
-              have"
+							detail the sectors in which they are active and what skills they
+							have"
           imageSrc="/detail-stage.png"
           imageAlt="Karel de Grote stage website"
         >

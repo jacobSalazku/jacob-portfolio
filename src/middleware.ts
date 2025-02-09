@@ -11,12 +11,11 @@ const NextIntlMiddleware = createMiddleware({
 });
 
 export function middleware(req: NextRequest): NextResponse {
-  console.log('Locale:', req.headers.get('Accept-Language'));
   return NextIntlMiddleware(req);
 }
 
 export const config = {
   //match all routes except those that start with /api, /_next, /_vercel, or contain a dot
   // will prefix nl where needed
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!api|_next|_vercel|studio|.*\\..*).*)'],
 };

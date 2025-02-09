@@ -5,5 +5,9 @@
     "cv": "mon CV",
     "expertise": "Mon Expertise",
     "projects": "Mes Projets"
+  },
+  "Projects": {
+    "title": "Website Resqcontrol",
+    "technologies": "Dans ce projet, j'ai développé le frontend du site web et utilisé les technologies suivantes :"
   }
 }

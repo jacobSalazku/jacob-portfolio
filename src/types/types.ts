@@ -12,14 +12,6 @@ export type Project = {
   children?: React.ReactNode;
 };
 
-export type StackCards = {
-  label: string;
-};
-
-export type TechnologiesUsed = {
-  techStack: string[];
-};
-
 export type Sectionprops = {
   title?: string;
   children: React.ReactNode;

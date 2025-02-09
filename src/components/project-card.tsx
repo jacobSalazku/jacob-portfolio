@@ -8,7 +8,7 @@ export type Cardprops = {
   title: string;
   children: React.ReactNode;
   description: string;
-  route: AppPathnames;
+  route: AppPathnames | string;
   imageAlt: string;
 };
 
