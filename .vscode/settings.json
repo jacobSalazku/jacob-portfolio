@@ -1,5 +1,12 @@
 {
+  "cSpell.language": "en,nl",
+  "cSpell.dictionaries": ["en", "nl"],
+  "cSpell.ignorePaths": ["navigation.ts"],
   "cSpell.words": [
+    "groq",
+    "lqip",
+    "geopoint",
+    "timespan",
     "aantrekkelijke",
     "boeken",
     "collapsible",
