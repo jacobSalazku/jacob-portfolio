@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "types": "sanity typegen generate"
+    "types": "sanity schema extract && sanity typegen generate"
   },
   "dependencies": {
+    "@portabletext/react": "^3.2.1",
+    "@sanity/asset-utils": "^2.2.1",
     "@sanity/client": "^6.27.2",
     "@sanity/icons": "^3.5.7",
     "@sanity/image-url": "1",

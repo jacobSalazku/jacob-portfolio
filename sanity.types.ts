@@ -71,6 +71,40 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Experience = {
+  _id: string;
+  _type: 'experience';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  timespan?: string;
+  slug?: Slug;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  };
+  tags?: Array<{
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: 'techStack';
+  }>;
+  publishedAt?: string;
+  description?: Record<string, BlockContent>;
+  text?: Record<string, BlockContent>;
+  tasks?: Record<string, BlockContent>;
+};
+
 export type Project = {
   _id: string;
   _type: 'project';
@@ -99,72 +133,8 @@ export type Project = {
     [internalGroqTypeReferenceTo]?: 'techStack';
   }>;
   publishedAt?: string;
-  text?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-  >;
-  features?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-  >;
+  text?: Record<string, BlockContent>;
+  features?: Record<string, BlockContent>;
 };
 
 export type TechStack = {
@@ -212,39 +182,7 @@ export type Post = {
     [internalGroqTypeReferenceTo]?: 'category';
   }>;
   publishedAt?: string;
-  body?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-        listItem?: 'bullet';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-  >;
+  body?: BlockContent;
 };
 
 export type Author = {
@@ -303,39 +241,108 @@ export type Slug = {
   source?: string;
 };
 
-export type BlockContent = Array<
-  | {
-      children?: Array<{
-        marks?: Array<string>;
-        text?: string;
-        _type: 'span';
+export type BlockContent = {
+  _type: 'blockContent';
+  nl?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+        listItem?: 'bullet';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
         _key: string;
-      }>;
-      style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
-      listItem?: 'bullet';
-      markDefs?: Array<{
-        href?: string;
-        _type: 'link';
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: 'image';
         _key: string;
-      }>;
-      level?: number;
-      _type: 'block';
-      _key: string;
-    }
-  | {
-      asset?: {
-        _ref: string;
-        _type: 'reference';
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-      };
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      alt?: string;
-      _type: 'image';
-      _key: string;
-    }
->;
+      }
+  >;
+  en?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+        listItem?: 'bullet';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: 'image';
+        _key: string;
+      }
+  >;
+  fr?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: 'span';
+          _key: string;
+        }>;
+        style?: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'blockquote';
+        listItem?: 'bullet';
+        markDefs?: Array<{
+          href?: string;
+          _type: 'link';
+          _key: string;
+        }>;
+        level?: number;
+        _type: 'block';
+        _key: string;
+      }
+    | {
+        asset?: {
+          _ref: string;
+          _type: 'reference';
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        _type: 'image';
+        _key: string;
+      }
+  >;
+};
 
 export type SanityImageCrop = {
   _type: 'sanity.imageCrop';
@@ -400,6 +407,7 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | Experience
   | Project
   | TechStack
   | Post
@@ -414,26 +422,71 @@ export type AllSanitySchemaTypes =
   | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/app/[locale]/_query.ts
-// Variable: POSTS_QUERY
-// Query: *[  _type == "post"  && defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
-export type POSTS_QUERYResult = Array<{
+// Variable: PROJECT_SLUG
+// Query: *[_type == 'project']{	slug}
+export type PROJECT_SLUGResult = Array<{
+  slug: Slug | null;
+}>;
+
+// Source: ./src/app/[locale]/experience/_query.ts
+// Variable: EXPERIENCE_QUERY
+// Query: *[_type == "experience" && defined(slug.current)]|order(publishedAt desc)[0...12]{    _id,    title,    slug,    publishedAt,    mainImage,    timespan,    description,    tags[]->{      _id,      title,    },    "techStack": *[_type == "techStack" && references(^.id)]{      _id,      title,    }  }
+export type EXPERIENCE_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  publishedAt: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  } | null;
+  timespan: string | null;
+  description: BlockContent | null;
+  tags: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+  techStack: Array<{
+    _id: string;
+    title: string | null;
+  }>;
+}>;
+
+// Source: ./src/app/[locale]/projects/[slug]/_query.ts
+// Variable: PROJECT_QUERY
+// Query: *[	_type == "experience"	&& defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
+export type PROJECT_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
   publishedAt: string | null;
 }>;
 
-// Source: ./src/app/[locale]/projects/[slug]/query.ts
-// Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]
-export type PROJECT_QUERYResult = {
+// Source: ./src/app/[locale]/experience/[slug]/_query.ts
+// Variable: EXPERIENCE_DETAIL_PAGE
+// Query: *[_type == "post" && slug.current == $slug][0]
+export type EXPERIENCE_DETAIL_PAGEResult = {
   _id: string;
-  _type: 'project';
+  _type: 'post';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
   slug?: Slug;
+  author?: {
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: 'author';
+  };
   mainImage?: {
     asset?: {
       _ref: string;
@@ -446,85 +499,22 @@ export type PROJECT_QUERYResult = {
     alt?: string;
     _type: 'image';
   };
-  tags?: Array<{
+  categories?: Array<{
     _ref: string;
     _type: 'reference';
     _weak?: boolean;
     _key: string;
-    [internalGroqTypeReferenceTo]?: 'techStack';
+    [internalGroqTypeReferenceTo]?: 'category';
   }>;
   publishedAt?: string;
-  text?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-        listItem?: 'bullet';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-  >;
-  features?: Array<
-    | {
-        children?: Array<{
-          marks?: Array<string>;
-          text?: string;
-          _type: 'span';
-          _key: string;
-        }>;
-        style?: 'blockquote' | 'h1' | 'h2' | 'h3' | 'h4' | 'normal';
-        listItem?: 'bullet';
-        markDefs?: Array<{
-          href?: string;
-          _type: 'link';
-          _key: string;
-        }>;
-        level?: number;
-        _type: 'block';
-        _key: string;
-      }
-    | {
-        asset?: {
-          _ref: string;
-          _type: 'reference';
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-        };
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        _type: 'image';
-        _key: string;
-      }
-  >;
+  body?: BlockContent;
 } | null;
 
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[\n  _type == "post"\n  && defined(slug.current)\n]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}': POSTS_QUERYResult;
-    '*[_type == "project" && slug.current == $slug][0]': PROJECT_QUERYResult;
+    "*[_type == 'project']{\n\tslug\n}": PROJECT_SLUGResult;
+    '\n  *[_type == "experience" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n    _id,\n    title,\n    slug,\n    publishedAt,\n    mainImage,\n    timespan,\n    description,\n    tags[]->{\n      _id,\n      title,\n    },\n    "techStack": *[_type == "techStack" && references(^.id)]{\n      _id,\n      title,\n    }\n  }\n': EXPERIENCE_QUERYResult;
+    '*[\n\t_type == "experience"\n\t&& defined(slug.current)\n]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}': PROJECT_QUERYResult;
+    '*[_type == "post" && slug.current == $slug][0]': EXPERIENCE_DETAIL_PAGEResult;
   }
 }

@@ -5,16 +5,15 @@ import { AppPathnames, Link as NavLink } from '@/navigation';
 import { cn } from '@/utils/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-type ButtonProps = {
-  label: string;
+export type LinkProps = {
+  label?: string;
+  children?: React.ReactNode;
   disabled?: boolean;
   href?: AppPathnames | ''; // App pathnames or external links
-  icon?: React.ReactNode;
-  labelVisability?: boolean;
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &
   VariantProps<typeof buttonVariants>;
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   'flex flex-row items-center justify-center gap-2 cursor-pointer rounded border h-[60px] transition-transform ease-in-out',
   {
     variants: {
@@ -22,7 +21,7 @@ const buttonVariants = cva(
         primary:
           'bg-beige-1 border-blue text-purple-1 shadow-sm shadow-blue transition-all hover:border hover:border-beige-1 hover:text-beige-1 hover:bg-transparent',
         outline:
-          'border border-white bg-transparent hover:bg-gray-100 hover:text-purple-2 transition-colors duration-300 ease-in-out',
+          'border border-white bg-transparent hover:bg--100 hover:textbeige-1 transition-colors duration-300 ease-in-out',
         ghost:
           'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
         navlink:
@@ -31,17 +30,17 @@ const buttonVariants = cva(
         linkedin:
           'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
         menuItem:
-          'lg:text-lg lg:hover:bg-white lg:border-none hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out',
+          'w-full justify-start items-center border h-20 gap-4 border-black-700 text-lg border-opacity-0 font-thin transition-all ease-in hover:border-beige-1 hover:bg-black-300 hover:text-beige-1',
       },
       size: {
         default: 'px-4 py-3',
         md: 'w-[210px] px-4',
         lg: 'w-[275px] px-4 py-3',
         xl: 'w-[310px] px-4 py-3',
-        half: 'w-1/2 px-4',
-        full: 'w-full rounded-md px-4',
+        half: 'w-1/2 px-4 py-4',
+        full: 'w-full rounded-md px-4 py-4',
         icon: 'size-10 rounded-full p-2',
-        visability: 'transition-transform ease-in-out w-auto p-2 ',
+        nav: 'w-full px-4 py-4 rounded-lg',
       },
     },
     defaultVariants: {
@@ -51,22 +50,19 @@ const buttonVariants = cva(
   },
 );
 
-const Link: FC<ButtonProps> = ({
+const Link: FC<LinkProps> = ({
   className,
   size,
   variant,
-  label,
   children,
-  icon,
-  href,
-  labelVisability,
+  label,
+  href = '',
   ...rest
 }) => {
   return (
     <NavLink
       className={cn(
         buttonVariants({
-          size: labelVisability ? 'visability' : size,
           variant,
           className,
         }),
@@ -75,17 +71,10 @@ const Link: FC<ButtonProps> = ({
       {...rest}
       aria-label={label}
     >
-      <span>{icon}</span>
-      {labelVisability ? (
-        <span className="hidden lg:inline" {...rest}>
-          {label}
-        </span>
-      ) : (
-        <span {...rest}>{label}</span>
-      )}
-      <span>{children}</span>
+      {label}
+      {children}
     </NavLink>
   );
 };
 
-export { buttonVariants, Link };
+export { Link };
