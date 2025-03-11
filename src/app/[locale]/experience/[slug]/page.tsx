@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Breadcrumbs from '@/components/breadcrums';
-import { LibraryUsed } from '@/components/experience/components/library-used';
+import { LibraryUsed } from '@/components/experience/library-used';
 import { KeyFeatures } from '@/components/key-features';
 import { Link } from '@/components/Link/link';
 import PortableTextRenderer from '@/components/portable-text-render';

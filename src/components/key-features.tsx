@@ -1,6 +1,8 @@
-import { Sectionprops } from '@/types/types';
-
-const KeyFeatures: React.FC<Sectionprops> = ({ title, children }) => {
+export type KeyFeaturesProps = {
+  title?: string;
+  children: React.ReactNode;
+};
+const KeyFeatures: React.FC<KeyFeaturesProps> = ({ title, children }) => {
   return (
     <div className="w-full max-w-screen-2xl rounded-3xl py-6 text-white md:py-16 lg:px-12 lg:py-20">
       <div className="flex w-full flex-col items-start justify-center space-y-6">

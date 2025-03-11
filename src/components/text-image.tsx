@@ -40,8 +40,7 @@ export const TextImageComponent = ({
             .width(1080)
             .height(1080)
             .url()}
-          alt={value.alt || ' '}
-          loading="lazy"
+          alt={value.alt || ''}
           className="h-auto w-full rounded-lg"
         />
       </div>
