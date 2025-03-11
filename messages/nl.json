@@ -6,12 +6,10 @@
     "expertise": "Mijn Expertise",
     "projects": "Mijn Projecten"
   },
-  "Resqcontrol": {
+  "Projects": {
     "title": "Website Resqcontrol",
-    "description-1": "Resqcontrol is een bedrijf dat verschillende diensten aanbiedt, waaronder een dispatchplatform voor eerste hulp op festivals. Daarnaast bieden ze ook diensten aan op het gebied van human resource management en Pcare.",
-    "description-2": "Ze hadden nog één ding nodig: een website. Hier heb ik gewerkt aan de frontend.",
-    "alt": "Resqcontrol website",
     "technologies": "In dit project heb ik de frontend van de website ontwikkeld en de volgende technologieën gebruikt:",
+    "feature-title": "Wat heb ik gedaan?",
     "ProjectFeatures": {
       "DemoRequest": "Demo Aanvragen",
       "DemoRequestDescription": "Om vragen te stellen of een demo aan te vragen, moest er een manier zijn om contact op te nemen met Resqcontrol. Hiervoor moest er een functie zijn die gegevens opslaat en naar het e-mailadres van Resqcontrol verzendt. Om spam te voorkomen, heb ik ook Google Captcha gebruikt.",

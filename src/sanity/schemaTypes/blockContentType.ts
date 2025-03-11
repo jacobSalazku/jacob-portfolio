@@ -12,7 +12,7 @@ import { defineArrayMember, defineType } from 'sanity';
  *  }
  */
 
-const supportedLanguages = [
+export const supportedLanguages = [
   { id: 'nl', title: 'Dutch' },
   { id: 'en', title: 'English', isDefault: true },
   { id: 'fr', title: 'French' },
