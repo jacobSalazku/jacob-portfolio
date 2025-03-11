@@ -7,7 +7,7 @@ import { IconChevronRight } from '@tabler/icons-react';
 import { TypedObject } from 'sanity';
 import { TextImageComponent } from './text-image';
 
-export const components: PortableTextComponents = {
+const components: PortableTextComponents = {
   types: {
     image: TextImageComponent,
   },
@@ -97,4 +97,4 @@ const PortableTextRenderer: React.FC<PortableTextRendererProps> = ({
   value,
 }) => <PortableText value={value} components={components} />;
 
-export default PortableTextRenderer;
+export { PortableTextRenderer };

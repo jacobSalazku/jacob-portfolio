@@ -43,4 +43,4 @@ const MenuLink: FC<MenuLinkProps> = ({
   );
 };
 
-export default MenuLink;
+export { MenuLink };

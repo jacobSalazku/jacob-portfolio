@@ -60,4 +60,4 @@ const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
   );
 };
 
-export default ProjectCard;
+export { ProjectCard };

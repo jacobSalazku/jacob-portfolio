@@ -13,6 +13,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
       {...rest}
       onClick={onClick}
       className="z-50 flex flex-col gap-1 transition-all lg:hidden"
+      aria-label="Hamburger button"
     >
       <span
         className={`block h-1 w-8 bg-beige-1 transition-transform duration-200 ${

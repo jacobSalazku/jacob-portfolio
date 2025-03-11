@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import Breadcrumbs from '@/components/breadcrums';
-import ProjectCard from '@/components/project/project-card';
+import { Breadcrumbs } from '@/components/breadcrums';
+import { ProjectCard } from '@/components/project/project-card';
 import { client } from '@/sanity/lib/client';
 import { Project } from '@root/sanity.types';
 import { PROJECT_QUERY } from './_query';
@@ -15,7 +15,7 @@ export default async function ProjectOverview(params: {
       <Breadcrumbs
         items={[{ label: 'Projects', href: `/${locale}/projects` }]}
       />
-      <main className="flex w-full flex-col items-start px-4 lg:max-w-screen-lg lg:px-10">
+      <main className="flex w-full flex-col items-start px-4 lg:max-w-screen-lg">
         {data &&
           data.map((project, index) => (
             <Fragment key={project._id}>

@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Breadcrumbs from '@/components/breadcrums';
+import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryTag } from '@/components/library-tag';
-import PortableTextRenderer from '@/components/portable-text-render';
+import { PortableTextRenderer } from '@/components/portable-text-render';
 import { FeatureItem } from '@/components/project/feature-item';
 import { KeyFeatures } from '@/components/project/key-features';
 import { client } from '@/sanity/lib/client';

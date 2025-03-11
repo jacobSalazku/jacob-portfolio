@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
-import Breadcrumbs from '@/components/breadcrums';
-import ExperienceCard from '@/components/experience/experience-card';
+import { Breadcrumbs } from '@/components/breadcrums';
+import { ExperienceCard } from '@/components/experience/experience-card';
 import { client } from '@/sanity/lib/client';
 import { Experience } from '@root/sanity.types';
 import { EXPERIENCE_QUERY } from './_query';

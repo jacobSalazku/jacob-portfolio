@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { LibraryTag } from '@/components/library-tag';
-import PortableTextRenderer from '@/components/portable-text-render';
+import { PortableTextRenderer } from '@/components/portable-text-render';
 import { urlFor } from '@/sanity/lib/image';
 import { Experience } from '@root/sanity.types';
 
@@ -72,4 +72,4 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
   );
 };
 
-export default ExperienceCard;
+export { ExperienceCard };

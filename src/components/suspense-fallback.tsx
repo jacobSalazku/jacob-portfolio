@@ -31,4 +31,4 @@ const SuspensePulse = () => {
   );
 };
 
-export default SuspensePulse;
+export { SuspensePulse };

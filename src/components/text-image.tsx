@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import urlBuilder from '@sanity/image-url';
 import { Experience } from '../../sanity.types';
 
-export const TextImageComponent = ({
+const TextImageComponent = ({
   value,
   isInline,
 }: {
@@ -34,7 +35,7 @@ export const TextImageComponent = ({
         className="mx-auto mb-4 ml-2 hidden max-w-[200px] cursor-pointer rounded-xl border-2 border-beige-1 border-opacity-45 p-1 transition-transform duration-200 ease-in-out hover:scale-105 md:float-right md:mb-0 md:ml-4 md:flex"
         onClick={handleImageClick}
       >
-        <img
+        <Image
           src={urlBuilder(client)
             .image(value.asset || '')
             .width(1080)
@@ -42,6 +43,8 @@ export const TextImageComponent = ({
             .url()}
           alt={value.alt || ''}
           className="h-auto w-full rounded-lg"
+          width={200}
+          height={200}
         />
       </div>
       {isModalOpen && (
@@ -73,3 +76,5 @@ export const TextImageComponent = ({
     </>
   );
 };
+
+export { TextImageComponent };
