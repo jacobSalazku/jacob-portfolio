@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
+import { Navigation } from '@/components/navigation';
 import SuspensePulse from '@/components/suspense-fallback';
-import { Navigation } from '@/features/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
