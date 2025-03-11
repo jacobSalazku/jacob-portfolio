@@ -9,7 +9,7 @@ export type LinkProps = {
   label?: string;
   children?: React.ReactNode;
   disabled?: boolean;
-  href?: AppPathnames | ''; // App pathnames or external links
+  href?: AppPathnames | string; // App pathnames or external links
 } & React.AnchorHTMLAttributes<HTMLAnchorElement> &
   VariantProps<typeof buttonVariants>;
 
@@ -21,7 +21,7 @@ export const buttonVariants = cva(
         primary:
           'bg-beige-1 border-blue text-purple-1 shadow-sm shadow-blue transition-all hover:border hover:border-beige-1 hover:text-beige-1 hover:bg-transparent',
         outline:
-          'border border-white bg-transparent hover:bg--100 hover:textbeige-1 transition-colors duration-300 ease-in-out',
+          'border border-white bg-transparent hover:bg--100 hover:textbeige-1 transition-colors duration-300 ease-in-out ',
         ghost:
           'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
         navlink:
