@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryTag } from '@/components/library-tag';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { FeatureItem } from '@/components/project/feature-item';
 import { KeyFeatures } from '@/components/project/key-features';
+import { SuspensePulse } from '@/components/suspense-fallback';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { IconCode } from '@tabler/icons-react';
@@ -28,7 +30,7 @@ export default async function ProjectPage({
   const { title, mainImage, text, tags, features } = project;
 
   return (
-    <>
+    <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
         items={[
           { label: 'Projects', href: `/projects` },
@@ -89,6 +91,6 @@ export default async function ProjectPage({
           </div>
         </KeyFeatures>
       </main>
-    </>
+    </Suspense>
   );
 }

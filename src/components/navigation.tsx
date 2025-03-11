@@ -9,7 +9,14 @@ import { MenuButton } from './menu-button';
 const Navigation = ({ locale }: { locale: string }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+  };
 
   return (
     <>
@@ -19,12 +26,7 @@ const Navigation = ({ locale }: { locale: string }) => {
           'fixed z-20 h-20 w-full items-center justify-between border-b border-blue-100 border-opacity-50 bg-black-900 px-6 lg:absolute lg:hidden',
         )}
       >
-        <div
-          className={cn(
-            isOpen ? 'opacity-100' : 'opacity-100',
-            'text-white lg:hidden',
-          )}
-        >
+        <div className="text-white lg:hidden">
           <h3 className="text-base font-bold xl:text-lg">Jacob Salazaku</h3>
         </div>
         <MenuButton onClick={toggleMenu} isActive={isOpen} />
@@ -34,7 +36,7 @@ const Navigation = ({ locale }: { locale: string }) => {
           isOpen
             ? 'translate-x-0 transition-transform duration-150 lg:translate-x-0'
             : '-translate-x-full lg:translate-x-0',
-          `fixed left-0 top-0 z-40 h-screen w-full bg-black-900 bg-opacity-85 px-8 py-12 text-white shadow-lg ease-out sm:px-4 lg:sticky lg:w-3/12 lg:max-w-96 lg:bg-opacity-50 lg:px-4 lg:py-12`,
+          `fixed left-0 top-0 z-40 h-screen w-full bg-black-900 bg-opacity-85 px-8 py-12 text-white shadow-lg backdrop-blur-md ease-out sm:px-4 lg:sticky lg:w-3/12 lg:max-w-96 lg:bg-opacity-50 lg:px-4 lg:py-12`,
         )}
       >
         <div className="absolute right-6 top-7 lg:hidden">
@@ -47,7 +49,7 @@ const Navigation = ({ locale }: { locale: string }) => {
                 Portfolio Frontend developer
               </h3>
             </div>
-            <div className="sm:hidden lg:block">
+            <div className="hidden lg:block">
               <h3 className="text-base font-bold xl:text-lg">Jacob Salazaku</h3>
               <p className="text-xs font-thin xl:text-sm">FRONTEND DEVELOPER</p>
             </div>

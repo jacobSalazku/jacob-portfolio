@@ -1,8 +1,6 @@
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import { Navigation } from '@/components/navigation';
-import { SuspensePulse } from '@/components/suspense-fallback';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
@@ -61,7 +59,7 @@ export default async function RootLayout({
             <div className="max-w-screen-3xl flex w-screen flex-row items-start justify-center">
               <Navigation locale={locale} />
               <div className="h-full min-h-screen w-full flex-col items-center justify-start pt-20 xs:flex lg:w-9/12 lg:border-l lg:border-l-blue-50 lg:border-opacity-50 xl:max-w-screen-lg 2xl:max-w-screen-xl">
-                <Suspense fallback={<SuspensePulse />}>{children}</Suspense>
+                {children}
               </div>
             </div>
           </div>

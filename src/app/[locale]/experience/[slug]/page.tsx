@@ -1,9 +1,11 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryUsed } from '@/components/experience/library-used';
 import { Link } from '@/components/link/link';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { KeyFeatures } from '@/components/project/key-features';
+import { SuspensePulse } from '@/components/suspense-fallback';
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { Experience, Project } from '@root/sanity.types';
@@ -33,7 +35,7 @@ export default async function ExperiencePage({
   const t = await getTranslations('Projects');
 
   return (
-    <>
+    <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
         items={[
           {
@@ -86,6 +88,6 @@ export default async function ExperiencePage({
           </KeyFeatures>
         </div>
       </main>
-    </>
+    </Suspense>
   );
 }
