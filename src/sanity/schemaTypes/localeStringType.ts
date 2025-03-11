@@ -6,8 +6,8 @@ import { defineType } from 'sanity';
 // fields to hold translated values. We'll use this array
 // of languages to determine which fields to define.
 const supportedLanguages = [
-  { id: 'en', title: 'English' },
   { id: 'nl', title: 'Nederlands', isDefault: true },
+  { id: 'en', title: 'English' },
   { id: 'fr', title: 'Francais' },
 ];
 

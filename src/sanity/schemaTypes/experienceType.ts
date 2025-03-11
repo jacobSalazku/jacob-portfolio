@@ -1,9 +1,9 @@
 import { DocumentTextIcon } from '@sanity/icons';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
-export const projectType = defineType({
-  name: 'project',
-  title: 'Project',
+export const experienceType = defineType({
+  name: 'experience',
+  title: 'Experience',
   type: 'document',
   icon: DocumentTextIcon,
   fields: [
@@ -12,11 +12,22 @@ export const projectType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'timespan',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {
         source: 'title',
       },
+    }),
+    defineField({
+      name: 'project',
+      type: 'reference',
+      to: { type: 'project' },
+      title: 'Project',
+      description: 'Select the project associated with this experience',
     }),
     defineField({
       name: 'mainImage',
@@ -42,18 +53,16 @@ export const projectType = defineType({
       type: 'datetime',
     }),
     defineField({
+      name: 'description',
+      type: 'blockContent',
+    }),
+    defineField({
       name: 'text',
       type: 'blockContent',
     }),
     defineField({
-      name: 'Features',
-      type: 'array',
-      of: [{ type: 'blockContent' }],
-    }),
-    defineField({
-      name: 'features',
-      type: 'array',
-      of: [defineArrayMember({ type: 'featureBlock' })],
+      name: 'tasks',
+      type: 'blockContent',
     }),
   ],
 });

@@ -71,6 +71,19 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type FeatureBlock = {
+  _type: 'featureBlock';
+  title: LocalizedTitle;
+  content: Record<string, BlockContent>;
+};
+
+export type LocalizedTitle = {
+  _type: 'localizedTitle';
+  nl?: string;
+  en?: string;
+  fr?: string;
+};
+
 export type Experience = {
   _id: string;
   _type: 'experience';
@@ -80,6 +93,7 @@ export type Experience = {
   title?: string;
   timespan?: string;
   slug?: Slug;
+  project?: Project;
   mainImage?: {
     asset?: {
       _ref: string;
@@ -92,13 +106,7 @@ export type Experience = {
     alt?: string;
     _type: 'image';
   };
-  tags?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: 'techStack';
-  }>;
+  tags?: TechStack[];
   publishedAt?: string;
   description?: Record<string, BlockContent>;
   text?: Record<string, BlockContent>;
@@ -125,16 +133,10 @@ export type Project = {
     alt?: string;
     _type: 'image';
   };
-  tags?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: 'techStack';
-  }>;
+  tags?: TechStack[];
   publishedAt?: string;
   text?: Record<string, BlockContent>;
-  features?: Record<string, BlockContent>;
+  features?: FeatureBlock[];
 };
 
 export type TechStack = {
@@ -407,6 +409,8 @@ export type AllSanitySchemaTypes =
   | SanityImageDimensions
   | SanityFileAsset
   | Geopoint
+  | FeatureBlock
+  | LocalizedTitle
   | Experience
   | Project
   | TechStack
@@ -460,33 +464,53 @@ export type EXPERIENCE_QUERYResult = Array<{
   }>;
 }>;
 
-// Source: ./src/app/[locale]/projects/[slug]/_query.ts
+// Source: ./src/app/[locale]/projects/_query.ts
 // Variable: PROJECT_QUERY
-// Query: *[	_type == "experience"	&& defined(slug.current)]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}
+// Query: *[_type == "project" && defined(slug.current)]|order(publishedAt desc)[0...12]{      _id,      title,      slug,      publishedAt,      mainImage,      timespan,      description,      tags[]->{        _id,        title,      },      "techStack": *[_type == "techStack" && references(^.id)]{        _id,        title,      }    }
 export type PROJECT_QUERYResult = Array<{
   _id: string;
   title: string | null;
   slug: Slug | null;
   publishedAt: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  } | null;
+  timespan: null;
+  description: null;
+  tags: Array<{
+    _id: string;
+    title: string | null;
+  }> | null;
+  techStack: Array<{
+    _id: string;
+    title: string | null;
+  }>;
 }>;
 
 // Source: ./src/app/[locale]/experience/[slug]/_query.ts
 // Variable: EXPERIENCE_DETAIL_PAGE
-// Query: *[_type == "post" && slug.current == $slug][0]
+// Query: *[_type == "experience" && slug.current == $slug][0]  {    ...,    "tags": tags[]->,    "project": project->{        slug,      }  }
 export type EXPERIENCE_DETAIL_PAGEResult = {
   _id: string;
-  _type: 'post';
+  _type: 'experience';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
+  timespan?: string;
   slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: 'author';
-  };
+  project: {
+    slug: Slug | null;
+  } | null;
   mainImage?: {
     asset?: {
       _ref: string;
@@ -499,22 +523,70 @@ export type EXPERIENCE_DETAIL_PAGEResult = {
     alt?: string;
     _type: 'image';
   };
-  categories?: Array<{
-    _ref: string;
-    _type: 'reference';
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: 'category';
-  }>;
+  tags: Array<{
+    _id: string;
+    _type: 'techStack';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
   publishedAt?: string;
-  body?: BlockContent;
+  description?: BlockContent;
+  text?: BlockContent;
+  tasks?: BlockContent;
+} | null;
+
+// Source: ./src/app/[locale]/projects/[slug]/_query.ts
+// Variable: PROJECT_DETAIL_PAGE
+// Query: *[_type == "project" && slug.current == $slug][0]	{	  ...,	  "tags": tags[]->,	}
+export type PROJECT_DETAIL_PAGEResult = {
+  _id: string;
+  _type: 'project';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: 'image';
+  };
+  tags: Array<{
+    _id: string;
+    _type: 'techStack';
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    title?: string;
+    slug?: Slug;
+    description?: string;
+  }> | null;
+  publishedAt?: string;
+  text?: BlockContent;
+  features?: Array<
+    {
+      _key: string;
+    } & FeatureBlock
+  >;
 } | null;
 
 declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'project']{\n\tslug\n}": PROJECT_SLUGResult;
     '\n  *[_type == "experience" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n    _id,\n    title,\n    slug,\n    publishedAt,\n    mainImage,\n    timespan,\n    description,\n    tags[]->{\n      _id,\n      title,\n    },\n    "techStack": *[_type == "techStack" && references(^.id)]{\n      _id,\n      title,\n    }\n  }\n': EXPERIENCE_QUERYResult;
-    '*[\n\t_type == "experience"\n\t&& defined(slug.current)\n]|order(publishedAt desc)[0...12]{_id, title, slug, publishedAt}': PROJECT_QUERYResult;
-    '*[_type == "post" && slug.current == $slug][0]': EXPERIENCE_DETAIL_PAGEResult;
+    '\n    *[_type == "project" && defined(slug.current)]|order(publishedAt desc)[0...12]{\n      _id,\n      title,\n      slug,\n      publishedAt,\n      mainImage,\n      timespan,\n      description,\n      tags[]->{\n        _id,\n        title,\n      },\n      "techStack": *[_type == "techStack" && references(^.id)]{\n        _id,\n        title,\n      }\n    }\n  ': PROJECT_QUERYResult;
+    '\n  *[_type == "experience" && slug.current == $slug][0]\n  {\n    ...,\n    "tags": tags[]->,\n    "project": project->{\n        slug,\n      }\n  }\n': EXPERIENCE_DETAIL_PAGEResult;
+    '\n\t*[_type == "project" && slug.current == $slug][0]\n\t{\n\t  ...,\n\t  "tags": tags[]->,\n\t}\n  ': PROJECT_DETAIL_PAGEResult;
   }
 }

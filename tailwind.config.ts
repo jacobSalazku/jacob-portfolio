@@ -14,7 +14,6 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-
         'dark-gradient': 'linear-gradient(to top, #0B0A0A, #0D0C0C)',
       },
       colors: {
@@ -43,11 +42,12 @@ const config: Config = {
       height: {
         '570': '2160px',
       },
-      maxWidthScreen: {
+      maxWidth: {
         '3xl': '1920px',
       },
     },
   },
   plugins: [],
 };
+
 export default config;
