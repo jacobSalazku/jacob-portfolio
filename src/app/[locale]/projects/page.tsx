@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Breadcrumbs from '@/components/breadcrums';
-import ProjectCard from '@/components/projects/project-card';
+import ProjectCard from '@/components/projects/components/project-card';
 import { client } from '@/sanity/lib/client';
 import { Project } from '@root/sanity.types';
 import { PROJECT_QUERY } from './_query';

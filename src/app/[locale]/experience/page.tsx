@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import Breadcrumbs from '@/components/breadcrums';
-import ExperienceCard from '@/components/experience/experience-card';
+import ExperienceCard from '@/components/experience/components/experience-card';
 import { client } from '@/sanity/lib/client';
 import { Experience } from '@root/sanity.types';
 import { EXPERIENCE_QUERY } from './_query';
@@ -9,6 +9,7 @@ export default async function ExperienceOverview(params: {
   params: { locale: string; slug: string };
 }) {
   const { locale, slug } = params.params;
+
   const data = await client.fetch<Experience[]>(
     EXPERIENCE_QUERY,
     {},

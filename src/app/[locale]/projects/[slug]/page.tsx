@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Breadcrumbs from '@/components/breadcrums';
-import { FeatureItem } from '@/components/experience/feature-item';
+import { FeatureItem } from '@/components/experience/components/feature-item';
 import { KeyFeatures } from '@/components/key-features';
 import { LibraryTag } from '@/components/library-tag';
 import PortableTextRenderer from '@/components/portable-text-render';
