@@ -1,7 +1,7 @@
 import { defineQuery } from 'next-sanity';
 
-export const SLUG_QUERY = defineQuery(
+export const PROJECT_SLUG = defineQuery(
   `*[_type == 'project']{
-  slug
+	slug
 }`,
 );

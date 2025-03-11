@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { TechStack } from '../../../sanity.types';
-import { LibraryTag } from '../library-tag';
+import { LibraryTag } from '@/components/library-tag';
+import { TechStack } from '@root/sanity.types';
 
 type ExperienceTagsProps = {
   tags?: TechStack[];
