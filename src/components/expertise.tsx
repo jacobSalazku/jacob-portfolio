@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Expertise = () => {
   return (
-    <section className="flex h-fit w-screen flex-col items-center gap-6 bg-gradient-to-b px-12 py-24 transition-all duration-75 ease-in-out md:gap-6 lg:justify-center">
+    <section className="flex h-fit w-full flex-col items-center gap-6 bg-gradient-to-b px-12 py-24 transition-all duration-75 ease-in-out md:gap-6 lg:justify-center">
       <div className="flex w-full flex-row items-center justify-center">
         <Image
           src="/skills-1.png"

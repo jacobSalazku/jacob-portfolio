@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import MenuLink from '@/components/Link/menu-link';
+import MenuLink from '@/components/link/menu-link';
 import { MENUITEMS } from '@/utils/nav-items';
 import { cn } from '@/utils/utils';
 import { MenuButton } from './menu-button';

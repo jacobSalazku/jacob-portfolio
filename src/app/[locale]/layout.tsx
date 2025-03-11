@@ -57,7 +57,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={Lexendfont.className}>
         <NextIntlClientProvider messages={messages}>
-          <main className="mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-hidden scroll-smooth bg-black-900">
+          <div className="mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-hidden scroll-smooth bg-black-900">
             <div className="max-w-screen-3xl flex w-screen flex-row items-start justify-center">
               <Navigation locale={locale} />
               <div className="h-full min-h-screen w-full flex-col items-center justify-start pt-20 xs:flex lg:w-9/12 lg:border-l lg:border-l-blue-50 lg:border-opacity-50 xl:max-w-screen-lg 2xl:max-w-screen-xl">
@@ -66,9 +66,8 @@ export default async function RootLayout({
                   {/* <Footer /> */}
                 </Suspense>
               </div>
-              x
             </div>
-          </main>
+          </div>
         </NextIntlClientProvider>
       </body>
     </html>

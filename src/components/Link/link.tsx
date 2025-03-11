@@ -70,6 +70,7 @@ const Link: FC<LinkProps> = ({
       href={href!}
       {...rest}
       aria-label={label}
+      prefetch
     >
       {label}
       {children}

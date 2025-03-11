@@ -16,7 +16,7 @@ type Breadcrumbs = {
 
 const Breadcrumbs: React.FC<Breadcrumbs> = ({ items }) => {
   return (
-    <section className="flex w-full justify-start py-8">
+    <section className="flex w-full justify-start px-4 py-4 md:px-6 lg:px-10">
       <ul className="flex items-center space-x-2 text-lg text-white">
         <li>
           <Link href="/home" className="font-thin hover:text-beige-1">

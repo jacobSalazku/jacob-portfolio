@@ -12,7 +12,7 @@ const MenuButton: React.FC<MenuButtonProps> = ({
     <button
       {...rest}
       onClick={onClick}
-      className="z-50 flex flex-col gap-1 transition-all sm:hidden"
+      className="z-50 flex flex-col gap-1 transition-all lg:hidden"
     >
       <span
         className={`block h-1 w-8 bg-beige-1 transition-transform duration-200 ${
