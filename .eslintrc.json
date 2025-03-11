@@ -16,7 +16,7 @@
     "@vercel/style-guide/eslint/typescript",
     "eslint-config-prettier",
     "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/reac",
+    "@vercel/style-guide/eslint/react",
     "@vercel/style-guide/eslint/next",
     "eslint-config-turbo",
     "eslint-config-prettier"
