@@ -1,142 +1,77 @@
-// 'use client';
+import { Header } from '@/components/header-banner';
+import { Stack } from '@/components/stack';
+import { cn } from '@/utils/utils';
+import { IconBallBasketball, IconCode, IconVideo } from '@tabler/icons-react';
 
-// import { useState } from 'react';
-// import NextLink from 'next/link';
-// import { Expertise } from '@/components/expertise';
-// import Header from '@/components/header-banner';
-// import { ProjectSection } from '@/components/project-section';
-// import { WorkExperience } from '@/components/work-experience';
-// import { useToggle } from 'react-use';
-// import { Slug } from '../../sanity.types';
-// import { Link } from './Link/link';
+export default async function Home() {
+  return (
+    <>
+      <main className="mb-10 flex w-full flex-col items-start px-6 py-10 text-white md:px-10 lg:max-w-screen-lg">
+        <Header />
 
-// const Home = ({ slugs }: { slugs: Slug[] }) => {
-//   const [isOpen, toggleMenu] = useToggle(true);
-//   const [isActive, setIsActive] = useState(false);
-//   const handleToggleMenu = () => {
-//     setIsActive(!isActive);
-//     toggleMenu(!isOpen);
-//   };
-//   console.log(slugs, 'slugs page');
-//   return (
-//     <>
-//       <header className="fixed top-0 z-20 flex w-screen items-center justify-between bg-white px-6 py-4 text-sm shadow-md lg:px-12 lg:py-6">
-//         <div className="flex w-full max-w-screen-2xl flex-col justify-center">
-//           <div className="fixed mt-20 flex w-screen items-center justify-between bg-white p-8 px-8 lg:static lg:mt-0 lg:w-full lg:rounded-xl lg:border-none lg:p-4 lg:px-12">
-//             <NextLink className="w-1/2 text-lg" href="/">
-//               Jacob Salazaku
-//             </NextLink>
-//             <nav className="hidden h-16 max-w-screen-2xl flex-row items-center justify-between transition-all ease-in-out lg:flex lg:w-1/2">
-//               <Link
-//                 href="/"
-//                 onClick={handleToggleMenu}
-//                 aria-label="Home"
-//                 label="Home"
-//                 variant="menuItem"
-//               />
-//               <Link
-//                 href="/#projects"
-//                 onClick={handleToggleMenu}
-//                 aria-label="Projects"
-//                 label="Projects"
-//                 variant="menuItem"
-//               />
-//               <Link
-//                 href="/#experience"
-//                 onClick={handleToggleMenu}
-//                 aria-label="Work Experience"
-//                 label="Work Experience"
-//                 variant="menuItem"
-//               />
+        <section className="mb-8">
+          <h2 className="mb-6 py-6 text-2xl font-semibold">My intrests </h2>
+          <div className="grid grid-cols-1 content-center gap-4 px-2 sm:grid-cols-2 md:grid-cols-3">
+            <div
+              className={cn(
+                'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-transform duration-300 hover:scale-x-105',
+              )}
+            >
+              <div className="flex items-center justify-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige-1 bg-opacity-20 p-2">
+                  <IconCode size={32} stroke={1.5} />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Technology</h3>
+              </div>
+              <div className="flex items-center justify-center text-lg font-light text-white">
+                <p>
+                  Being Creative and Building websites and applications with the
+                  latest tech.
+                </p>
+              </div>
+            </div>
 
-//               <Link
-//                 label="Contact me"
-//                 href="mailto:jacob.salazaku@student.kdg.be"
-//                 variant="github"
-//                 aria-label="Contact me"
-//               />
-//             </nav>
-//             <button
-//               onClick={handleToggleMenu}
-//               className="flex flex-col gap-1 transition-all duration-200 ease-in-out lg:hidden"
-//               aria-label="Menu button"
-//             >
-//               {isActive ? (
-//                 <>
-//                   <span className="absolute block h-1 w-8 rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
-//                   <span className="absolute block h-1 w-8 bg-gray-600 opacity-0"></span>
-//                   <span className="absoluteb lock h-1 w-8 -rotate-45 transform bg-gray-600 transition-transform duration-200"></span>
-//                 </>
-//               ) : (
-//                 <>
-//                   <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
-//                   <span className="block h-1 w-8 bg-gray-600 opacity-100 transition-all duration-200"></span>
-//                   <span className="block h-1 w-8 bg-gray-600 transition-transform duration-200"></span>
-//                 </>
-//               )}
-//             </button>
-//           </div>
-//         </div>
-//       </header>
-//       <nav
-//         className={`no-scroll fixed z-20 mt-20 h-screen w-screen bg-white transition-all duration-75 ease-in-out lg:hidden ${!isOpen ? 'translate-x-0' : '-translate-x-full overflow-hidden'}`}
-//       >
-//         <ul>
-//           <li className="flex w-full flex-col items-center border-t-2">
-//             <Link
-//               href="/"
-//               onClick={handleToggleMenu}
-//               aria-label="Home"
-//               variant="menuItem"
-//               label="Home"
-//             />
-//             <Link
-//               href="/#projects"
-//               onClick={handleToggleMenu}
-//               aria-label="Projects"
-//               label="Projects"
-//               variant="menuItem"
-//             />
-//             <Link
-//               href="/#experience"
-//               className="hover:text-blue flex w-screen flex-col items-center border-b py-5 duration-75 hover:bg-slate-50 hover:ease-in-out"
-//               onClick={handleToggleMenu}
-//               aria-label="Work Experience"
-//               label="Work Experience"
-//               variant="menuItem"
-//             />
-//             <div className="pt-10">
-//               <Link
-//                 label="Contact me"
-//                 href="mailto:jacob.salazaku@student.kdg.be"
-//                 variant="github"
-//                 aria-label="Contact me"
-//                 target="_blank"
-//               />
-//             </div>
-//           </li>
-//         </ul>
-//       </nav>
-//       <Header />
-//       <Expertise />
-//       <ProjectSection slugs={slugs} />
-//       <WorkExperience title="Work Experience">
-//         <div className="flex flex-col gap-8">
-//           <p>
-//             Momenteel werk ik als student bij Spotworkshops als frontend
-//             developer, een platform dat mensen helpt bij het vinden en boeken
-//             van unieke en inspirerende workshops. Hier draag ik bij aan de
-//             ontwikkeling van gebruiksvriendelijke en aantrekkelijke interfaces.
-//           </p>
-//           <p>
-//             Met deze studentenjob krijg ik de kans om veel bij te leren en
-//             tegelijkertijd extra geld te verdienen, wat ideaal is als student.
-//           </p>
-//           <p>De technologieen die hier worden gerbuikt zijn:</p>
-//           {/* <TechnologiesUsed techStack={SpotWorkshopStack} /> */}
-//         </div>
-//       </WorkExperience>
-//     </>
-//   );
-// };
-// export default Home;
+            <div
+              className={cn(
+                'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-transform duration-300 hover:scale-x-105',
+              )}
+            >
+              <div className="flex items-center justify-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige-1 bg-opacity-20 p-2">
+                  <IconBallBasketball size={32} stroke={1.5} />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Basketball</h3>
+              </div>
+              <div className="flex items-center justify-center text-lg font-light text-white">
+                <p>
+                  I've played organized basketball for over 10 years and enjoy
+                  staying active and competitive.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className={cn(
+                'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-transform duration-300 hover:scale-x-105',
+              )}
+            >
+              <div className="flex items-center justify-start gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige-1 bg-opacity-20 p-2">
+                  <IconVideo size={32} stroke={1.5} />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Creative</h3>
+              </div>
+              <div className="flex items-center justify-center text-lg font-light text-white">
+                <p>
+                  I enjoy creating and editing videos. visual and motion
+                  graphics effect.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <Stack />
+      </main>
+    </>
+  );
+}

@@ -11,13 +11,6 @@ const NextIntlMiddleware = createMiddleware({
 export function middleware(req: NextRequest): NextResponse {
   const { pathname } = req.nextUrl;
 
-  // Allow `/resume.pdf` to be accessed without a locale prefix
-  if (
-    pathname.match(/^\/.*\.(pdf|jpg|png|css|js|ico|svg|woff|woff2|ttf|eot)$/)
-  ) {
-    return NextResponse.next();
-  }
-
   // Redirect `/` to `/home`
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/home', req.url));
