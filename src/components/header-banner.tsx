@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import '../app/typewriter.css';
 import { Link } from './Link/link';
 
 const Header = async () => {
@@ -9,9 +10,10 @@ const Header = async () => {
     <section className="mt-4 flex w-full flex-col items-center lg:max-w-screen-lg">
       <div className="flex w-full flex-col items-center pb-4 lg:flex-row lg:justify-between">
         <div className="flex w-full flex-col items-center justify-center gap-4 px-2 lg:h-[500px] lg:items-start lg:gap-8">
-          <h1 className="text-4xl font-light text-beige-1 lg:text-6xl">
-            Jacob Salazaku
-          </h1>
+          <h1
+            id="typewriter"
+            className="text-4xl font-light text-beige-1 lg:text-6xl"
+          ></h1>
           <h2 className="text-2xl font-light text-white lg:text-3xl">
             {t('position')}
           </h2>
