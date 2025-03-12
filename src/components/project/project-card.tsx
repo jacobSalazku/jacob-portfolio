@@ -19,8 +19,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
 
   return (
     <Link href={`/projects/${slug?.current}`} className="block w-full" prefetch>
-      <article className="flex flex-col items-start gap-6 rounded-xl border border-neutral-800 bg-neutral-900 px-5 py-10 text-white shadow-lg transition-all duration-300 hover:bg-neutral-800 sm:flex-row sm:items-center md:px-8 md:py-12">
-        {/* Image Section */}
+      <article className="group flex flex-col items-start gap-6 rounded-xl border border-neutral-800 bg-neutral-900 px-8 py-10 text-white shadow-lg transition-all duration-300 hover:bg-neutral-800 sm:flex-row sm:items-center md:px-8 md:py-12">
         {mainImage && (
           <div className="w-full rounded border border-sky-100 border-opacity-20 sm:w-5/12">
             <Image
@@ -28,7 +27,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
               src={urlFor(mainImage).width(600).height(400).url()}
               width={600}
               height={400}
-              className="w-full rounded-lg object-cover shadow-md transition-transform duration-300 hover:scale-105"
+              className="w-full rounded-lg object-cover shadow-md transition-transform duration-300 group-hover:scale-105"
               fetchPriority="high"
               loading="eager"
             />

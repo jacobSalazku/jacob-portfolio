@@ -1,6 +1,5 @@
 import { createElement } from 'react';
 import {
-  IconAddressBook,
   IconBriefcase,
   IconCode,
   IconCompassFilled,
@@ -22,9 +21,9 @@ export const MENUITEMS = [
     label: 'Projects',
     icon: createElement(IconCode, { size: 24, stroke: 1 }),
   },
-  {
-    href: '/contact',
-    label: 'Contact',
-    icon: createElement(IconAddressBook, { size: 24, stroke: 1 }),
-  },
+  // {
+  //   href: 'mailto:cooljss10@gmail.com',
+  //   label: 'Contact',
+  //   icon: createElement(IconAddressBook, { size: 24, stroke: 1 }),
+  // },
 ];

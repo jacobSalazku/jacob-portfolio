@@ -18,7 +18,8 @@ const config: Config = {
       },
       colors: {
         black: {
-          '300': '#252424',
+          '300': '#242527',
+          '400': '#1A1B1C',
           '700': '#0D0C0C',
           '900': '#0B0A0A',
         },
@@ -44,6 +45,7 @@ const config: Config = {
       },
       maxWidth: {
         '3xl': '1920px',
+        '90': '22.5rem',
       },
     },
   },

@@ -1,37 +1,38 @@
 {
-  "Homepage": {
-    "position": "Front-end Developer",
-    "text": "Hallo, ik ben Jacob, een Front-end Webontwikkelaar uit Antwerpen die altijd al gefascineerd is geweest door technologie en computers. Op dit moment studeer ik Multimedia en Creatieve Technologie aan de Karel de Grote Hogeschool.",
-    "cv": "mijn CV",
-    "expertise": "Mijn Expertise",
-    "projects": "Mijn Projecten"
+  "Home": {
+    "position": "Een Frontend Developer uit Antwerpen",
+    "text": "Zolang ik me kan herinneren, ben ik altijd gepassioneerd geweest door technologie en computers, en nu kan ik deze passie tonen door mijn technische en creatieve vaardigheden.",
+    "intrests": "Mijn interesses",
+    "cv": "Mijn CV",
+    "technology": {
+      "title": "Technologie",
+      "text": "Creatief zijn en websites en applicaties maken met de nieuwste technologieën."
+    },
+    "basketball": {
+      "title": "Basketbal",
+      "text": "Ik speelde meer dan 10 jaar basketbal en ik hou ervan om actief en competitief te blijven."
+    },
+    "creative": {
+      "title": "Creatief",
+      "text": "Ik geniet van het maken en bewerken van video's, visuele effecten en graphics."
+    }
+  },
+  "Experience": {
+    "slug": "Ervaring",
+    "button": "Ontdek meer over",
+    "feature-title": "Wat heb ik gedaan?"
   },
   "Projects": {
-    "title": "Website Resqcontrol",
-    "technologies": "In dit project heb ik de frontend van de website ontwikkeld en de volgende technologieën gebruikt:",
-    "feature-title": "Wat heb ik gedaan?",
-    "ProjectFeatures": {
-      "DemoRequest": "Demo Aanvragen",
-      "DemoRequestDescription": "Om vragen te stellen of een demo aan te vragen, moest er een manier zijn om contact op te nemen met Resqcontrol. Hiervoor moest er een functie zijn die gegevens opslaat en naar het e-mailadres van Resqcontrol verzendt. Om spam te voorkomen, heb ik ook Google Captcha gebruikt.",
-      "Blogpost": "Blogpost",
-      "BlogpostDescription": "Voor de blog werden alle blogpagina’s opgehaald vanuit de backend en weergegeven in de frontend, inclusief een detailpagina.",
-      "Internationalization": "Internationalisatie en lokalisatie",
-      "InternationalizationDescription": "Elke pagina was beschikbaar in het Nederlands, Engels, Frans en Duits. Het detecteert de taal van de gebruiker en de website wordt automatisch in die taal weergegeven."
-    }
+    "slug": "Projecten",
+    "technology": "Ik heb de volgende technologieën gebruikt",
+    "keyFeatures": "Belangrijke features"
   },
-  "Stage": {
-    "title": "KDG Stagewebsite",
-    "alt": "Karel de Grote stagewebsite",
-    "description-1": "Momenteel ondervinden wij als studenten veel moeilijkheden bij het verkrijgen van een lijst met alle bedrijven die op zoek zijn naar stagiaires. In dit project richten we ons daarom op het oplossen van dit probleem door een simpel maar duidelijk platform te ontwikkelen waar bedrijven zich kunnen registreren.",
-    "description-2": "Tijdens de registratie kunnen bedrijven duidelijk aangeven in welke sector ze actief zijn en welke vaardigheden ze zoeken in stagiaires. Dit platform stelt ons, studenten, in staat om te filteren op onze vaardigheden (zoals Front-end, Back-end, UX/UI, enzovoort) en toont vervolgens de beschikbare stages die aan onze criteria voldoen.",
-    "technologies": "In dit project heb ik de frontend van de website ontwikkeld en de volgende technologieën gebruikt:",
-    "ProjectFeatures": {
-      "Registration": "Registratie",
-      "RegistratiopnDescription": "Bedrijven kunnen zich registreren en duidelijk aangeven in welke sector ze actief zijn en welke vaardigheden ze zoeken.",
-      "Fitering": "Filteringsysteem",
-      "FilterDescription": "Als student kun je filteren op profielen zoals UX/UI, Front-end, Back-end, 3D, Audio/Video, die worden weergegeven als een badge.",
-      "Language": "Taalwisselaar",
-      "LanguageDescription": "De website is beschikbaar in meerdere talen."
-    }
+  "Navigation": {
+    "position": "Frontend Developer",
+    "portfolio": "Portfolio Frontend Developer",
+    "home": "Home",
+    "experience": "Ervaring",
+    "projects": "Projecten",
+    "contact": "Contact"
   }
 }

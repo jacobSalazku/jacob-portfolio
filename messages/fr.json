@@ -1,14 +1,38 @@
 {
-  "Homepage": {
-    "position": "Développeur Front-end",
-    "text": "Bonjour, je suis Jacob, un Développeur développeur frontend d'Anvers qui a toujours été fasciné par la technologie et les ordinateurs. Actuellement, je suis étudiant en Technologie Multimédia et Créative à Karel de Grote.",
-    "cv": "mon CV",
-    "expertise": "Mon Expertise",
-    "projects": "Mes Projets"
+  "Home": {
+    "position": "Un développeur Frontend d'Anvers",
+    "text": "D'aussi loin que je me souvienne, j'ai toujours été passionné par la technologie et les ordinateurs, et je peux maintenant mettre en valeur cette passion grâce à mes capacités techniques et créatives.",
+    "intrests": "Mes Intérêts",
+    "cv": "Curriculum vitae",
+    "technology": {
+      "title": "Technologie",
+      "text": "Être créatif et créer des sites web et des applications avec les dernières technologies."
+    },
+    "basketball": {
+      "title": "Basketball",
+      "text": "Je joue au basket-ball depuis plus de 10 ans et j'aime rester actif et compétitif."
+    },
+    "creative": {
+      "title": "Créatif",
+      "text": "J'aime créer et éditer des vidéos, des effets visuels et graphiques."
+    }
+  },
+  "Experience": {
+    "slug": "Expérience",
+    "button": " En savoir plus sur",
+    "feature-title": "Qu'est-ce que j'ai fait ?"
   },
   "Projects": {
-    "title": "Website Resqcontrol",
-    "technologies": "Dans ce projet, j'ai développé le frontend du site web et utilisé les technologies suivantes :",
-    "feature-title": "Qu'est-ce que j'ai fait ?"
+    "slug": "Projets",
+    "technology": " J'ai utilisé les technologies suivantes",
+    "keyFeatures": "Caractéristiques essentielles"
+  },
+  "Navigation": {
+    "position": "Un développeur Frontend",
+    "portfolio": "Portfolio Frontend Developer",
+    "home": "Accueil",
+    "experience": "Expérience",
+    "projects": "Projets",
+    "contact": "Contact"
   }
 }

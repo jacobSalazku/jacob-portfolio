@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryUsed } from '@/components/experience/library-used';
-import { Link } from '@/components/link/link';
+import { Link } from '@/components/Link/link';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
@@ -32,14 +32,14 @@ export default async function ExperiencePage({
   const { mainImage, title, text, tags, tasks, project } =
     data as Experience & { project: Project };
 
-  const t = await getTranslations('Projects');
+  const t = await getTranslations('Experience');
 
   return (
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
         items={[
           {
-            label: 'Experience',
+            label: `${t('slug')}`,
             href: '/experience/',
           },
           { label: title, href: `/experience/${slug}` },
@@ -77,13 +77,15 @@ export default async function ExperiencePage({
               <PortableTextRenderer value={tasks?.[locale]} />
             )}
             {(project as Project) && project.slug && (
-              <Link
-                href={`/projects/${project.slug.current}`}
-                variant="ghost"
-                className="w-1/3"
-              >
-                Lees meer over {project.slug.current}
-              </Link>
+              <div className="pt-10">
+                <Link
+                  href={`/projects/${project.slug.current}`}
+                  variant="ghost"
+                  className="w-1/2"
+                >
+                  {`${t('button')} ${project.title}`}
+                </Link>
+              </div>
             )}
           </KeyFeatures>
         </div>

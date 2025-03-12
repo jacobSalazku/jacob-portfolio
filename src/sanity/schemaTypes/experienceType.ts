@@ -13,7 +13,7 @@ export const experienceType = defineType({
     }),
     defineField({
       name: 'timespan',
-      type: 'string',
+      type: 'localizedTitle',
     }),
     defineField({
       name: 'slug',

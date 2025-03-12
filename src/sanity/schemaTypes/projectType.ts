@@ -46,11 +46,6 @@ export const projectType = defineType({
       type: 'blockContent',
     }),
     defineField({
-      name: 'Features',
-      type: 'array',
-      of: [{ type: 'blockContent' }],
-    }),
-    defineField({
       name: 'features',
       type: 'array',
       of: [defineArrayMember({ type: 'featureBlock' })],

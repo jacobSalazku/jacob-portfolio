@@ -7,6 +7,7 @@ export const EXPERIENCE_DETAIL_PAGE = defineQuery(`
     "tags": tags[]->,
     "project": project->{
         slug,
+        title,
       }
   }
 `);

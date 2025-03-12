@@ -91,7 +91,7 @@ export type Experience = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  timespan?: string;
+  timespan?: LocalizedTitle;
   slug?: Slug;
   project?: Project;
   mainImage?: {

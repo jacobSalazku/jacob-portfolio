@@ -23,7 +23,7 @@ export const buttonVariants = cva(
         outline:
           'border border-white bg-transparent hover:bg--100 hover:textbeige-1 transition-colors duration-300 ease-in-out ',
         ghost:
-          'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:text-purple-1 transition-colors duration-300 ease-in-out',
+          'border border-beige-1 text-beige-1 bg-transparent hover:bg-beige-1 hover:bg-opacity-15 hover:text-beige-1 transition-colors duration-300 ease-in-out',
         navlink:
           'bg-white border-none transition-colors hover:text-blue hover:ease-in-out',
         github: 'bg-black text-beige-1 hover:bg-purple-2 border border-beige-1',
