@@ -1,0 +1,74 @@
+@keyframes writer {
+  0% {
+    content: 'J';
+  }
+  7% {
+    content: 'Ja';
+  }
+  14% {
+    content: 'Jac';
+  }
+  21% {
+    content: 'Jaco';
+  }
+  28% {
+    content: 'Jacob';
+  }
+  35% {
+    content: 'Jacob ';
+  }
+  42% {
+    content: 'Jacob S';
+  }
+  49% {
+    content: 'Jacob Sa';
+  }
+  56% {
+    content: 'Jacob Sal';
+  }
+  63% {
+    content: 'Jacob Sala';
+  }
+  70% {
+    content: 'Jacob Salaz';
+  }
+  77% {
+    content: 'Jacob Salaza';
+  }
+  84% {
+    content: 'Jacob Salazak';
+  }
+  91% {
+    content: 'Jacob Salazaku';
+  }
+  100% {
+    content: 'Jacob Salazaku';
+  }
+}
+
+#typewriter::before {
+  content: '';
+  animation:
+    writer 4s steps(14) forwards,
+    pause 10s linear 4s;
+  animation-delay: 10s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#typewriter::after {
+  content: '_';
+  animation: blink 0.4s alternate 0.3;
+  animation-iteration-count: infinite;
+}
+
+#typewriter {
+  font-family: 'Courier New', Courier, monospace;
+}
