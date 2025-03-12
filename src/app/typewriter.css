@@ -51,7 +51,6 @@
   animation:
     writer 4s steps(14) forwards,
     pause 10s linear 4s;
-  animation-delay: 10s;
 }
 
 @keyframes blink {
