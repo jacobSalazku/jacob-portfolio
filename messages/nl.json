@@ -1,0 +1,38 @@
+{
+  "Home": {
+    "position": "Een Frontend Developer uit Antwerpen",
+    "text": "Zolang ik me kan herinneren, ben ik altijd gepassioneerd geweest door technologie en computers, en nu kan ik deze passie tonen door mijn technische en creatieve vaardigheden.",
+    "intrests": "Mijn interesses",
+    "cv": "Mijn CV",
+    "technology": {
+      "title": "Technologie",
+      "text": "Creatief zijn en websites en applicaties maken met de nieuwste technologieën."
+    },
+    "basketball": {
+      "title": "Basketbal",
+      "text": "Ik speelde meer dan 10 jaar basketbal en ik hou ervan om actief en competitief te blijven."
+    },
+    "creative": {
+      "title": "Creatief",
+      "text": "Ik geniet van het maken en bewerken van video's, visuele effecten en graphics."
+    }
+  },
+  "Experience": {
+    "slug": "Ervaring",
+    "button": "Ontdek meer over",
+    "feature-title": "Wat heb ik gedaan?"
+  },
+  "Projects": {
+    "slug": "Projecten",
+    "technology": "Ik heb de volgende technologieën gebruikt",
+    "keyFeatures": "Belangrijke features"
+  },
+  "Navigation": {
+    "position": "Frontend Developer",
+    "portfolio": "Portfolio Frontend Developer",
+    "home": "Home",
+    "experience": "Ervaring",
+    "projects": "Projecten",
+    "contact": "Contact"
+  }
+}

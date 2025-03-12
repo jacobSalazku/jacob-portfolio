@@ -1,0 +1,38 @@
+{
+  "Home": {
+    "position": "A Frontend Developer from Antwerp",
+    "text": "For as long as I can remember, I have always been passionate about technology and computers, and I can now showcase this passion through my technical and creative skills.",
+    "intrests": "My Interests",
+    "cv": "Resume",
+    "technology": {
+      "title": "Technology",
+      "text": "Being creative and creating websites and applications with the latest technologies."
+    },
+    "basketball": {
+      "title": "Basketball",
+      "text": "I have been playing basketball for over 10 years and I love staying active and competitive."
+    },
+    "creative": {
+      "title": "Creative",
+      "text": "I enjoy creating and editing videos, visual effects, and graphics."
+    }
+  },
+  "Experience": {
+    "slug": "Expérience",
+    "button": "Learn more about",
+    "feature-title": "What have I done?"
+  },
+  "Projects": {
+    "slug": "Projects",
+    "technology": "I have used the following technologies",
+    "keyFeatures": "Key features"
+  },
+  "Navigation": {
+    "position": "Frontend Developer",
+    "portfolio": "Portfolio Frontend Developer",
+    "home": "Home",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  }
+}
