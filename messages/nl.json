@@ -34,5 +34,17 @@
     "experience": "Ervaring",
     "projects": "Projecten",
     "contact": "Contact"
+  },
+  "Metadata": {
+    "title": "Frontend Developer Portfolio",
+    "description": "Details over",
+    "404": {
+      "title": "Pagina niet gevonden",
+      "description": "De pagina die je zoekt bestaat niet."
+    },
+    "projects": "Projecten",
+    "experience": "Ervaring",
+    "description-experience": "Een overzicht van mijn ervaring als Frontend Developer.",
+    "description-projects": "Een overzicht van mijn projecten als Frontend Developer."
   }
 }

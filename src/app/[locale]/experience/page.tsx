@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceCard } from '@/components/experience/experience-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
@@ -6,6 +7,19 @@ import { client } from '@/sanity/lib/client';
 import { Experience } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 import { EXPERIENCE_QUERY } from './_query';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata');
+
+  return {
+    title: `${t('experience')}`,
+    description: `${t('description-experience')} `,
+    openGraph: {
+      title: `${t('experience')} | Jacob Salazaku`,
+      description: `${t('description-experience')}`,
+    },
+  };
+}
 
 export default async function ExperienceOverview(params: {
   params: { locale: string; slug: string };
