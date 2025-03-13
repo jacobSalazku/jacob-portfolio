@@ -25,11 +25,6 @@ const MENUITEMS = [
     label: 'Projects',
     icon: createElement(IconCode, { size: 24, stroke: 1 }),
   },
-  // {
-  //   href: 'mailto:cooljss10@gmail.com',
-  //   label: 'Contact',
-  //   icon: createElement(IconAddressBook, { size: 24, stroke: 1 }),
-  // },
 ];
 
 const NavItems = ({
@@ -57,11 +52,6 @@ const NavItems = ({
       label: `${t('projects')}`,
       icon: createElement(IconCode, { size: 24, stroke: 1 }),
     },
-    // {
-    //   href: 'mailto:cooljss10@gmail.com',
-    //   label: `${t('contact')}`
-    //   icon: createElement(IconAddressBook, { size: 24, stroke: 1 }),
-    // },
   ];
   return (
     <>

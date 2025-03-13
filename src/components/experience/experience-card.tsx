@@ -52,7 +52,6 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
             )}
           </div>
         </div>
-        {/* Content */}
         <div className="flex flex-col justify-start md:w-3/4">
           <div className="flex flex-col lg:gap-4">
             <div className="hidden flex-col md:flex lg:gap-1">

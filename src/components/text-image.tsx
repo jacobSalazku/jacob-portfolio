@@ -21,7 +21,7 @@ const TextImageComponent = ({
 
   const handleImageClick = () => {
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden';
   };
 
   const handleCloseModal = () => {
