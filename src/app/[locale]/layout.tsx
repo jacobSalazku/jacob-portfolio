@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     },
   ],
   description:
-    'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
+    'Portfolio Jacob Salazaku met projecten en alle  informatie over Jacob Salazaku',
   keywords: ['developer, front-end develop,'],
   openGraph: {
     type: 'website',
     url: `${process.env.NEXT_BASE_URL}`,
     title: 'Website Jacob Salazaku',
     description:
-      'Portfolio Jacob Salazaku met  projecten en alle  informatie over Jacob Salazaku',
+      'Portfolio Jacob Salazaku met projecten en alle informatie over Jacob Salazaku',
     images: [
       {
         url: '/jacob-og.png',

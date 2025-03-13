@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryTag } from '@/components/library-tag';
@@ -12,6 +13,48 @@ import { IconCode } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 import { Project } from '../../../../../sanity.types';
 import { PROJECT_DETAIL_PAGE } from './_query';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params;
+  const t = await getTranslations('Metadata');
+
+  const data = await client.fetch<Project>(
+    PROJECT_DETAIL_PAGE,
+    {
+      slug: slug,
+    },
+    { next: { revalidate: 30 } },
+  );
+  const { title, mainImage } = data;
+
+  if (!data) {
+    return {
+      title: `${t('404.title')}`,
+      description: `${t('404.description')}`,
+    };
+  }
+
+  return {
+    title: `${title}`,
+    description: `${t('description')} ${title}`,
+    openGraph: {
+      title: `${title} | Jacob Salazaku`,
+      description: `${t('description')} ${title}`,
+      images: [
+        {
+          url: mainImage ? urlFor(mainImage).width(800).url() : '',
+          width: 800,
+          height: 600,
+          alt: title,
+        },
+      ],
+    },
+  };
+}
 
 export default async function ProjectPage({
   params,

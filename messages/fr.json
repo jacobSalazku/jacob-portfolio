@@ -34,5 +34,17 @@
     "experience": "Expérience",
     "projects": "Projets",
     "contact": "Contact"
+  },
+  "Metadata": {
+    "title": "Portfolio de développeur Frontend",
+    "description": "Détails sur",
+    "404": {
+      "title": "Page non trouvée",
+      "description": "La page que vous recherchez n'existe pas."
+    },
+    "projects": "Projets",
+    "experience": "Expérience",
+    "description-experience": "Un aperçu de mon expérience en tant que développeur Frontend.",
+    "description-projects": "Un aperçu de mes projets en tant que développeur Frontend."
   }
 }
