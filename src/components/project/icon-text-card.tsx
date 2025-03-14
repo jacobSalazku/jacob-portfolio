@@ -2,14 +2,14 @@ import React from 'react';
 import { cn } from '@/utils/utils';
 import { FeatureBlock } from '@root/sanity.types';
 
-interface FeatureItemProps {
+interface IconTextCardProps {
   title?: FeatureBlock['title'] | string;
   icon: React.ReactNode;
   children: React.ReactNode;
   className?: string;
 }
 
-const FeatureItem: React.FC<FeatureItemProps> = ({
+const IconTextCard: React.FC<IconTextCardProps> = ({
   title,
   icon,
   children,
@@ -19,7 +19,7 @@ const FeatureItem: React.FC<FeatureItemProps> = ({
     <div
       className={cn(
         className,
-        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-transform duration-300 hover:scale-x-105',
+        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-colors duration-200 ease-in-out hover:bg-opacity-25',
       )}
     >
       <div className="flex items-center justify-start gap-4">
@@ -36,4 +36,4 @@ const FeatureItem: React.FC<FeatureItemProps> = ({
     </div>
   );
 };
-export { FeatureItem };
+export { IconTextCard };

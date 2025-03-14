@@ -23,11 +23,9 @@ const MenuLink: FC<MenuLinkProps> = ({
 }) => {
   const activeClass = useActiveLink(href, locale);
 
-  const formattedHref = href === '/resume.pdf' ? href : `/${href}`;
-
   return (
     <Link
-      href={formattedHref}
+      href={href}
       variant="menuItem"
       size="full"
       onClick={onClick}

@@ -1,5 +1,5 @@
 import { Header } from '@/components/header-banner';
-import { FeatureItem } from '@/components/project/feature-item';
+import { IconTextCard } from '@/components/project/icon-text-card';
 import { Stack } from '@/components/stack';
 import { IconBallBasketball, IconCode, IconVideo } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
@@ -16,25 +16,25 @@ export default async function Home(params: { params: { locale: string } }) {
             {t('intrests')}
           </h2>
           <div className="grid grid-cols-1 content-center gap-4 px-2 sm:grid-cols-2 md:grid-cols-3">
-            <FeatureItem
+            <IconTextCard
               icon={<IconCode size={32} stroke={1.5} />}
               title={t('technology.title')}
               className="rounded"
             >
               <p>{t('technology.text')}</p>
-            </FeatureItem>
-            <FeatureItem
+            </IconTextCard>
+            <IconTextCard
               icon={<IconBallBasketball size={32} stroke={1.5} />}
               title={t('basketball.title')}
             >
               <p>{t('basketball.text')}</p>
-            </FeatureItem>
-            <FeatureItem
+            </IconTextCard>
+            <IconTextCard
               icon={<IconVideo size={32} stroke={1.5} />}
               title={t('creative.title')}
             >
               <p>{t('creative.text')}</p>
-            </FeatureItem>
+            </IconTextCard>
           </div>
         </section>
         <Stack />

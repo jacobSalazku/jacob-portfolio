@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata');
   return {
     title: `${t('projects')}`,
-    description: `${t('description-projects')} `,
+    description: `${t('description-projects')}`,
     openGraph: {
       title: `${t('projects')} | Jacob Salazaku`,
       description: `${t('description-projects')}`,

@@ -26,7 +26,7 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
       <article className="flex w-full flex-col gap-4 border-opacity-50 bg-transparent px-4 py-12 font-thin text-white transition-all duration-300 ease-in-out hover:bg-neutral-800 hover:bg-opacity-20 md:flex-row md:gap-12 md:px-10 xl:flex-row xl:gap-20 xl:px-2 xl:py-24">
         <div className="flex items-center gap-8 sm:items-center md:w-1/4 md:flex-col">
           {timespan && timespan[locale as keyof LocalizedTitle] && (
-            <span className="hidden w-full rounded-lg border border-beige-1 p-4 text-sm sm:text-lg  md:flex md:justify-center">
+            <span className="hidden w-full rounded-lg border border-beige-1 p-4 text-sm sm:text-lg md:flex md:justify-center">
               {timespan[locale as keyof typeof timespan]}
             </span>
           )}

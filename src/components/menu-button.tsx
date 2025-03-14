@@ -1,3 +1,5 @@
+import { cn } from '@/utils/utils';
+
 type MenuButtonProps = {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isActive: boolean;
@@ -16,19 +18,22 @@ const MenuButton: React.FC<MenuButtonProps> = ({
       aria-label="Hamburger button"
     >
       <span
-        className={`block h-1 w-8 bg-beige-1 transition-transform duration-200 ${
-          isActive ? 'translate-y-2 rotate-45' : ''
-        }`}
+        className={cn(
+          isActive ? 'translate-y-2 rotate-45' : '',
+          'block h-1 w-8 bg-beige-1 transition-transform duration-200',
+        )}
       ></span>
       <span
-        className={`block h-1 w-6 bg-beige-1 transition-opacity duration-200 ${
-          isActive ? 'opacity-0' : 'opacity-100'
-        }`}
+        className={cn(
+          isActive ? 'opacity-0' : 'opacity-100',
+          'block h-1 w-6 bg-beige-1 transition-opacity duration-200',
+        )}
       ></span>
       <span
-        className={`block h-1 bg-beige-1 transition-transform duration-200 ${
-          isActive ? 'w-8 -translate-y-2 -rotate-45' : 'w-2'
-        }`}
+        className={cn(
+          isActive ? 'w-8 -translate-y-2 -rotate-45' : 'w-2',
+          'block h-1 bg-beige-1 transition-transform duration-200',
+        )}
       ></span>
     </button>
   );
