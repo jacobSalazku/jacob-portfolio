@@ -4,14 +4,17 @@ import { Stack } from '@/components/stack';
 import { IconBallBasketball, IconCode, IconVideo } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 
-export default async function Home() {
+export default async function Home(params: { locale: string }) {
+  const { locale } = params;
   const t = await getTranslations('Home');
   return (
     <>
-      <main className="mb-10 flex w-full flex-col items-start px-6 py-4 text-white md:px-10 lg:max-w-screen-lg">
-        <Header />
+      <main className="mb-10 flex w-full flex-col items-start px-4 py-4 text-white md:px-10 xl:max-w-screen-lg">
+        <Header locale={locale} />
         <section className="mb-8">
-          <h2 className="mb-6 py-6 text-2xl font-semibold">{t('intrests')}</h2>
+          <h2 className="mb-6 py-6 pl-1 text-2xl font-semibold">
+            {t('intrests')}
+          </h2>
           <div className="grid grid-cols-1 content-center gap-4 px-2 sm:grid-cols-2 md:grid-cols-3">
             <FeatureItem
               icon={<IconCode size={32} stroke={1.5} />}

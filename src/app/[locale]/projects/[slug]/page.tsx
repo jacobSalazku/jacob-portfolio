@@ -83,9 +83,9 @@ export default async function ProjectPage({
           { label: title, href: `/projects/${project.slug?.current}` },
         ]}
       />
-      <main className="flex w-full flex-col items-start px-4 md:px-10 lg:max-w-screen-lg lg:px-8">
-        <div className="grid grid-cols-1 items-start gap-10 py-12 font-thin text-white md:grid-cols-2 md:py-16 lg:gap-0 lg:py-20 lg:pr-10">
-          <div className="pt-8">
+      <main className="flex w-full flex-col items-start px-4 pb-10 md:px-6 xl:max-w-screen-lg xl:px-8">
+        <div className="grid w-full grid-cols-1 items-start gap-10 py-12 font-thin text-white transition-all duration-150 ease-in-out md:grid-cols-2 md:py-16 xl:py-20 xl:pr-10">
+          <div className="flex w-full justify-center pt-8">
             {mainImage && (
               <Image
                 alt={mainImage.alt || 'Project image'}
@@ -96,7 +96,7 @@ export default async function ProjectPage({
                 }
                 width={1080}
                 height={1080}
-                className="max-h-80 w-full max-w-[360px] rounded-3xl border-2 border-beige-1 border-opacity-50 shadow-xl"
+                className="w-full max-w-96 rounded-3xl border-2 border-beige-1 border-opacity-50 shadow-xl md:max-w-[450px]"
                 fetchPriority="high"
                 loading="eager"
               />
@@ -105,7 +105,7 @@ export default async function ProjectPage({
           <div className="flex flex-col gap-4">
             <h2 className="text-3xl font-light">{title}</h2>
             {text?.[locale] && <PortableTextRenderer value={text?.[locale]} />}
-            <div className="flex flex-col gap-4 border-y border-white border-opacity-30 px-2 py-8">
+            <div className="flex flex-col gap-4 border-y border-white border-opacity-30 py-8 md:px-4">
               <p className="font-semibold">{t('technology')}</p>
               <div className="flex flex-wrap items-center gap-4">
                 {tags &&

@@ -24,7 +24,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
           <div className="w-full rounded border border-sky-100 border-opacity-20 sm:w-5/12">
             <Image
               alt={mainImage?.alt || 'Project image'}
-              src={urlFor(mainImage).width(600).height(400).url()}
+              src={urlFor(mainImage).width(1400).height(1400).url()}
               width={600}
               height={400}
               className="w-full rounded-lg object-cover shadow-md transition-transform duration-300 group-hover:scale-105"

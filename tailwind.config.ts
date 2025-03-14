@@ -31,7 +31,10 @@ const config: Config = {
         'pastel-red': '#FF3131',
       },
       screens: {
+        xxxs: '320px',
+        xxs: '385px',
         xs: '575px',
+        xl: '1200px',
       },
       fontWeight: {
         thin: '100',
