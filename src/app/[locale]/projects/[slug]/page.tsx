@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryTag } from '@/components/library-tag';
 import { PortableTextRenderer } from '@/components/portable-text-render';
-import { FeatureItem } from '@/components/project/feature-item';
+import { IconTextCard } from '@/components/project/feature-item';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { client } from '@/sanity/lib/client';
@@ -83,7 +83,7 @@ export default async function ProjectPage({
           { label: title, href: `/projects/${project.slug?.current}` },
         ]}
       />
-      <main className="flex w-full flex-col items-start px-4 pb-10 md:px-6 xl:max-w-screen-lg xl:px-8">
+      <main className="flex w-full flex-col items-start px-4 pb-10 md:px-10 xl:max-w-screen-lg xl:px-8">
         <div className="grid w-full grid-cols-1 items-start gap-10 py-12 font-thin text-white transition-all duration-150 ease-in-out md:grid-cols-2 md:py-16 xl:py-20 xl:pr-10">
           <div className="flex w-full justify-center pt-8">
             {mainImage && (
@@ -124,14 +124,14 @@ export default async function ProjectPage({
           <div className="my-10 grid grid-cols-1 gap-8 md:grid-cols-2">
             {features &&
               features.map((feature, index) => (
-                <FeatureItem
+                <IconTextCard
                   key={index}
                   icon={<IconCode size={48} stroke={1.5} />}
                   title={feature.title?.[locale as keyof typeof feature.title]}
                   className="rounded-lg"
                 >
                   <PortableTextRenderer value={feature.content[locale]} />
-                </FeatureItem>
+                </IconTextCard>
               ))}
           </div>
         </KeyFeatures>

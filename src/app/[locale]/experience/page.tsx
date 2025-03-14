@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: `${t('experience')}`,
-    description: `${t('description-experience')} `,
+    description: `${t('description-experience')}`,
     openGraph: {
       title: `${t('experience')} | Jacob Salazaku`,
       description: `${t('description-experience')}`,

@@ -10,7 +10,7 @@ const Header = async ({ locale }: { locale: string }) => {
   return (
     <section className="flex h-screen w-full flex-col items-center lg:h-[500px] lg:max-w-screen-lg">
       <div className="flex h-screen w-full flex-col items-center md:pb-4 lg:flex-row lg:justify-between">
-        <div className="xxxs:justify-start  xxs:justify-center flex h-screen w-full flex-col items-center gap-2 px-2 lg:h-[500px] lg:items-start lg:gap-8">
+        <div className="flex h-screen w-full flex-col items-center px-2 xxxs:justify-start xxxs:gap-2 xxs:justify-center xxs:gap-8 lg:h-[500px] lg:items-start lg:gap-8">
           <h1
             id="typewriter"
             className="text-3xl font-light text-beige-1 transition-all duration-150 ease-in-out md:text-6xl"

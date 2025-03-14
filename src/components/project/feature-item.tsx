@@ -2,14 +2,14 @@ import React from 'react';
 import { cn } from '@/utils/utils';
 import { FeatureBlock } from '@root/sanity.types';
 
-interface FeatureItemProps {
+interface IconTextCardProps {
   title?: FeatureBlock['title'] | string;
   icon: React.ReactNode;
   children: React.ReactNode;
   className?: string;
 }
 
-const FeatureItem: React.FC<FeatureItemProps> = ({
+const IconTextCard: React.FC<IconTextCardProps> = ({
   title,
   icon,
   children,
@@ -36,4 +36,4 @@ const FeatureItem: React.FC<FeatureItemProps> = ({
     </div>
   );
 };
-export { FeatureItem };
+export { IconTextCard };
