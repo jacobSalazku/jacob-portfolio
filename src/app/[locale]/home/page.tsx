@@ -1,5 +1,5 @@
 import { Header } from '@/components/header-banner';
-import { IconTextCard } from '@/components/project/feature-item';
+import { IconTextCard } from '@/components/project/icon-text-card';
 import { Stack } from '@/components/stack';
 import { IconBallBasketball, IconCode, IconVideo } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';

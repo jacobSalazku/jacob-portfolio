@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { LibraryTag } from '@/components/library-tag';
 import { PortableTextRenderer } from '@/components/portable-text-render';
-import { IconTextCard } from '@/components/project/feature-item';
+import { IconTextCard } from '@/components/project/icon-text-card';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { client } from '@/sanity/lib/client';

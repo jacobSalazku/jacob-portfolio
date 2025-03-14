@@ -19,7 +19,7 @@ const IconTextCard: React.FC<IconTextCardProps> = ({
     <div
       className={cn(
         className,
-        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-transform duration-300 hover:scale-x-105',
+        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-colors duration-200 ease-in-out hover:bg-opacity-25',
       )}
     >
       <div className="flex items-center justify-start gap-4">
