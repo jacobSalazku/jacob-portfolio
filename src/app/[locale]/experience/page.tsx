@@ -37,7 +37,7 @@ export default async function ExperienceOverview(params: {
   return (
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs items={[{ label: `${t('slug')}`, href: `/${slug}` }]} />
-      <main className="flex w-full flex-col items-start lg:max-w-screen-lg lg:px-10">
+      <main className="flex w-full flex-col items-start pb-10 xl:max-w-screen-lg xl:px-8">
         {data &&
           data.map((experience, index) => (
             <Suspense

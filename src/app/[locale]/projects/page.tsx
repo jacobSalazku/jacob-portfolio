@@ -34,7 +34,7 @@ export default async function ProjectOverview(params: {
       <Breadcrumbs
         items={[{ label: `${t('slug')}`, href: `/${locale}/projects` }]}
       />
-      <main className="flex w-full flex-col items-start px-4 lg:max-w-screen-lg">
+      <main className="flex w-full flex-col items-start px-4 pb-10 md:px-8 xl:max-w-screen-lg">
         {data &&
           data.map((project, index) => (
             <Suspense

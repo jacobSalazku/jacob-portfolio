@@ -23,7 +23,7 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
 
   return (
     <Link href={`/experience/${slug?.current}`} prefetch>
-      <article className="flex w-full flex-col gap-4 border-opacity-50 bg-transparent p-6 py-10 font-thin text-white transition-all duration-300 ease-in-out hover:bg-neutral-800 hover:bg-opacity-20 sm:px-8 sm:py-8 md:flex-row md:gap-12 lg:flex-row lg:gap-20 lg:px-12 lg:py-24">
+      <article className="flex w-full flex-col gap-4 border-opacity-50 bg-transparent px-4 py-12 font-thin text-white transition-all duration-300 ease-in-out hover:bg-neutral-800 hover:bg-opacity-20 md:flex-row md:gap-12 md:px-10 xl:flex-row xl:gap-20 xl:px-2 xl:py-24">
         <div className="flex items-center gap-8 sm:items-center md:w-1/4 md:flex-col">
           {timespan && timespan[locale as keyof LocalizedTitle] && (
             <span className="hidden w-full rounded-lg border border-beige-1 p-4 text-sm sm:text-lg  md:flex md:justify-center">
@@ -53,8 +53,8 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
           </div>
         </div>
         <div className="flex flex-col justify-start md:w-3/4">
-          <div className="flex flex-col lg:gap-4">
-            <div className="hidden flex-col md:flex lg:gap-1">
+          <div className="flex flex-col xl:gap-4">
+            <div className="hidden flex-col md:flex xl:gap-1">
               <p className="text-xl font-thin text-white sm:text-3xl">
                 {title}
               </p>
