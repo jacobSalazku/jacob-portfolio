@@ -5,7 +5,8 @@ const useActiveLink = (route: string, locale: string) => {
   const pathname = usePathname();
   const constructedPath = `/${locale}${route}`;
 
-  const activeCss = 'bg-black-300 border-beige-1 text-beige-1';
+  const activeCss =
+    'bg-black-300 border-beige-1 text-beige-1 bg-opacity-20 lg:bg-opacity-100';
 
   const activeClass = pathname === constructedPath ? activeCss : '';
   return activeClass;
