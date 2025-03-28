@@ -96,7 +96,7 @@ export default async function ProjectPage({
                 }
                 width={1080}
                 height={1080}
-                className="w-full max-w-96 rounded-3xl border-2 border-beige-1 border-opacity-50 shadow-xl md:max-w-[450px]"
+                className="w-full max-w-96 rounded-3xl border-2 border-beige-1 border-opacity-50 shadow-xl md:max-w-96"
                 fetchPriority="high"
                 loading="eager"
               />

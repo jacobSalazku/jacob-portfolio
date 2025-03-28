@@ -26,13 +26,13 @@ const TextImageComponent = ({
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'auto'; // Restore scrolling when modal is closed
+    document.body.style.overflow = 'auto';
   };
 
   return (
     <>
       <div
-        className="mx-auto mb-4 ml-2 hidden max-w-[200px] cursor-pointer rounded-xl border-2 border-beige-1 border-opacity-45 p-1 transition-transform duration-200 ease-in-out hover:scale-105 md:float-right md:mb-0 md:ml-4 md:flex"
+        className="mx-auto mb-4 ml-2 hidden max-w-52 cursor-pointer rounded-xl border-2 border-beige-1 border-opacity-45 p-1 transition-transform duration-200 ease-in-out hover:scale-105 md:float-right md:mb-0 md:ml-4 md:flex"
         onClick={handleImageClick}
       >
         <Image
