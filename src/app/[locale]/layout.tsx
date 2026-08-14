@@ -3,6 +3,7 @@ import { Lexend } from 'next/font/google';
 import { Navigation } from '@/components/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 
 const Lexendfont = Lexend({
@@ -64,6 +65,7 @@ export default async function RootLayout({
             </div>
           </div>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
