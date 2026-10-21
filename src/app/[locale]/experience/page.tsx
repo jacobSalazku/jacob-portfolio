@@ -3,9 +3,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceCard } from '@/components/experience/experience-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { executeGraphQL } from '@/graphql/execute-graphql';
-import { GetExperiencesDocument } from '@/graphql/graphql';
-import { mapExperience } from '@/graphql/mappers';
+import { getExperiences } from '@/graphql/queries';
 import { Experience } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 
@@ -27,8 +25,7 @@ export default async function ExperienceOverview(params: {
 }) {
   const { locale, slug } = params.params;
 
-  const { allExperience } = await executeGraphQL(GetExperiencesDocument, {});
-  const data = allExperience.map(mapExperience);
+  const data = await getExperiences();
 
   const t = await getTranslations('Experience');
 

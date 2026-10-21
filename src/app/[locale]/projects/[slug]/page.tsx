@@ -1,4 +1,4 @@
-import { cache, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
@@ -7,19 +7,10 @@ import { PortableTextRenderer } from '@/components/portable-text-render';
 import { IconTextCard } from '@/components/project/icon-text-card';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { executeGraphQL } from '@/graphql/execute-graphql';
-import { GetProjectBySlugDocument } from '@/graphql/graphql';
-import { mapProject } from '@/graphql/mappers';
+import { getProject } from '@/graphql/queries';
 import { urlFor } from '@/sanity/lib/image';
 import { IconCode } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
-
-const getProject = cache(async (slug: string) => {
-  const { allProject } = await executeGraphQL(GetProjectBySlugDocument, {
-    slug,
-  });
-  return allProject[0] ? mapProject(allProject[0]) : null;
-});
 
 export async function generateMetadata({
   params,

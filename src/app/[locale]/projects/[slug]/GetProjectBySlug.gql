@@ -2,14 +2,32 @@ query GetProjectBySlug($slug: String!) {
   allProject(where: { slug: { current: { eq: $slug } } }, limit: 1) {
     _id
     title
-    slug { current }
+    slug {
+      current
+    }
     publishedAt
-    mainImage { ...ImageFields }
-    tags { ...TagFields }
-    text { nlRaw enRaw frRaw }
+    mainImage {
+      ...ImageFields
+    }
+    tags {
+      ...TagFields
+    }
+    text {
+      nlRaw
+      enRaw
+      frRaw
+    }
     features {
-      title { nl en fr }
-      content { nlRaw enRaw frRaw }
+      title {
+        nl
+        en
+        fr
+      }
+      content {
+        nlRaw
+        enRaw
+        frRaw
+      }
     }
   }
 }

@@ -6,9 +6,15 @@ query GetProjects($limit: Int = 12) {
   ) {
     _id
     title
-    slug { current }
+    slug {
+      current
+    }
     publishedAt
-    mainImage { ...ImageFields }
-    tags { ...TagFields }
+    mainImage {
+      ...ImageFields
+    }
+    tags {
+      ...TagFields
+    }
   }
 }

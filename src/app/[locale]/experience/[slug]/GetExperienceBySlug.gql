@@ -2,17 +2,41 @@ query GetExperienceBySlug($slug: String!) {
   allExperience(where: { slug: { current: { eq: $slug } } }, limit: 1) {
     _id
     title
-    slug { current }
+    slug {
+      current
+    }
     publishedAt
-    mainImage { ...ImageFields }
-    tags { ...TagFields }
-    timespan { nl en fr }
-    description { nlRaw enRaw frRaw }
-    text { nlRaw enRaw frRaw }
-    tasks { nlRaw enRaw frRaw }
+    mainImage {
+      ...ImageFields
+    }
+    tags {
+      ...TagFields
+    }
+    timespan {
+      nl
+      en
+      fr
+    }
+    description {
+      nlRaw
+      enRaw
+      frRaw
+    }
+    text {
+      nlRaw
+      enRaw
+      frRaw
+    }
+    tasks {
+      nlRaw
+      enRaw
+      frRaw
+    }
     project {
       title
-      slug { current }
+      slug {
+        current
+      }
     }
   }
 }

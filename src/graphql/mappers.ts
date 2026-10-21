@@ -83,8 +83,13 @@ const optionalNumbers = <T extends Record<string, number | null | undefined>>(
 // malformed field becomes "no content" instead of a render crash.
 // The typegen type for localized block content is Record<string, BlockContent>,
 // hence the assertion on the array.
-const toBlocks = (value: unknown) =>
-  Array.isArray(value) ? (value as unknown as BlockContent) : undefined;
+const toBlocks = (value: unknown) => {
+  if (Array.isArray(value)) return value as unknown as BlockContent;
+  if (value != null) {
+    console.warn('Ignoring malformed Portable Text field from GraphQL');
+  }
+  return undefined;
+};
 
 // { nlRaw, enRaw, frRaw } -> { nl, en, fr }, the shape components read via [locale]
 export const mapRawLocalized = (raw: RawLocalized | undefined): Localized => {
@@ -112,11 +117,14 @@ const mapPlainLocalized = (
     : undefined;
 
 // asset._id -> asset._ref so urlFor() keeps working unchanged
-export const mapImage = (image: GqlImage | undefined): Image | undefined =>
+export const mapImage = (
+  image: GqlImage | undefined,
+  fallbackAlt?: string | null,
+): Image | undefined =>
   image?.asset?._id
     ? {
         _type: 'image',
-        alt: image.asset.altText ?? undefined,
+        alt: image.asset.altText ?? fallbackAlt ?? undefined,
         asset: { _type: 'reference', _ref: image.asset._id },
         hotspot: image.hotspot
           ? ({
@@ -175,7 +183,7 @@ export const mapProject = (item: GqlProject): Project => {
     title: item.title ?? undefined,
     slug: mapSlug(item.slug),
     publishedAt: item.publishedAt ?? undefined,
-    mainImage: mapImage(item.mainImage),
+    mainImage: mapImage(item.mainImage, item.title),
     tags: mapTags(item.tags),
     text: mapRawLocalized(item.text),
     features: mapFeatures(item.features),
@@ -195,7 +203,7 @@ export const mapExperience = (
     title: item.title ?? undefined,
     slug: mapSlug(item.slug),
     publishedAt: item.publishedAt ?? undefined,
-    mainImage: mapImage(item.mainImage),
+    mainImage: mapImage(item.mainImage, item.title),
     tags: mapTags(item.tags),
     timespan: mapPlainLocalized(item.timespan),
     description: mapRawLocalized(item.description),

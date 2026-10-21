@@ -63,11 +63,14 @@ export async function executeGraphQL<TData, TVariables>(
 
   const { data, errors } = (await response.json()) as GraphQLResponse<TData>;
 
-  if (errors?.length) {
-    throw new Error(errors.map((error) => error.message).join('; '));
+  const errorMessage = errors?.map((error) => error.message).join('; ');
+
+  // Partial data is usable: log the errors and keep rendering what we have.
+  if (data && errorMessage) {
+    console.error(`GraphQL partial response: ${errorMessage}`);
   }
   if (!data) {
-    throw new Error('GraphQL response contained no data');
+    throw new Error(errorMessage ?? 'GraphQL response contained no data');
   }
 
   return data;

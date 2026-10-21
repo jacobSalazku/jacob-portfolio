@@ -1,4 +1,4 @@
-import { cache, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
@@ -7,19 +7,9 @@ import { Link } from '@/components/Link/link';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { executeGraphQL } from '@/graphql/execute-graphql';
-import { GetExperienceBySlugDocument } from '@/graphql/graphql';
-import { mapExperience } from '@/graphql/mappers';
+import { getExperience } from '@/graphql/queries';
 import { urlFor } from '@/sanity/lib/image';
-import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
-
-const getExperience = cache(async (slug: string) => {
-  const { allExperience } = await executeGraphQL(GetExperienceBySlugDocument, {
-    slug,
-  });
-  return allExperience[0] ? mapExperience(allExperience[0]) : null;
-});
 
 export async function generateMetadata({
   params,
@@ -69,8 +59,7 @@ export default async function ExperiencePage({
 
   if (!data) return null;
 
-  const { mainImage, title, text, tags, tasks, project } =
-    data as typeof data & { project: Project };
+  const { mainImage, title, text, tags, tasks, project } = data;
 
   const t = await getTranslations('Experience');
 
@@ -116,7 +105,7 @@ export default async function ExperiencePage({
             {tasks?.[locale] && (
               <PortableTextRenderer value={tasks?.[locale]} />
             )}
-            {(project as Project) && project.slug && (
+            {project?.slug && (
               <div className="pt-10">
                 <Link
                   href={`/projects/${project.slug.current}`}

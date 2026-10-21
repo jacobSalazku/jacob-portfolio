@@ -3,9 +3,7 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { ProjectCard } from '@/components/project/project-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { executeGraphQL } from '@/graphql/execute-graphql';
-import { GetProjectsDocument } from '@/graphql/graphql';
-import { mapProject } from '@/graphql/mappers';
+import { getProjects } from '@/graphql/queries';
 import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 
@@ -26,8 +24,7 @@ export default async function ProjectOverview(params: {
 }) {
   const { locale } = params.params;
 
-  const { allProject } = await executeGraphQL(GetProjectsDocument, {});
-  const data = allProject.map(mapProject);
+  const data = await getProjects();
 
   const t = await getTranslations('Projects');
 
