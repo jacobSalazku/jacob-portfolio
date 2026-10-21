@@ -19,10 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ProjectOverview(params: {
-  params: { locale: string };
+export default async function ProjectOverview(props: {
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params.params;
+  const { locale } = await props.params;
 
   const data = await getProjects();
 

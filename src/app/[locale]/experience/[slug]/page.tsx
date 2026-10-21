@@ -14,9 +14,9 @@ import { getTranslations } from 'next-intl/server';
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const t = await getTranslations('Metadata');
 
   const data = await getExperience(slug);
@@ -51,9 +51,9 @@ export async function generateMetadata({
 export default async function ExperiencePage({
   params,
 }: {
-  params: { slug: string; locale: number };
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
   const data = await getExperience(slug);
 

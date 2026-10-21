@@ -20,10 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ExperienceOverview(params: {
-  params: { locale: string; slug: string };
+export default async function ExperienceOverview(props: {
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = params.params;
+  const { locale, slug } = await props.params;
 
   const data = await getExperiences();
 
