@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { cache, Suspense } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
@@ -7,11 +7,19 @@ import { Link } from '@/components/Link/link';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { executeGraphQL } from '@/graphql/execute-graphql';
+import { GetExperienceBySlugDocument } from '@/graphql/graphql';
+import { mapExperience } from '@/graphql/mappers';
 import { urlFor } from '@/sanity/lib/image';
-import { Experience, Project } from '@root/sanity.types';
+import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
-import { EXPERIENCE_DETAIL_PAGE } from './_query';
+
+const getExperience = cache(async (slug: string) => {
+  const { allExperience } = await executeGraphQL(GetExperienceBySlugDocument, {
+    slug,
+  });
+  return allExperience[0] ? mapExperience(allExperience[0]) : null;
+});
 
 export async function generateMetadata({
   params,
@@ -21,14 +29,7 @@ export async function generateMetadata({
   const { slug } = params;
   const t = await getTranslations('Metadata');
 
-  const data = await client.fetch<Experience>(
-    EXPERIENCE_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
-  const { title, mainImage } = data;
+  const data = await getExperience(slug);
 
   if (!data) {
     return {
@@ -36,6 +37,8 @@ export async function generateMetadata({
       description: `${t('404.description')}`,
     };
   }
+
+  const { title, mainImage } = data;
 
   return {
     title: `${title}`,
@@ -62,18 +65,12 @@ export default async function ExperiencePage({
 }) {
   const { slug, locale } = params;
 
-  const data = await client.fetch<Experience>(
-    EXPERIENCE_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
+  const data = await getExperience(slug);
 
   if (!data) return null;
 
   const { mainImage, title, text, tags, tasks, project } =
-    data as Experience & { project: Project };
+    data as typeof data & { project: Project };
 
   const t = await getTranslations('Experience');
 

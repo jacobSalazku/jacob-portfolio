@@ -3,10 +3,11 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { ProjectCard } from '@/components/project/project-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { executeGraphQL } from '@/graphql/execute-graphql';
+import { GetProjectsDocument } from '@/graphql/graphql';
+import { mapProject } from '@/graphql/mappers';
 import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
-import { PROJECT_QUERY } from './_query';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata');
@@ -25,7 +26,8 @@ export default async function ProjectOverview(params: {
 }) {
   const { locale } = params.params;
 
-  const data = await client.fetch<Project[]>(PROJECT_QUERY, {});
+  const { allProject } = await executeGraphQL(GetProjectsDocument, {});
+  const data = allProject.map(mapProject);
 
   const t = await getTranslations('Projects');
 

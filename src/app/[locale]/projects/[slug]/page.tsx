@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { cache, Suspense } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { Breadcrumbs } from '@/components/breadcrums';
@@ -7,12 +7,19 @@ import { PortableTextRenderer } from '@/components/portable-text-render';
 import { IconTextCard } from '@/components/project/icon-text-card';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { executeGraphQL } from '@/graphql/execute-graphql';
+import { GetProjectBySlugDocument } from '@/graphql/graphql';
+import { mapProject } from '@/graphql/mappers';
 import { urlFor } from '@/sanity/lib/image';
 import { IconCode } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
-import { Project } from '../../../../../sanity.types';
-import { PROJECT_DETAIL_PAGE } from './_query';
+
+const getProject = cache(async (slug: string) => {
+  const { allProject } = await executeGraphQL(GetProjectBySlugDocument, {
+    slug,
+  });
+  return allProject[0] ? mapProject(allProject[0]) : null;
+});
 
 export async function generateMetadata({
   params,
@@ -22,14 +29,7 @@ export async function generateMetadata({
   const { slug } = params;
   const t = await getTranslations('Metadata');
 
-  const data = await client.fetch<Project>(
-    PROJECT_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
-  const { title, mainImage } = data;
+  const data = await getProject(slug);
 
   if (!data) {
     return {
@@ -37,6 +37,8 @@ export async function generateMetadata({
       description: `${t('404.description')}`,
     };
   }
+
+  const { title, mainImage } = data;
 
   return {
     title: `${title}`,
@@ -63,11 +65,7 @@ export default async function ProjectPage({
 }) {
   const { slug, locale } = params;
 
-  const project = await client.fetch<Project>(
-    PROJECT_DETAIL_PAGE,
-    { slug: slug },
-    { next: { revalidate: 30 } },
-  );
+  const project = await getProject(slug);
 
   if (!project) return null;
 

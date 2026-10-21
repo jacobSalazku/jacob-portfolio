@@ -1,0 +1,16 @@
+query GetExperiences($limit: Int = 12) {
+  allExperience(
+    where: { slug: { current: { is_defined: true } } }
+    sort: [{ publishedAt: DESC }]
+    limit: $limit
+  ) {
+    _id
+    title
+    slug { current }
+    publishedAt
+    mainImage { ...ImageFields }
+    tags { ...TagFields }
+    timespan { nl en fr }
+    description { nlRaw enRaw frRaw }
+  }
+}
