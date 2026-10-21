@@ -5,13 +5,11 @@ type LibraryTagProps = {
   title: string | undefined;
 };
 
-const LibraryTag: FC<LibraryTagProps> = ({ id, title }) => {
+const LibraryTag: FC<LibraryTagProps> = ({ title }) => {
   return (
-    <div className="flex cursor-pointer items-center justify-center rounded-2xl bg-sky-100 px-3 py-1 text-white opacity-85 shadow-red-100">
-      <h3 className="text-sm font-light text-sky-800 opacity-100 md:text-base">
-        {title}
-      </h3>
-    </div>
+    <span className="inline-flex items-center rounded-full border border-beige-1/25 bg-beige-1/10 px-3 py-1 text-xs font-light tracking-wide text-beige-1 transition-colors duration-200 hover:bg-beige-1/20 md:text-sm">
+      {title}
+    </span>
   );
 };
 export { LibraryTag };
