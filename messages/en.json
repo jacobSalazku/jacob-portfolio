@@ -15,12 +15,48 @@
     "creative": {
       "title": "Creative",
       "text": "I enjoy creating and editing videos, visual effects, and graphics."
+    },
+    "heroTitle": "A Frontend <accent>Developer</accent> from Antwerp",
+    "latestWork": "Latest work",
+    "latestWorkSub": "My most recent project.",
+    "allProjects": "All projects",
+    "readMore": "Read more",
+    "intrestsSub": "What I do besides writing code.",
+    "stack": "Stack",
+    "stackSub": "The tools I work with every day.",
+    "workTogether": "Let's work together",
+    "workTogetherText": "Send me a message at <strong>{email}</strong>",
+    "sendEmail": "Send an email",
+    "copyAddress": "Copy address",
+    "copied": "Copied",
+    "stackDescriptions": {
+      "nextjs": "React framework",
+      "typescript": "Typed superset of JavaScript",
+      "javascript": "Language of the web",
+      "sass": "CSS preprocessor",
+      "tailwind": "Utility-first CSS framework",
+      "vue": "JavaScript framework",
+      "mysql": "Relational database",
+      "react": "JavaScript library",
+      "nestjs": "Node.js framework for APIs",
+      "graphql": "Query language for APIs",
+      "docker": "Containers for every environment",
+      "claude": "AI assistant for coding"
     }
   },
   "Experience": {
-    "slug": "Expérience",
+    "slug": "Experience",
     "button": "Learn more about",
-    "feature-title": "What have I done?"
+    "feature-title": "What have I done?",
+    "upNext": "Up next",
+    "viewExperience": "View experience",
+    "sub": "All the places where I worked and learned, from the most recent to the oldest.",
+    "feature-sub": "A detailed look at the major projects I worked on during my time.",
+    "role": "Role",
+    "duration": "Duration",
+    "team": "Team",
+    "focus": "Focus",
+    "viewDetails": "View details"
   },
   "Projects": {
     "slug": "Projects",
@@ -39,11 +75,10 @@
       "en": "English",
       "fr": "French"
     },
-    "label": {
-      "feature": "Feature",
-      "core": "Core",
-      "tool": "Tool"
-    }
+    "viewProject": "View project",
+    "viewDetails": "View details",
+    "projectsSub": "A selection of the things I built, with the story behind each one.",
+    "upNext": "Up next"
   },
   "Navigation": {
     "position": "Frontend Developer",
@@ -51,7 +86,11 @@
     "home": "Home",
     "experience": "Experience",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "contactMe": "Contact me",
+    "main": "Main",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "Metadata": {
     "title": "Frontend Developer Portfolio",

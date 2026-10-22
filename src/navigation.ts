@@ -7,16 +7,13 @@ export type Locale = (typeof locales)[number];
 export type AppPathnames = keyof typeof pathnames;
 
 export const pathnames = {
-  // If all locales use the  pathname
-  // single external path can be provided.
   '/home': '/home',
   '/resume.pdf': '/resume.pdf',
   '/projects': '/projects',
   '/projects/[slug]': '/projects/[slug]',
   '/experience': '/experience',
   '/experience/[slug]': '/experience/[slug]',
-  'mailto:jacob.salazaku@student.kdg.be':
-    'mailto:jacob.salazaku@student.kdg.be',
+  'mailto:jacob.salazaku69@gmail.com': 'mailto:jacob.salazaku69@gmail.com',
 };
 
 export const { Link, redirect, usePathname, useRouter } = createNavigation({
