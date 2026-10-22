@@ -94,6 +94,12 @@ export const projectType = defineType({
       description: 'Text shown in the browser window of the hero, not a link',
     }),
     defineField({
+      name: 'sections',
+      type: 'array',
+      of: [defineArrayMember({ type: 'projectSection' })],
+      description: 'Case study sections, shown in this order',
+    }),
+    defineField({
       name: 'text',
       type: 'blockContent',
     }),
