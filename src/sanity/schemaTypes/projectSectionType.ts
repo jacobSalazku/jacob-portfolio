@@ -92,22 +92,7 @@ export const projectSectionType = defineType({
       name: 'steps',
       type: 'array',
       hidden: onlyFor('steps'),
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'step',
-          fields: [
-            defineField({ name: 'title', type: 'localizedTitle' }),
-            defineField({ name: 'text', type: 'localizedText' }),
-          ],
-          preview: {
-            select: { title: 'title.en', fallbackTitle: 'title.nl' },
-            prepare: ({ title, fallbackTitle }) => ({
-              title: title || fallbackTitle || 'Untitled step',
-            }),
-          },
-        }),
-      ],
+      of: [defineArrayMember({ type: 'projectStep' })],
     }),
     defineField({
       name: 'features',
@@ -119,62 +104,13 @@ export const projectSectionType = defineType({
       name: 'decisions',
       type: 'array',
       hidden: onlyFor('decisions'),
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'decision',
-          fields: [
-            defineField({ name: 'title', type: 'localizedTitle' }),
-            defineField({ name: 'text', type: 'localizedText' }),
-          ],
-          preview: {
-            select: { title: 'title.en', fallbackTitle: 'title.nl' },
-            prepare: ({ title, fallbackTitle }) => ({
-              title: title || fallbackTitle || 'Untitled decision',
-            }),
-          },
-        }),
-      ],
+      of: [defineArrayMember({ type: 'projectDecision' })],
     }),
     defineField({
       name: 'images',
       type: 'array',
       hidden: onlyFor('gallery'),
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'galleryImage',
-          fields: [
-            defineField({
-              name: 'image',
-              type: 'image',
-              options: { hotspot: true },
-            }),
-            defineField({
-              name: 'caption',
-              type: 'localizedTitle',
-              description: 'Shown under the image and used as its alt text',
-            }),
-            defineField({
-              name: 'url',
-              type: 'string',
-              title: 'Address bar label',
-              description: 'Text shown in the browser window, not a link',
-            }),
-          ],
-          preview: {
-            select: {
-              title: 'caption.en',
-              fallbackTitle: 'caption.nl',
-              media: 'image',
-            },
-            prepare: ({ title, fallbackTitle, media }) => ({
-              title: title || fallbackTitle || 'Untitled image',
-              media,
-            }),
-          },
-        }),
-      ],
+      of: [defineArrayMember({ type: 'galleryImage' })],
     }),
   ],
   preview: {

@@ -22,12 +22,29 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
 };
 
-export type GalleryImageImage = {
-  asset?: SanityImageAssetReference;
-  media?: unknown; // Unable to locate the referenced type "galleryImage.image.media" in schema
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  _type: 'image';
+export type GalleryImage = {
+  _type: 'galleryImage';
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
+  caption?: LocalizedTitle;
+  url?: string;
+};
+
+export type ProjectDecision = {
+  _type: 'projectDecision';
+  title?: LocalizedTitle;
+  text?: LocalizedText;
+};
+
+export type ProjectStep = {
+  _type: 'projectStep';
+  title?: LocalizedTitle;
+  text?: LocalizedText;
 };
 
 export type ProjectSection = {
@@ -41,30 +58,26 @@ export type ProjectSection = {
       _key: string;
     } & LocalizedTitle
   >;
-  steps?: Array<{
-    title?: LocalizedTitle;
-    text?: LocalizedText;
-    _type: 'step';
-    _key: string;
-  }>;
+  steps?: Array<
+    {
+      _key: string;
+    } & ProjectStep
+  >;
   features?: Array<
     {
       _key: string;
     } & FeatureBlock
   >;
-  decisions?: Array<{
-    title?: LocalizedTitle;
-    text?: LocalizedText;
-    _type: 'decision';
-    _key: string;
-  }>;
-  images?: Array<{
-    image?: GalleryImageImage;
-    caption?: LocalizedTitle;
-    url?: string;
-    _type: 'galleryImage';
-    _key: string;
-  }>;
+  decisions?: Array<
+    {
+      _key: string;
+    } & ProjectDecision
+  >;
+  images?: Array<
+    {
+      _key: string;
+    } & GalleryImage
+  >;
 };
 
 export type LocalizedText = {
@@ -410,7 +423,9 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | GalleryImageImage
+  | GalleryImage
+  | ProjectDecision
+  | ProjectStep
   | ProjectSection
   | LocalizedText
   | LocalizedTitle
