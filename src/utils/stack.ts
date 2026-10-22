@@ -1,54 +1,15 @@
-import { createElement } from 'react';
-import {
-  IconBrandJavascript,
-  IconBrandMysql,
-  IconBrandNextjs,
-  IconBrandReact,
-  IconBrandSass,
-  IconBrandTailwind,
-  IconBrandTypescript,
-  IconBrandVue,
-} from '@tabler/icons-react';
-
+// `key` points to a description in messages/*.json (Home.stackDescriptions)
 export const STACK = [
-  {
-    name: 'NextJs',
-    description: 'React Framework',
-    icon: createElement(IconBrandNextjs, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'Typescript',
-    description: 'Typed superset of JavaScript',
-    icon: createElement(IconBrandTypescript, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'Javascript',
-    description: 'Language of the web',
-    icon: createElement(IconBrandJavascript, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'SASS',
-    description: 'CSS preprocessor',
-    icon: createElement(IconBrandSass, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'TailWindCSS',
-    description: 'Utility-first CSS framework',
-    icon: createElement(IconBrandTailwind, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'VueJS',
-    description: 'JavaScript framework',
-    icon: createElement(IconBrandVue, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'Mysql',
-    description: 'Relational Database',
-    icon: createElement(IconBrandMysql, { size: 48, stroke: 1 }),
-  },
-  {
-    name: 'React',
-    description: 'JavaScript library',
-    icon: createElement(IconBrandReact, { size: 48, stroke: 1 }),
-  },
-];
+  { key: 'nextjs', name: 'Next.js', short: 'Nx' },
+  { key: 'typescript', name: 'TypeScript', short: 'Ts' },
+  { key: 'javascript', name: 'JavaScript', short: 'JS' },
+  { key: 'sass', name: 'SASS', short: 'Ss' },
+  { key: 'tailwind', name: 'Tailwind CSS', short: 'Tw' },
+  { key: 'vue', name: 'Vue.js', short: 'Vu' },
+  { key: 'mysql', name: 'MySQL', short: 'My' },
+  { key: 'react', name: 'React', short: 'Re' },
+  { key: 'nestjs', name: 'NestJS', short: 'Ne' },
+  { key: 'graphql', name: 'GraphQL', short: 'Gq' },
+  { key: 'docker', name: 'Docker', short: 'Dk' },
+  { key: 'claude', name: 'Claude', short: 'Cl' },
+] as const;
