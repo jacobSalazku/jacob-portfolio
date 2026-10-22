@@ -15,12 +15,48 @@
     "creative": {
       "title": "Créatif",
       "text": "J'aime créer et éditer des vidéos, des effets visuels et graphiques."
+    },
+    "heroTitle": "Un <accent>développeur</accent> Frontend d'Anvers",
+    "latestWork": "Dernier projet",
+    "latestWorkSub": "Mon projet le plus récent.",
+    "allProjects": "Tous les projets",
+    "readMore": "En savoir plus",
+    "intrestsSub": "Ce que je fais en dehors du code.",
+    "stack": "Stack",
+    "stackSub": "Les outils avec lesquels je travaille chaque jour.",
+    "workTogether": "Travaillons ensemble",
+    "workTogetherText": "Envoyez-moi un message à <strong>{email}</strong>",
+    "sendEmail": "Envoyer un e-mail",
+    "copyAddress": "Copier l'adresse",
+    "copied": "Copié",
+    "stackDescriptions": {
+      "nextjs": "Framework React",
+      "typescript": "Surensemble typé de JavaScript",
+      "javascript": "Le langage du web",
+      "sass": "Préprocesseur CSS",
+      "tailwind": "Framework CSS utilitaire",
+      "vue": "Framework JavaScript",
+      "mysql": "Base de données relationnelle",
+      "react": "Bibliothèque JavaScript",
+      "nestjs": "Framework Node.js pour les API",
+      "graphql": "Langage de requête pour les API",
+      "docker": "Conteneurs pour chaque environnement",
+      "claude": "Assistant IA pour le code"
     }
   },
   "Experience": {
     "slug": "Expérience",
     "button": " En savoir plus sur",
-    "feature-title": "Qu'est-ce que j'ai fait ?"
+    "feature-title": "Qu'est-ce que j'ai fait ?",
+    "upNext": "Suivant",
+    "viewExperience": "Voir l'expérience",
+    "sub": "Tous les endroits où j'ai travaillé et appris, du plus récent au plus ancien.",
+    "feature-sub": "Un aperçu détaillé des principaux projets sur lesquels j'ai travaillé.",
+    "role": "Rôle",
+    "duration": "Durée",
+    "team": "Équipe",
+    "focus": "Focus",
+    "viewDetails": "Voir les détails"
   },
   "Projects": {
     "slug": "Projets",
@@ -39,11 +75,10 @@
       "en": "Anglais",
       "fr": "Français"
     },
-    "label": {
-      "feature": "Fonctionnalité",
-      "core": "Essentiel",
-      "tool": "Outil"
-    }
+    "viewProject": "Voir le projet",
+    "viewDetails": "Voir les détails",
+    "projectsSub": "Une sélection de ce que j'ai construit, avec l'histoire de chaque projet.",
+    "upNext": "Suivant"
   },
   "Navigation": {
     "position": "Un développeur Frontend",
@@ -51,7 +86,11 @@
     "home": "Accueil",
     "experience": "Expérience",
     "projects": "Projets",
-    "contact": "Contact"
+    "contact": "Contact",
+    "contactMe": "Contactez-moi",
+    "main": "Menu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
   },
   "Metadata": {
     "title": "Portfolio de développeur Frontend",

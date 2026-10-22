@@ -15,12 +15,48 @@
     "creative": {
       "title": "Creatief",
       "text": "Ik geniet van het maken en bewerken van video's, visuele effecten en graphics."
+    },
+    "heroTitle": "Een Frontend <accent>Developer</accent> uit Antwerpen",
+    "latestWork": "Laatste werk",
+    "latestWorkSub": "Mijn meest recente project.",
+    "allProjects": "Alle projecten",
+    "readMore": "Lees meer",
+    "intrestsSub": "Wat ik doe naast het schrijven van code.",
+    "stack": "Stack",
+    "stackSub": "De tools waarmee ik elke dag werk.",
+    "workTogether": "Laten we samenwerken",
+    "workTogetherText": "Stuur me een bericht via <strong>{email}</strong>",
+    "sendEmail": "Stuur een e-mail",
+    "copyAddress": "Kopieer adres",
+    "copied": "Gekopieerd",
+    "stackDescriptions": {
+      "nextjs": "React-framework",
+      "typescript": "Getypeerde uitbreiding van JavaScript",
+      "javascript": "De taal van het web",
+      "sass": "CSS-preprocessor",
+      "tailwind": "CSS-framework met utility-klassen",
+      "vue": "JavaScript-framework",
+      "mysql": "Relationele database",
+      "react": "JavaScript-bibliotheek",
+      "nestjs": "Node.js-framework voor API's",
+      "graphql": "Querytaal voor API's",
+      "docker": "Containers voor elke omgeving",
+      "claude": "AI-assistent voor code"
     }
   },
   "Experience": {
     "slug": "Ervaring",
     "button": "Ontdek meer over",
-    "feature-title": "Wat heb ik gedaan?"
+    "feature-title": "Wat heb ik gedaan?",
+    "upNext": "Volgende",
+    "viewExperience": "Bekijk ervaring",
+    "sub": "Alle plekken waar ik werkte en leerde, van meest recent naar oudst.",
+    "feature-sub": "Een gedetailleerde blik op de belangrijkste projecten waaraan ik werkte.",
+    "role": "Rol",
+    "duration": "Duur",
+    "team": "Team",
+    "focus": "Focus",
+    "viewDetails": "Bekijk details"
   },
   "Projects": {
     "slug": "Projecten",
@@ -39,11 +75,10 @@
       "en": "Engels",
       "fr": "Frans"
     },
-    "label": {
-      "feature": "Feature",
-      "core": "Kern",
-      "tool": "Tool"
-    }
+    "viewProject": "Bekijk project",
+    "viewDetails": "Bekijk details",
+    "projectsSub": "Een selectie van wat ik bouwde, met het verhaal achter elk project.",
+    "upNext": "Volgende"
   },
   "Navigation": {
     "position": "Frontend Developer",
@@ -51,7 +86,11 @@
     "home": "Home",
     "experience": "Ervaring",
     "projects": "Projecten",
-    "contact": "Contact"
+    "contact": "Contact",
+    "contactMe": "Contacteer mij",
+    "main": "Hoofdmenu",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten"
   },
   "Metadata": {
     "title": "Frontend Developer Portfolio",
