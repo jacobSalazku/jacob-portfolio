@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "types": "sanity schema extract && sanity typegen generate",
+    "types": "sanity schema extract --force && sanity typegen generate",
     "codegen": "graphql-codegen --config codegen.ts",
     "codegen:check": "graphql-codegen --config codegen.ts --check"
   },
