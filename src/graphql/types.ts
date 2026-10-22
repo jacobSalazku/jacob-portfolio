@@ -22,9 +22,41 @@ export type ImageView = {
 export type TagView = { _id: string; title?: string };
 
 export type FeatureView = {
+  label?: 'feature' | 'core' | 'tool';
   title?: LocalizedString;
   content?: LocalizedBlocks;
+  points?: LocalizedString[];
+  url?: string;
+  image?: ImageView;
 };
+
+export type StepView = { title: LocalizedString; text: LocalizedString };
+export type DecisionView = { title: LocalizedString; text: LocalizedString };
+export type GalleryImageView = {
+  caption: LocalizedString;
+  url?: string;
+  image: ImageView;
+};
+
+type SectionBase = {
+  // Unique within the project, safe to use as an element id and URL fragment
+  anchor: string;
+  title: LocalizedString;
+};
+
+// One member per section type, so a section only carries the fields of its type
+export type SectionView = SectionBase &
+  (
+    | { type: 'text'; body?: LocalizedBlocks; points: LocalizedString[] }
+    | { type: 'steps'; steps: StepView[] }
+    | { type: 'features'; features: FeatureView[] }
+    | { type: 'decisions'; decisions: DecisionView[] }
+    | { type: 'gallery'; images: GalleryImageView[] }
+  );
+
+export type SectionType = SectionView['type'];
+
+export type ProjectLanguage = 'nl' | 'en' | 'fr';
 
 export type ProjectView = {
   _id: string;
@@ -35,6 +67,16 @@ export type ProjectView = {
   tags?: TagView[];
   text?: LocalizedBlocks;
   features?: FeatureView[];
+  // Case study header
+  lede?: LocalizedString;
+  role?: LocalizedString;
+  timeline?: LocalizedString;
+  projectType?: LocalizedString;
+  languages: ProjectLanguage[];
+  liveUrl?: string;
+  sourceUrl?: string;
+  url?: string;
+  sections: SectionView[];
 };
 
 export type ExperienceView = {
