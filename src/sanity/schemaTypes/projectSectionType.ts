@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const sectionTypes = [
   { title: 'Text', value: 'text' },
@@ -7,6 +7,14 @@ export const sectionTypes = [
   { title: 'Decisions', value: 'decisions' },
   { title: 'Gallery', value: 'gallery' },
 ] as const;
+
+type SectionValue = (typeof sectionTypes)[number]['value'];
+
+// Hide a field unless the section has the given type
+const onlyFor =
+  (type: SectionValue) =>
+  ({ parent }: { parent?: { type?: string } }) =>
+    parent?.type !== type;
 
 const ANCHOR_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
@@ -68,6 +76,105 @@ export const projectSectionType = defineType({
             ? 'This anchor is already used in this project'
             : true;
         }),
+    }),
+    defineField({
+      name: 'body',
+      type: 'blockContent',
+      hidden: onlyFor('text'),
+    }),
+    defineField({
+      name: 'points',
+      type: 'array',
+      of: [defineArrayMember({ type: 'localizedTitle' })],
+      hidden: onlyFor('text'),
+    }),
+    defineField({
+      name: 'steps',
+      type: 'array',
+      hidden: onlyFor('steps'),
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'step',
+          fields: [
+            defineField({ name: 'title', type: 'localizedTitle' }),
+            defineField({ name: 'text', type: 'localizedText' }),
+          ],
+          preview: {
+            select: { title: 'title.en', fallbackTitle: 'title.nl' },
+            prepare: ({ title, fallbackTitle }) => ({
+              title: title || fallbackTitle || 'Untitled step',
+            }),
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'features',
+      type: 'array',
+      of: [defineArrayMember({ type: 'featureBlock' })],
+      hidden: onlyFor('features'),
+    }),
+    defineField({
+      name: 'decisions',
+      type: 'array',
+      hidden: onlyFor('decisions'),
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'decision',
+          fields: [
+            defineField({ name: 'title', type: 'localizedTitle' }),
+            defineField({ name: 'text', type: 'localizedText' }),
+          ],
+          preview: {
+            select: { title: 'title.en', fallbackTitle: 'title.nl' },
+            prepare: ({ title, fallbackTitle }) => ({
+              title: title || fallbackTitle || 'Untitled decision',
+            }),
+          },
+        }),
+      ],
+    }),
+    defineField({
+      name: 'images',
+      type: 'array',
+      hidden: onlyFor('gallery'),
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'galleryImage',
+          fields: [
+            defineField({
+              name: 'image',
+              type: 'image',
+              options: { hotspot: true },
+            }),
+            defineField({
+              name: 'caption',
+              type: 'localizedTitle',
+              description: 'Shown under the image and used as its alt text',
+            }),
+            defineField({
+              name: 'url',
+              type: 'string',
+              title: 'Address bar label',
+              description: 'Text shown in the browser window, not a link',
+            }),
+          ],
+          preview: {
+            select: {
+              title: 'caption.en',
+              fallbackTitle: 'caption.nl',
+              media: 'image',
+            },
+            prepare: ({ title, fallbackTitle, media }) => ({
+              title: title || fallbackTitle || 'Untitled image',
+              media,
+            }),
+          },
+        }),
+      ],
     }),
   ],
   preview: {
