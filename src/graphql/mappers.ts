@@ -62,14 +62,41 @@ type GqlExperience = Omit<GqlProject, 'text' | 'features'> & {
   project?: { title?: string | null; slug?: GqlSlug } | null;
 };
 
-const optionalNumbers = <T extends Record<string, number | null | undefined>>(
-  value: T,
-) => {
-  const entries = Object.entries(value).flatMap(([key, v]) =>
-    typeof v === 'number' ? [[key, v] as const] : [],
-  );
-  return Object.fromEntries(entries) as { [K in keyof T]?: number };
-};
+const isNumber = (value: unknown): value is number => typeof value === 'number';
+
+// Hotspot and crop are only usable when every value is present; a partial
+// object would make urlFor() compute with undefined values.
+const mapHotspot = (
+  hotspot: NonNullable<GqlImage>['hotspot'],
+): ImageView['hotspot'] =>
+  hotspot &&
+  isNumber(hotspot.x) &&
+  isNumber(hotspot.y) &&
+  isNumber(hotspot.width) &&
+  isNumber(hotspot.height)
+    ? {
+        _type: 'sanity.imageHotspot',
+        x: hotspot.x,
+        y: hotspot.y,
+        width: hotspot.width,
+        height: hotspot.height,
+      }
+    : undefined;
+
+const mapCrop = (crop: NonNullable<GqlImage>['crop']): ImageView['crop'] =>
+  crop &&
+  isNumber(crop.top) &&
+  isNumber(crop.bottom) &&
+  isNumber(crop.left) &&
+  isNumber(crop.right)
+    ? {
+        _type: 'sanity.imageCrop',
+        top: crop.top,
+        bottom: crop.bottom,
+        left: crop.left,
+        right: crop.right,
+      }
+    : undefined;
 
 // Portable Text arrives as JSON (unknown). Only keep real arrays so a
 // malformed field becomes "no content" instead of a render crash.
@@ -119,14 +146,10 @@ export const mapImage = (
 ): ImageView | undefined =>
   image?.asset?._id
     ? {
-        alt: image.asset.altText ?? fallbackAlt ?? undefined,
+        alt: image.asset.altText || fallbackAlt || undefined,
         asset: { _type: 'reference', _ref: image.asset._id },
-        hotspot: image.hotspot
-          ? { _type: 'sanity.imageHotspot', ...optionalNumbers(image.hotspot) }
-          : undefined,
-        crop: image.crop
-          ? { _type: 'sanity.imageCrop', ...optionalNumbers(image.crop) }
-          : undefined,
+        hotspot: mapHotspot(image.hotspot),
+        crop: mapCrop(image.crop),
       }
     : undefined;
 
