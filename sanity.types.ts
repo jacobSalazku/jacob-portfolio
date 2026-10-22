@@ -15,22 +15,8 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: 'reference';
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-};
-
 export type GalleryImage = {
   _type: 'galleryImage';
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
-  };
   caption?: LocalizedTitle;
   url?: string;
 };
@@ -94,24 +80,60 @@ export type LocalizedTitle = {
   fr?: string;
 };
 
+export type FeatureCategoryReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'featureCategory';
+};
+
 export type FeatureBlock = {
   _type: 'featureBlock';
   title?: LocalizedTitle;
   content?: BlockContent;
   label?: 'feature' | 'core' | 'tool';
+  category?: FeatureCategoryReference;
+  icon?:
+    | 'code'
+    | 'database'
+    | 'eye'
+    | 'world'
+    | 'layout'
+    | 'device-mobile'
+    | 'palette'
+    | 'bolt'
+    | 'shield'
+    | 'rocket'
+    | 'puzzle'
+    | 'search';
   points?: Array<
     {
       _key: string;
     } & LocalizedTitle
   >;
-  image?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
-  };
   url?: string;
+};
+
+export type FeatureCategory = {
+  _id: string;
+  _type: 'featureCategory';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: LocalizedTitle;
+  icon?:
+    | 'code'
+    | 'database'
+    | 'eye'
+    | 'world'
+    | 'layout'
+    | 'device-mobile'
+    | 'palette'
+    | 'bolt'
+    | 'shield'
+    | 'rocket'
+    | 'puzzle'
+    | 'search';
 };
 
 export type ProjectReference = {
@@ -136,16 +158,15 @@ export type Experience = {
   _rev: string;
   title?: string;
   timespan?: LocalizedTitle;
+  lede?: LocalizedText;
+  role?: LocalizedTitle;
+  duration?: LocalizedTitle;
+  team?: LocalizedTitle;
+  focus?: LocalizedTitle;
+  initials?: string;
+  url?: string;
   slug?: Slug;
   project?: ProjectReference;
-  mainImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: 'image';
-  };
   tags?: Array<
     {
       _key: string;
@@ -155,6 +176,18 @@ export type Experience = {
   description?: BlockContent;
   text?: BlockContent;
   tasks?: BlockContent;
+  sections?: Array<
+    {
+      _key: string;
+    } & ProjectSection
+  >;
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
 };
 
 export type BlockContent = {
@@ -248,22 +281,6 @@ export type BlockContent = {
   >;
 };
 
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop';
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot';
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
-
 export type Slug = {
   _type: 'slug';
   current?: string;
@@ -278,14 +295,6 @@ export type Project = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  mainImage?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: 'image';
-  };
   tags?: Array<
     {
       _key: string;
@@ -322,6 +331,22 @@ export type TechStack = {
   title?: string;
   slug?: Slug;
   description?: string;
+};
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop';
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot';
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -422,23 +447,25 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | SanityImageAssetReference
   | GalleryImage
   | ProjectDecision
   | ProjectStep
   | ProjectSection
   | LocalizedText
   | LocalizedTitle
+  | FeatureCategoryReference
   | FeatureBlock
+  | FeatureCategory
   | ProjectReference
   | TechStackReference
   | Experience
+  | SanityImageAssetReference
   | BlockContent
-  | SanityImageCrop
-  | SanityImageHotspot
   | Slug
   | Project
   | TechStack
+  | SanityImageCrop
+  | SanityImageHotspot
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
