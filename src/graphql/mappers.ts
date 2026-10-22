@@ -1,10 +1,8 @@
 import {
   mapHttpsUrl,
-  mapImage,
   mapPlainLocalized,
   mapRawLocalized,
   mapSlug,
-  type GqlImage,
   type GqlSlug,
   type PlainLocalized,
   type RawLocalized,
@@ -30,7 +28,6 @@ type GqlProject = {
   title?: string | null;
   slug?: GqlSlug;
   publishedAt?: string | null;
-  mainImage?: GqlImage;
   tags?: (GqlTag | null)[] | null;
   text?: RawLocalized;
   features?: (GqlFeature | null)[] | null;
@@ -47,9 +44,17 @@ type GqlProject = {
 
 type GqlExperience = Pick<
   GqlProject,
-  '_id' | 'title' | 'slug' | 'publishedAt' | 'mainImage' | 'tags'
+  '_id' | 'title' | 'slug' | 'publishedAt' | 'tags'
 > & {
   timespan?: PlainLocalized;
+  lede?: PlainLocalized;
+  role?: PlainLocalized;
+  duration?: PlainLocalized;
+  team?: PlainLocalized;
+  focus?: PlainLocalized;
+  initials?: string | null;
+  url?: string | null;
+  sections?: (GqlSection | null)[] | null;
   description?: RawLocalized;
   text?: RawLocalized;
   tasks?: RawLocalized;
@@ -73,7 +78,6 @@ export const mapProject = (item: GqlProject): ProjectView => ({
   title: item.title ?? undefined,
   slug: mapSlug(item.slug),
   publishedAt: item.publishedAt ?? undefined,
-  mainImage: mapImage(item.mainImage, item.title),
   tags: mapTags(item.tags),
   text: mapRawLocalized(item.text),
   features: mapFeatures(item.features),
@@ -95,9 +99,16 @@ export const mapExperience = (item: GqlExperience): ExperienceView => ({
   title: item.title ?? undefined,
   slug: mapSlug(item.slug),
   publishedAt: item.publishedAt ?? undefined,
-  mainImage: mapImage(item.mainImage, item.title),
   tags: mapTags(item.tags),
   timespan: mapPlainLocalized(item.timespan),
+  lede: mapPlainLocalized(item.lede),
+  role: mapPlainLocalized(item.role),
+  duration: mapPlainLocalized(item.duration),
+  team: mapPlainLocalized(item.team),
+  focus: mapPlainLocalized(item.focus),
+  initials: item.initials || undefined,
+  url: item.url || undefined,
+  sections: mapSections(item.sections),
   description: mapRawLocalized(item.description),
   text: mapRawLocalized(item.text),
   tasks: mapRawLocalized(item.tasks),

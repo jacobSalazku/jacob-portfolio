@@ -6,9 +6,6 @@ query GetProjectBySlug($slug: String!) {
       current
     }
     publishedAt
-    mainImage {
-      ...ImageFields
-    }
     tags {
       ...TagFields
     }
