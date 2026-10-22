@@ -1,4 +1,3 @@
-import 'server-only';
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import {
   Kind,
@@ -6,6 +5,7 @@ import {
   type DocumentNode,
   type OperationDefinitionNode,
 } from 'graphql';
+import 'server-only';
 
 type ExecuteOptions = {
   revalidate?: number | false;
@@ -17,7 +17,6 @@ type GraphQLResponse<TData> = {
   errors?: { message: string }[];
 };
 
-// Read once at module load so a missing variable fails the build, not each request.
 const getGraphQLUrl = () => {
   const url = process.env.SANITY_GRAPHQL_URL;
   if (!url) {
@@ -25,7 +24,11 @@ const getGraphQLUrl = () => {
   }
   return url;
 };
-const GRAPHQL_URL = getGraphQLUrl();
+// Only published documents: with a token the API would also return drafts,
+// which shows up as duplicate projects
+const graphqlUrl = new URL(getGraphQLUrl());
+graphqlUrl.searchParams.set('perspective', 'published');
+const GRAPHQL_URL = graphqlUrl.toString();
 
 const DEFAULT_REVALIDATE = 30;
 const REQUEST_TIMEOUT_MS = 10_000;

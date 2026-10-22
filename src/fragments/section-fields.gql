@@ -32,6 +32,16 @@ fragment SectionFields on ProjectSection {
   }
   features {
     label
+    icon
+    category {
+      _id
+      title {
+        nl
+        en
+        fr
+      }
+      icon
+    }
     title {
       nl
       en
@@ -48,9 +58,6 @@ fragment SectionFields on ProjectSection {
       fr
     }
     url
-    image {
-      ...ImageFields
-    }
   }
   decisions {
     title {
@@ -71,8 +78,5 @@ fragment SectionFields on ProjectSection {
       fr
     }
     url
-    image {
-      ...ImageFields
-    }
   }
 }

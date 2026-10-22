@@ -1,9 +1,8 @@
+import { FEATURE_ICONS } from './feature-icons';
 import {
   mapHttpsUrl,
-  mapImage,
   mapPlainLocalized,
   mapRawLocalized,
-  type GqlImage,
   type GqlSlug,
   type PlainLocalized,
   type RawLocalized,
@@ -17,12 +16,16 @@ import type {
 } from './types';
 
 export type GqlFeature = {
-  label?: string | null;
+  icon?: string | null;
+  category?: {
+    _id?: string | null;
+    title?: PlainLocalized;
+    icon?: string | null;
+  } | null;
   title?: PlainLocalized;
   content?: RawLocalized;
   points?: (PlainLocalized | null)[] | null;
   url?: string | null;
-  image?: GqlImage;
 };
 
 type GqlTitleAndText = { title?: PlainLocalized; text?: PlainLocalized } | null;
@@ -36,13 +39,7 @@ export type GqlSection = {
   steps?: GqlTitleAndText[] | null;
   features?: (GqlFeature | null)[] | null;
   decisions?: GqlTitleAndText[] | null;
-  images?:
-    | ({
-        caption?: PlainLocalized;
-        url?: string | null;
-        image?: GqlImage;
-      } | null)[]
-    | null;
+  images?: ({ caption?: PlainLocalized; url?: string | null } | null)[] | null;
 };
 
 const SECTION_TYPES: readonly SectionType[] = [
@@ -52,14 +49,10 @@ const SECTION_TYPES: readonly SectionType[] = [
   'decisions',
   'gallery',
 ];
-const FEATURE_LABELS = ['feature', 'core', 'tool'] as const;
 const ANCHOR_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 const isEmpty = (value: object | undefined) =>
   !value || Object.keys(value).length === 0;
-
-const firstText = (value: LocalizedString | undefined) =>
-  value?.en || value?.nl || value?.fr;
 
 const mapLocalizedList = (list: (PlainLocalized | null)[] | null | undefined) =>
   (list ?? []).flatMap((item) => {
@@ -71,12 +64,18 @@ export const mapFeature = (feature: GqlFeature): FeatureView => {
   const title = mapPlainLocalized(feature.title);
   const points = mapLocalizedList(feature.points);
   return {
-    label: FEATURE_LABELS.find((label) => label === feature.label),
+    icon: FEATURE_ICONS.find((icon) => icon === feature.icon),
+    category: feature.category?._id
+      ? {
+          id: feature.category._id,
+          title: mapPlainLocalized(feature.category.title) ?? {},
+          icon: FEATURE_ICONS.find((icon) => icon === feature.category?.icon),
+        }
+      : undefined,
     title,
     content: mapRawLocalized(feature.content),
     points: points.length > 0 ? points : undefined,
     url: feature.url || undefined,
-    image: mapImage(feature.image, firstText(title)),
   };
 };
 
@@ -89,9 +88,10 @@ const mapTitleAndText = (items: GqlTitleAndText[] | null | undefined) =>
 
 const mapGalleryImages = (images: GqlSection['images']): GalleryImageView[] =>
   (images ?? []).flatMap((item) => {
-    const caption = mapPlainLocalized(item?.caption) ?? {};
-    const image = mapImage(item?.image, firstText(caption));
-    return image ? [{ caption, url: item?.url || undefined, image }] : [];
+    const caption = mapPlainLocalized(item?.caption);
+    return caption && !isEmpty(caption)
+      ? [{ caption, url: item?.url || undefined }]
+      : [];
   });
 
 // Maps only the fields that belong to the section type. A section without

@@ -1,14 +1,14 @@
 'use client';
 
 import { Fragment } from 'react';
-import Link from 'next/link';
-import { AppPathnames } from '@/navigation';
+import { Link } from '@/navigation';
 import { cn } from '@/utils/utils';
 import { IconChevronRight } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 
 type BreadcrumbsItemProps = {
   label?: string;
-  href: AppPathnames | string;
+  href: string;
 };
 
 type Breadcrumbs = {
@@ -16,12 +16,14 @@ type Breadcrumbs = {
 };
 
 const Breadcrumbs: React.FC<Breadcrumbs> = ({ items }) => {
+  const t = useTranslations('Navigation');
+
   return (
-    <section className="flex w-full justify-start px-4 py-4 md:px-10 xl:max-w-screen-lg xl:px-8">
+    <section className="flex w-full justify-start px-4 py-4 md:px-8">
       <ul className="flex items-center space-x-2 text-base text-white/60">
         <li>
           <Link href="/home" className="font-thin hover:text-beige-1">
-            Home
+            {t('home')}
           </Link>
         </li>
         <IconChevronRight

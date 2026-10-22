@@ -10,8 +10,21 @@ query GetProjects($limit: Int = 12) {
       current
     }
     publishedAt
-    mainImage {
-      ...ImageFields
+    lede {
+      nl
+      en
+      fr
+    }
+    projectType {
+      nl
+      en
+      fr
+    }
+    url
+    text {
+      nlRaw
+      enRaw
+      frRaw
     }
     tags {
       ...TagFields

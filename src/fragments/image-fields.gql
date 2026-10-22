@@ -1,5 +1,0 @@
-fragment ImageFields on Image {
-  asset { _id altText }
-  hotspot { x y width height }
-  crop { top bottom left right }
-}

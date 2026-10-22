@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { ImageView } from '@/graphql/types';
 import { client } from '@/sanity/lib/client';
 import urlBuilder from '@sanity/image-url';
 
@@ -10,7 +9,7 @@ const TextImageComponent = ({
   value,
   isInline,
 }: {
-  value: Partial<Pick<ImageView, 'alt' | 'asset'>>;
+  value: { alt?: string; asset?: { _ref: string; _type?: string } };
   isInline: boolean;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
