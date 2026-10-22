@@ -38,6 +38,11 @@
       "nl": "Néerlandais",
       "en": "Anglais",
       "fr": "Français"
+    },
+    "label": {
+      "feature": "Fonctionnalité",
+      "core": "Essentiel",
+      "tool": "Outil"
     }
   },
   "Navigation": {
