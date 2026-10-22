@@ -1,19 +1,14 @@
 import { defineField, defineType } from 'sanity';
 
 export const galleryImageType = defineType({
-  title: 'Gallery image',
+  title: 'Browser window',
   name: 'galleryImage',
   type: 'object',
   fields: [
     defineField({
-      name: 'image',
-      type: 'image',
-      options: { hotspot: true },
-    }),
-    defineField({
       name: 'caption',
       type: 'localizedTitle',
-      description: 'Shown under the image and used as its alt text',
+      description: 'The name shown in the browser window',
     }),
     defineField({
       name: 'url',
@@ -23,14 +18,9 @@ export const galleryImageType = defineType({
     }),
   ],
   preview: {
-    select: {
-      title: 'caption.en',
-      fallbackTitle: 'caption.nl',
-      media: 'image',
-    },
-    prepare: ({ title, fallbackTitle, media }) => ({
-      title: title || fallbackTitle || 'Untitled image',
-      media,
+    select: { title: 'caption.en', fallbackTitle: 'caption.nl' },
+    prepare: ({ title, fallbackTitle }) => ({
+      title: title || fallbackTitle || 'Untitled window',
     }),
   },
 });

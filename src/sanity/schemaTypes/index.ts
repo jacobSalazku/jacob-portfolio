@@ -2,6 +2,7 @@ import { type SchemaTypeDefinition } from 'sanity';
 import { blockContentType } from './blockContentType';
 import { experienceType } from './experienceType';
 import { featureBlock } from './featureBlockType';
+import { featureCategoryType } from './featureCategoryType';
 import { galleryImageType } from './galleryImageType';
 import { localizedTextType } from './localizedTextType';
 import { localizedTitleType } from './localizedTitleType';
@@ -18,6 +19,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     projectType,
     experienceType,
     featureBlock,
+    featureCategoryType,
     localizedTitleType,
     localizedTextType,
     projectSectionType,

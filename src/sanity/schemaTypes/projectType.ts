@@ -19,20 +19,6 @@ export const projectType = defineType({
       },
     }),
     defineField({
-      name: 'mainImage',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        }),
-      ],
-    }),
-    defineField({
       name: 'tags',
       type: 'array',
       of: [defineArrayMember({ type: 'reference', to: { type: 'techStack' } })],
