@@ -466,7 +466,7 @@ const run = async () => {
 
   if (apply) {
     for (const item of CATEGORIES) {
-      await client.createOrReplace({
+      await client.createIfNotExists({
         _id: `featureCategory-${item.id}`,
         _type: 'featureCategory',
         title: title(item.title),
