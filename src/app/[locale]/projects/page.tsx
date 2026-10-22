@@ -31,7 +31,7 @@ export default async function ProjectOverview(props: {
   return (
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
-        items={[{ label: `${t('slug')}`, href: `/${locale}/projects` }]}
+        items={[{ label: `${t('slug')}`, href: `/projects` }]}
       />
       <main className="w-full px-6 pb-16 md:px-8">
         <PageHeader title={t('slug')} subtitle={t('projectsSub')} />

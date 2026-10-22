@@ -65,7 +65,7 @@ export default async function ExperiencePage({
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
         items={[
-          { label: `${t('slug')}`, href: '/experience/' },
+          { label: `${t('slug')}`, href: '/experience' },
           { label: experience.title, href: `/experience/${slug}` },
         ]}
       />

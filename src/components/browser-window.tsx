@@ -3,18 +3,6 @@ import { cn } from '@/utils/utils';
 import { IconLock } from '@tabler/icons-react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-// Address shown when no url is given: the name as a .be domain, for example
-// "Portfolio v2" becomes portfolio-v2.be
-const getDefaultAddress = (title: string) => {
-  const name = title
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  return name ? `${name}.be` : undefined;
-};
-
 // Decorative backdrop of the wide window, built from the name
 const getCodeBackdrop = (title: string) =>
   [
@@ -76,8 +64,8 @@ const titleVariants = cva(
 export type BrowserWindowProps = {
   // The name shown in the window, instead of a screenshot
   title: string;
-  // Text shown in the address bar, not a link. Defaults to the name as a
-  // .be address, so every window has one.
+  // Text shown in the address bar, not a link. Without it the bar shows
+  // only the three dots, so no address is ever made up.
   url?: string;
   // Decorative code behind the title of the wide variant
   code?: string;
@@ -91,7 +79,7 @@ const BrowserWindow: FC<BrowserWindowProps> = ({
   className,
   variant,
 }) => {
-  const address = url || getDefaultAddress(title);
+  const address = url;
 
   return (
     <div className={cn(frameVariants({ variant }), className)}>
