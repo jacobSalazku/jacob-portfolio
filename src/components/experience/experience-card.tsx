@@ -23,10 +23,10 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
 
   return (
     <Link href={`/experience/${slug?.current}`} prefetch>
-      <article className="flex w-full flex-col gap-4 border-opacity-50 bg-transparent px-4 py-12 font-thin text-white transition-all duration-300 ease-in-out hover:bg-neutral-800 hover:bg-opacity-20 md:flex-row md:gap-12 md:px-10 xl:flex-row xl:gap-20 xl:px-2 xl:py-24">
+      <article className="flex w-full flex-col gap-4 border-b border-white/10 bg-transparent px-4 py-12 font-light text-white/80 transition-all duration-300 ease-in-out hover:bg-white/[0.03] md:flex-row md:gap-12 md:px-10 xl:flex-row xl:gap-20 xl:px-6 xl:py-20">
         <div className="flex items-center gap-8 sm:items-center md:w-1/4 md:flex-col">
           {timespan?.[locale] && (
-            <span className="hidden w-full rounded-lg border border-beige-1 p-4 text-sm sm:text-lg md:flex md:justify-center">
+            <span className="hidden w-full rounded-full border border-beige-1/40 px-4 py-2 text-sm text-beige-1 sm:text-base md:flex md:justify-center">
               {timespan[locale]}
             </span>
           )}
@@ -37,7 +37,7 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
               src={urlFor(mainImage).width(1080).url()}
               width={1080}
               height={1080}
-              className="max-w-32 rounded-2xl shadow-lg md:w-full md:min-w-44 md:max-w-72"
+              className="max-w-32 rounded-2xl border border-white/10 shadow-card md:w-full md:min-w-44 md:max-w-72"
               fetchPriority="high"
               loading="eager"
             />
@@ -52,7 +52,7 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
         <div className="flex flex-col justify-start md:w-3/4">
           <div className="flex flex-col xl:gap-4">
             <div className="hidden flex-col md:flex xl:gap-1">
-              <p className="text-xl font-thin text-white sm:text-3xl">
+              <p className="text-xl font-light text-white sm:text-3xl">
                 {title}
               </p>
             </div>

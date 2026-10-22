@@ -4,15 +4,22 @@ import { STACK } from '@/utils/stack';
 
 const Stack = () => {
   return (
-    <section className="bg-black-400 my-8 w-full rounded-2xl border border-beige-1 border-opacity-50 p-6 text-white shadow-lg sm:p-12">
-      <h2 className="mb-6 text-2xl font-semibold">Stack</h2>
-      <div className="grid grid-cols-1 gap-4 transition-all duration-100 ease-in-out sm:grid-cols-2">
+    <section className="my-8 w-full rounded-3xl border border-white/10 bg-white/[0.02] p-6 text-white shadow-card sm:p-10">
+      <h2 className="mb-8 text-2xl font-light tracking-tight">Stack</h2>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {STACK.map((skill) => (
-          <div key={skill.name} className="flex items-center space-x-2">
-            <div className="rounded-lg bg-black p-3 text-2xl">{skill.icon}</div>
+          <div
+            key={skill.name}
+            className="group flex items-center gap-4 rounded-xl border border-transparent p-3 transition-all duration-300 hover:border-beige-1/30 hover:bg-beige-1/5"
+          >
+            <div className="rounded-xl border border-white/10 bg-black-700 p-3 text-beige-1 transition-transform duration-300 group-hover:scale-105">
+              {skill.icon}
+            </div>
             <div>
-              <h3 className="text-lg font-medium">{skill.name}</h3>
-              <p className="text-sm text-gray-400">{skill.description}</p>
+              <h3 className="text-lg font-normal">{skill.name}</h3>
+              <p className="text-sm font-light text-white/50">
+                {skill.description}
+              </p>
             </div>
           </div>
         ))}

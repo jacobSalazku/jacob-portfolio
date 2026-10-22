@@ -18,16 +18,16 @@ const IconTextCard: React.FC<IconTextCardProps> = ({
     <div
       className={cn(
         className,
-        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-colors duration-200 ease-in-out hover:bg-opacity-25',
+        'group flex flex-col gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-beige-1 shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:border-beige-1/40 hover:bg-beige-1/[0.06]',
       )}
     >
       <div className="flex items-center justify-start gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige-1 bg-opacity-20 p-2">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-beige-1/10 p-2 transition-colors duration-300 group-hover:bg-beige-1/20">
           {icon}
         </div>
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
+        <h3 className="text-lg font-normal text-white">{title}</h3>
       </div>
-      <div className="flex items-center justify-center text-lg font-light text-white">
+      <div className="flex items-center justify-start text-base font-light leading-relaxed text-white/75">
         {children}
       </div>
     </div>

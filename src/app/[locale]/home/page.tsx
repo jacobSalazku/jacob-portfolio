@@ -14,7 +14,7 @@ export default async function Home(props: {
       <main className="mb-10 flex w-full flex-col items-start px-4 py-4 text-white md:px-10 xl:max-w-screen-lg">
         <Header locale={locale} />
         <section className="mb-8">
-          <h2 className="mb-6 py-6 pl-1 text-2xl font-semibold">
+          <h2 className="mb-4 py-6 pl-1 text-2xl font-light tracking-tight">
             {t('intrests')}
           </h2>
           <div className="grid grid-cols-1 content-center gap-4 px-2 sm:grid-cols-2 md:grid-cols-3">

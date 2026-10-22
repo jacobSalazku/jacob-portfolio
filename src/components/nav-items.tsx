@@ -35,7 +35,6 @@ const NavItems = ({
   toggleMenu: () => void;
 }) => {
   const t = useTranslations('Navigation');
-  ('navigation');
   const MENUITEMS = [
     {
       href: '/home',

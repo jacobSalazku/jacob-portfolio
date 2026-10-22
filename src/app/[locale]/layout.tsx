@@ -56,10 +56,10 @@ export default async function RootLayout({
     <html lang={locale}>
       <body className={Lexendfont.className}>
         <NextIntlClientProvider messages={messages}>
-          <div className="mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-hidden scroll-smooth bg-black-400">
+          <div className="bg-ambient mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-hidden scroll-smooth">
             <div className="max-w-screen-3xl flex w-screen flex-row items-start justify-center">
               <Navigation locale={locale} />
-              <div className="sm:pt-18 h-full min-h-screen w-full flex-col items-center justify-start transition-all duration-150 ease-in-out xxxs:pt-20 xs:flex xl:w-8/12 xl:max-w-screen-lg xl:border-l xl:border-l-blue-50 xl:border-opacity-10 2xl:max-w-screen-xl">
+              <div className="sm:pt-18 h-full min-h-screen w-full flex-col items-center justify-start transition-all duration-150 ease-in-out xxxs:pt-20 xs:flex xl:w-8/12 xl:max-w-screen-lg xl:border-l xl:border-l-white/10 2xl:max-w-screen-xl">
                 {children}
               </div>
             </div>
