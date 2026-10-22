@@ -25,7 +25,20 @@
   "Projects": {
     "slug": "Projecten",
     "technology": "Ik heb de volgende technologieën gebruikt",
-    "keyFeatures": "Belangrijke features"
+    "keyFeatures": "Belangrijke features",
+    "onThisPage": "Op deze pagina",
+    "role": "Rol",
+    "timeline": "Periode",
+    "type": "Type",
+    "languages": "Talen",
+    "techStack": "Gebruikte technologieën",
+    "liveSite": "Live site",
+    "sourceCode": "Broncode",
+    "language": {
+      "nl": "Nederlands",
+      "en": "Engels",
+      "fr": "Frans"
+    }
   },
   "Navigation": {
     "position": "Frontend Developer",
