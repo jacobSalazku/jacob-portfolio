@@ -1,30 +1,36 @@
-'use client';
-
+import type { FC } from 'react';
 import { STACK } from '@/utils/stack';
+import { getTranslations } from 'next-intl/server';
+import { SectionHeading } from './home/section-heading';
 
-const Stack = () => {
+const Stack: FC = async () => {
+  const t = await getTranslations('Home');
+
   return (
-    <section className="my-8 w-full rounded-3xl border border-white/10 bg-white/[0.02] p-6 text-white shadow-card sm:p-10">
-      <h2 className="mb-8 text-2xl font-light tracking-tight">Stack</h2>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+    <section>
+      <SectionHeading title={t('stack')} subtitle={t('stackSub')} />
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {STACK.map((skill) => (
-          <div
+          <li
             key={skill.name}
-            className="group flex items-center gap-4 rounded-xl border border-transparent p-3 transition-all duration-300 hover:border-beige-1/30 hover:bg-beige-1/5"
+            className="flex items-center gap-3.5 rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-colors duration-300 hover:border-beige-1/30"
           >
-            <div className="rounded-xl border border-white/10 bg-black-700 p-3 text-beige-1 transition-transform duration-300 group-hover:scale-105">
-              {skill.icon}
-            </div>
-            <div>
-              <h3 className="text-lg font-normal">{skill.name}</h3>
-              <p className="text-sm font-light text-white/50">
-                {skill.description}
-              </p>
-            </div>
-          </div>
+            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-md border border-white/15 text-[0.8125rem] text-white/85">
+              {skill.short}
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[0.9375rem] font-normal text-white">
+                {skill.name}
+              </span>
+              <span className="block text-xs font-light leading-snug text-white/50">
+                {t(`stackDescriptions.${skill.key}`)}
+              </span>
+            </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 };
+
 export { Stack };
