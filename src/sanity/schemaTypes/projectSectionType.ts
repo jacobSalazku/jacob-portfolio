@@ -54,6 +54,9 @@ export const projectSectionType = defineType({
       type: 'slug',
       description: 'Used in the table of contents and the link to this section',
       options: {
+        // Anchors only need to be unique inside one project; the validation
+        // below checks that. Without this Sanity compares across all projects.
+        isUnique: () => true,
         source: (_doc, { parent }) => {
           const { title } = (parent ?? {}) as SectionParent;
           return title?.en || title?.nl || title?.fr || '';
