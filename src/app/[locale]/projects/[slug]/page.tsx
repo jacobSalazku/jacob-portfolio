@@ -116,10 +116,12 @@ export default async function ProjectPage({
                 <IconTextCard
                   key={index}
                   icon={<IconCode size={48} stroke={1.5} />}
-                  title={feature.title?.[locale as keyof typeof feature.title]}
+                  title={feature.title?.[locale]}
                   className="rounded-lg"
                 >
-                  <PortableTextRenderer value={feature.content[locale]} />
+                  {feature.content?.[locale] && (
+                    <PortableTextRenderer value={feature.content[locale]} />
+                  )}
                 </IconTextCard>
               ))}
           </div>

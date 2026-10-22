@@ -4,7 +4,6 @@ import { Breadcrumbs } from '@/components/breadcrums';
 import { ProjectCard } from '@/components/project/project-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { getProjects } from '@/graphql/queries';
-import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,7 +42,7 @@ export default async function ProjectOverview(props: {
               <ProjectCard
                 project={project}
                 locale={locale}
-                tags={project.tags as Project['tags']}
+                tags={project.tags}
               />
               {index < data.length - 1 && (
                 <div className="w-full border-t border-blue-50 border-opacity-50 md:hidden"></div>

@@ -4,7 +4,6 @@ import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceCard } from '@/components/experience/experience-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { getExperiences } from '@/graphql/queries';
-import { Experience } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -42,7 +41,7 @@ export default async function ExperienceOverview(props: {
               <ExperienceCard
                 experience={experience}
                 locale={locale}
-                tags={experience.tags as Experience['tags']}
+                tags={experience.tags}
               />
               {index < data.length - 1 && (
                 <div className="w-full border-t border-blue-50 border-opacity-50 md:hidden"></div>
