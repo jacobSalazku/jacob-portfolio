@@ -61,6 +61,8 @@ const config: Config = {
         '570': '2160px',
       },
       maxWidth: {
+        // Width of the page content, also used by the navigation bar
+        site: '1240px',
         '3xl': '1920px',
         '90': '22.5rem',
       },

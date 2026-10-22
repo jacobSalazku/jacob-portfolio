@@ -1,21 +1,28 @@
 import { Metadata } from 'next';
 import { SITE_URL } from '@/utils/site-url';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(`${SITE_URL}/not-found`),
-  title: 'Page not found',
-};
-function page() {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata');
+
+  return {
+    metadataBase: new URL(`${SITE_URL}/not-found`),
+    title: t('404.title'),
+    description: t('404.description'),
+  };
+}
+
+export default async function NotFound() {
+  const t = await getTranslations('Metadata');
+
   return (
-    <>
-      <section className="mt-20 flex h-[700px] w-screen flex-col items-start gap-6 bg-gradient-to-b px-12 py-24 transition-all duration-75 ease-in-out md:gap-6 lg:justify-center">
-        <div className="flex w-full flex-row items-center justify-center">
-          <h2 className="text-3xl font-light text-purple-1 transition-transform lg:text-5xl">
-            DEZE PAGINA BESTAAT NIET
-          </h2>
-        </div>
-      </section>
-    </>
+    <section className="flex min-h-[60vh] w-full flex-col items-center justify-center gap-4 px-6 text-center md:px-8">
+      <h1 className="text-[clamp(32px,5vw,56px)] font-light tracking-tight text-white">
+        {t('404.title')}
+      </h1>
+      <p className="max-w-[50ch] text-base font-light text-white/70">
+        {t('404.description')}
+      </p>
+    </section>
   );
 }
-export default page;

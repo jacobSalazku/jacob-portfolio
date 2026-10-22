@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
-import { Lexend } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { Navigation } from '@/components/navigation';
 import { SITE_URL } from '@/utils/site-url';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
 
-const Lexendfont = Lexend({
-  weight: ['100', '200', '400', '300'],
+const interFont = Inter({
+  weight: ['200', '300', '400', '500'],
   subsets: ['latin'],
 });
 
@@ -17,11 +17,13 @@ export const metadata: Metadata = {
     default: 'Jacob Salazaku ',
     template: ' %s | Jacob Salazaku',
   },
-  icons: [
-    {
-      url: '/jacob-app-icon.png',
-    },
-  ],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   description:
     'Portfolio Jacob Salazaku met projecten en alle  informatie over Jacob Salazaku',
   keywords: ['developer, front-end develop,'],
@@ -33,9 +35,9 @@ export const metadata: Metadata = {
       'Portfolio Jacob Salazaku met projecten en alle informatie over Jacob Salazaku',
     images: [
       {
-        url: '/jacob-og.png',
-        width: 567,
-        height: 444,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Jacob Salazaku Website',
       },
     ],
@@ -58,15 +60,13 @@ export default async function RootLayout({
       className="motion-safe:scroll-smooth"
       data-scroll-behavior="smooth"
     >
-      <body className={Lexendfont.className}>
+      {/* Browser extensions (e.g. ColorZilla's cz-shortcut-listen) add attributes
+          to <body> before React hydrates; only this element ignores the mismatch */}
+      <body className={interFont.className} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <div className="bg-ambient mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-x-clip scroll-smooth">
-            <div className="max-w-screen-3xl flex w-screen flex-row items-start justify-center">
-              <Navigation locale={locale} />
-              <div className="sm:pt-18 h-full min-h-screen w-full flex-col items-center justify-start transition-all duration-150 ease-in-out xxxs:pt-20 xs:flex xl:w-8/12 xl:max-w-screen-lg xl:border-l xl:border-l-white/10 2xl:max-w-screen-xl">
-                {children}
-              </div>
-            </div>
+          <div className="bg-ambient flex min-h-screen w-full flex-col items-center overflow-x-clip">
+            <Navigation locale={locale} />
+            <div className="w-full max-w-site flex-1 pt-2">{children}</div>
           </div>
         </NextIntlClientProvider>
       </body>
