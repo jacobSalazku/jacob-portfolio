@@ -1,9 +1,8 @@
 import React from 'react';
 import { cn } from '@/utils/utils';
-import { FeatureBlock } from '@root/sanity.types';
 
 interface IconTextCardProps {
-  title?: FeatureBlock['title'] | string;
+  title?: string;
   icon: React.ReactNode;
   children: React.ReactNode;
   className?: string;
@@ -26,9 +25,7 @@ const IconTextCard: React.FC<IconTextCardProps> = ({
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-beige-1/10 p-2 transition-colors duration-300 group-hover:bg-beige-1/20">
           {icon}
         </div>
-        <h3 className="text-lg font-normal text-white">
-          {typeof title === 'string' ? title : ''}
-        </h3>
+        <h3 className="text-lg font-normal text-white">{title}</h3>
       </div>
       <div className="flex items-center justify-start text-base font-light leading-relaxed text-white/75">
         {children}

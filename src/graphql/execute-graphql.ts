@@ -17,6 +17,16 @@ type GraphQLResponse<TData> = {
   errors?: { message: string }[];
 };
 
+// Read once at module load so a missing variable fails the build, not each request.
+const getGraphQLUrl = () => {
+  const url = process.env.SANITY_GRAPHQL_URL;
+  if (!url) {
+    throw new Error('Missing environment variable: SANITY_GRAPHQL_URL');
+  }
+  return url;
+};
+const GRAPHQL_URL = getGraphQLUrl();
+
 const DEFAULT_REVALIDATE = 30;
 const REQUEST_TIMEOUT_MS = 10_000;
 
@@ -31,15 +41,10 @@ export async function executeGraphQL<TData, TVariables>(
   variables: TVariables,
   options: ExecuteOptions = {},
 ): Promise<TData> {
-  const url = process.env.SANITY_GRAPHQL_URL;
-  if (!url) {
-    throw new Error('Missing environment variable: SANITY_GRAPHQL_URL');
-  }
-
   const token = process.env.SANITY_API_READ_TOKEN;
   const { revalidate = DEFAULT_REVALIDATE, tags } = options;
 
-  const response = await fetch(url, {
+  const response = await fetch(GRAPHQL_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

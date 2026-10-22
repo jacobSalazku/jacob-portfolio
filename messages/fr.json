@@ -25,7 +25,20 @@
   "Projects": {
     "slug": "Projets",
     "technology": " J'ai utilisé les technologies suivantes",
-    "keyFeatures": "Caractéristiques essentielles"
+    "keyFeatures": "Caractéristiques essentielles",
+    "onThisPage": "Sur cette page",
+    "role": "Rôle",
+    "timeline": "Période",
+    "type": "Type",
+    "languages": "Langues",
+    "techStack": "Technologies utilisées",
+    "liveSite": "Site en ligne",
+    "sourceCode": "Code source",
+    "language": {
+      "nl": "Néerlandais",
+      "en": "Anglais",
+      "fr": "Français"
+    }
   },
   "Navigation": {
     "position": "Un développeur Frontend",

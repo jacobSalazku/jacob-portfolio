@@ -5,13 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { LibraryTag } from '@/components/library-tag';
 import { PortableTextRenderer } from '@/components/portable-text-render';
+import type { ExperienceView } from '@/graphql/types';
 import { urlFor } from '@/sanity/lib/image';
-import { Experience, LocalizedTitle } from '@root/sanity.types';
 
 type ExperienceCardProps = {
-  experience: Experience;
+  experience: ExperienceView;
   locale: string;
-  tags: Experience['tags'];
+  tags: ExperienceView['tags'];
 };
 
 const ExperienceCard: FC<ExperienceCardProps> = ({
@@ -25,9 +25,9 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
     <Link href={`/experience/${slug?.current}`} prefetch>
       <article className="flex w-full flex-col gap-4 border-b border-white/10 bg-transparent px-4 py-12 font-light text-white/80 transition-all duration-300 ease-in-out hover:bg-white/[0.03] md:flex-row md:gap-12 md:px-10 xl:flex-row xl:gap-20 xl:px-6 xl:py-20">
         <div className="flex items-center gap-8 sm:items-center md:w-1/4 md:flex-col">
-          {timespan && timespan[locale as keyof LocalizedTitle] && (
+          {timespan?.[locale] && (
             <span className="hidden w-full rounded-full border border-beige-1/40 px-4 py-2 text-sm text-beige-1 sm:text-base md:flex md:justify-center">
-              {timespan[locale as keyof typeof timespan]}
+              {timespan[locale]}
             </span>
           )}
 
@@ -44,11 +44,8 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
           )}
           <div className="flex flex-col justify-center md:hidden">
             <h2 className="text-xl font-light text-white">{title}</h2>
-            {timespan && timespan[locale as keyof LocalizedTitle] && (
-              <span className="text-sm text-gray-400">
-                {' '}
-                {timespan[locale as keyof typeof timespan]}
-              </span>
+            {timespan?.[locale] && (
+              <span className="text-sm text-gray-400"> {timespan[locale]}</span>
             )}
           </div>
         </div>
@@ -68,7 +65,7 @@ const ExperienceCard: FC<ExperienceCardProps> = ({
               tags.map((tag) => (
                 <LibraryTag
                   key={`{${tag._id}-${tag.title}}`}
-                  id={tag._id!}
+                  id={tag._id}
                   title={tag.title}
                 />
               ))}

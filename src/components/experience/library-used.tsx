@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { LibraryTag } from '@/components/library-tag';
-import { TechStack } from '@root/sanity.types';
+import type { TagView } from '@/graphql/types';
 
 type ExperienceTagsProps = {
-  tags?: TechStack[];
+  tags?: TagView[];
 };
 
 const LibraryUsed: FC<ExperienceTagsProps> = ({ tags }) => {

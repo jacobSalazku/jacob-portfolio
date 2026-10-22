@@ -25,7 +25,20 @@
   "Projects": {
     "slug": "Projects",
     "technology": "I have used the following technologies",
-    "keyFeatures": "Key features"
+    "keyFeatures": "Key features",
+    "onThisPage": "On this page",
+    "role": "Role",
+    "timeline": "Timeline",
+    "type": "Type",
+    "languages": "Languages",
+    "techStack": "Tech stack used",
+    "liveSite": "Live site",
+    "sourceCode": "Source code",
+    "language": {
+      "nl": "Dutch",
+      "en": "English",
+      "fr": "French"
+    }
   },
   "Navigation": {
     "position": "Frontend Developer",

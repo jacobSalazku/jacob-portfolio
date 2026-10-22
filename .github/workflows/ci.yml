@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, v3]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      SANITY_GRAPHQL_URL: ${{ secrets.SANITY_GRAPHQL_URL }}
+      SANITY_API_READ_TOKEN: ${{ secrets.SANITY_API_READ_TOKEN }}
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: npx tsc --noEmit
+      - run: pnpm lint
+      # Needs the Sanity secrets; skipped (not failed) when they are not set
+      - name: Check generated GraphQL files are up to date
+        if: ${{ env.SANITY_GRAPHQL_URL != '' }}
+        run: pnpm codegen:check

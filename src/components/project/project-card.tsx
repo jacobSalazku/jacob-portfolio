@@ -3,15 +3,15 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import type { ProjectView } from '@/graphql/types';
 import { urlFor } from '@/sanity/lib/image';
 import { IconChevronRight } from '@tabler/icons-react';
-import { Project } from '../../../sanity.types';
 import { LibraryTag } from '../library-tag';
 
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectView;
   locale: string;
-  tags: Project['tags'];
+  tags: ProjectView['tags'];
 };
 
 const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
@@ -48,7 +48,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ locale, project, tags }) => {
               tags.map((tag) => (
                 <LibraryTag
                   key={`${tag._id}-${tag.title}`}
-                  id={tag._id!}
+                  id={tag._id}
                   title={tag.title}
                 />
               ))}

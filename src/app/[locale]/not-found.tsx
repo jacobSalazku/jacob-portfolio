@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
+import { SITE_URL } from '@/utils/site-url';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`${process.env.NEXT_BASE_URL}/not-found`),
+  metadataBase: new URL(`${SITE_URL}/not-found`),
   title: 'Page not found',
 };
 function page() {
