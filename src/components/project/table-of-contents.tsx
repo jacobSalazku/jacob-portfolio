@@ -10,26 +10,48 @@ type TableOfContentsProps = {
   items: TableOfContentsItem[];
 };
 
-// Offsets match the sticky scroll margin of the sections (scroll-mt-32)
-const OBSERVER_MARGIN = '-20% 0px -70% 0px';
+// A section is current once its top passes this line below the page header
+const ACTIVE_LINE_PX = 160;
 
 const TableOfContents: FC<TableOfContentsProps> = ({ title, items }) => {
   const [active, setActive] = useState(items[0]?.anchor);
 
   useEffect(() => {
-    const sections = items.flatMap(({ anchor }) => {
-      const element = document.getElementById(anchor);
-      return element ? [element] : [];
-    });
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) setActive(visible.target.id);
-      },
-      { rootMargin: OBSERVER_MARGIN },
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      // The last section may be too short to reach the line, so the end of
+      // the page always selects it
+      if (atBottom) {
+        setActive(items[items.length - 1]?.anchor);
+        return;
+      }
+      let current = items[0]?.anchor;
+      for (const { anchor } of items) {
+        const element = document.getElementById(anchor);
+        if (element && element.getBoundingClientRect().top <= ACTIVE_LINE_PX) {
+          current = anchor;
+        }
+      }
+      setActive(current);
+    };
+
+    const onScroll = () => {
+      if (frame === 0) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame !== 0) window.cancelAnimationFrame(frame);
+    };
   }, [items]);
 
   if (items.length < 2) return null;

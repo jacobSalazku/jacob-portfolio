@@ -53,7 +53,11 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="motion-safe:scroll-smooth">
+    <html
+      lang={locale}
+      className="motion-safe:scroll-smooth"
+      data-scroll-behavior="smooth"
+    >
       <body className={Lexendfont.className}>
         <NextIntlClientProvider messages={messages}>
           <div className="bg-ambient mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-x-clip scroll-smooth">
