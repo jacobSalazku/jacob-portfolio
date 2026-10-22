@@ -7,28 +7,19 @@ import { Link } from '@/components/Link/link';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { getExperience } from '@/graphql/queries';
 import { urlFor } from '@/sanity/lib/image';
-import { Experience, Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
-import { EXPERIENCE_DETAIL_PAGE } from './_query';
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const t = await getTranslations('Metadata');
 
-  const data = await client.fetch<Experience>(
-    EXPERIENCE_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
-  const { title, mainImage } = data;
+  const data = await getExperience(slug);
 
   if (!data) {
     return {
@@ -36,6 +27,8 @@ export async function generateMetadata({
       description: `${t('404.description')}`,
     };
   }
+
+  const { title, mainImage } = data;
 
   return {
     title: `${title}`,
@@ -58,22 +51,15 @@ export async function generateMetadata({
 export default async function ExperiencePage({
   params,
 }: {
-  params: { slug: string; locale: number };
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
-  const data = await client.fetch<Experience>(
-    EXPERIENCE_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
+  const data = await getExperience(slug);
 
   if (!data) return null;
 
-  const { mainImage, title, text, tags, tasks, project } =
-    data as Experience & { project: Project };
+  const { mainImage, title, text, tags, tasks, project } = data;
 
   const t = await getTranslations('Experience');
 
@@ -119,7 +105,7 @@ export default async function ExperiencePage({
             {tasks?.[locale] && (
               <PortableTextRenderer value={tasks?.[locale]} />
             )}
-            {(project as Project) && project.slug && (
+            {project?.slug && (
               <div className="pt-10">
                 <Link
                   href={`/projects/${project.slug.current}`}

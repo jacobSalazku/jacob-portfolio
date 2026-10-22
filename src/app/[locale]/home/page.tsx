@@ -4,8 +4,10 @@ import { Stack } from '@/components/stack';
 import { IconBallBasketball, IconCode, IconVideo } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
 
-export default async function Home(params: { params: { locale: string } }) {
-  const { locale } = params.params;
+export default async function Home(props: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await props.params;
   const t = await getTranslations('Home');
   return (
     <>

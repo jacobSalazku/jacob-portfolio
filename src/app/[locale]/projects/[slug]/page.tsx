@@ -7,29 +7,20 @@ import { PortableTextRenderer } from '@/components/portable-text-render';
 import { IconTextCard } from '@/components/project/icon-text-card';
 import { KeyFeatures } from '@/components/project/key-features';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { getProject } from '@/graphql/queries';
 import { urlFor } from '@/sanity/lib/image';
 import { IconCode } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';
-import { Project } from '../../../../../sanity.types';
-import { PROJECT_DETAIL_PAGE } from './_query';
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const t = await getTranslations('Metadata');
 
-  const data = await client.fetch<Project>(
-    PROJECT_DETAIL_PAGE,
-    {
-      slug: slug,
-    },
-    { next: { revalidate: 30 } },
-  );
-  const { title, mainImage } = data;
+  const data = await getProject(slug);
 
   if (!data) {
     return {
@@ -37,6 +28,8 @@ export async function generateMetadata({
       description: `${t('404.description')}`,
     };
   }
+
+  const { title, mainImage } = data;
 
   return {
     title: `${title}`,
@@ -59,15 +52,11 @@ export async function generateMetadata({
 export default async function ProjectPage({
   params,
 }: {
-  params: { slug: string; locale: string };
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
-  const project = await client.fetch<Project>(
-    PROJECT_DETAIL_PAGE,
-    { slug: slug },
-    { next: { revalidate: 30 } },
-  );
+  const project = await getProject(slug);
 
   if (!project) return null;
 

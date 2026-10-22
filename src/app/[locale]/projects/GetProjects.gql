@@ -1,0 +1,20 @@
+query GetProjects($limit: Int = 12) {
+  allProject(
+    where: { slug: { current: { is_defined: true } } }
+    sort: [{ publishedAt: DESC }]
+    limit: $limit
+  ) {
+    _id
+    title
+    slug {
+      current
+    }
+    publishedAt
+    mainImage {
+      ...ImageFields
+    }
+    tags {
+      ...TagFields
+    }
+  }
+}

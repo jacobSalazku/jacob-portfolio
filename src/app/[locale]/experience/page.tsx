@@ -3,10 +3,9 @@ import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceCard } from '@/components/experience/experience-card';
 import { SuspensePulse } from '@/components/suspense-fallback';
-import { client } from '@/sanity/lib/client';
+import { getExperiences } from '@/graphql/queries';
 import { Experience } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
-import { EXPERIENCE_QUERY } from './_query';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('Metadata');
@@ -21,16 +20,12 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function ExperienceOverview(params: {
-  params: { locale: string; slug: string };
+export default async function ExperienceOverview(props: {
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = params.params;
+  const { locale, slug } = await props.params;
 
-  const data = await client.fetch<Experience[]>(
-    EXPERIENCE_QUERY,
-    {},
-    { next: { revalidate: 30 } },
-  );
+  const data = await getExperiences();
 
   const t = await getTranslations('Experience');
 

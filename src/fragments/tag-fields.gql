@@ -1,0 +1,4 @@
+fragment TagFields on TechStack {
+  _id
+  title
+}
