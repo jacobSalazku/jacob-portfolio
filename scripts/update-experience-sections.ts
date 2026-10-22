@@ -284,6 +284,13 @@ const spotworkshops = section([
   ),
 ]);
 
+type PortableBlock = {
+  _key: string;
+  children?: { text?: string }[];
+  [key: string]: unknown;
+};
+type LocalizedBlocks = Record<'nl' | 'en' | 'fr', PortableBlock[]>;
+
 const STUDENT_TEXT: Lang = {
   nl: 'Zes maanden lang werkte ik als student één dag per week als front-end developer. In juli kreeg ik de kans om twee weken fulltime te werken.',
   en: 'For six months I worked as a student, one day a week, as a front-end developer. In July I got the chance to work full time for two weeks.',
@@ -292,17 +299,17 @@ const STUDENT_TEXT: Lang = {
 
 const run = async () => {
   const spot = await client.fetch<{
-    text: { nl: any[]; en: any[]; fr: any[] };
-    description: { nl: any[]; en: any[]; fr: any[] };
+    text: LocalizedBlocks;
+    description: LocalizedBlocks;
   }>(`*[_id == $id][0]{text, description}`, { id: SPOTWORKSHOPS_ID });
 
   // Replace the paragraph that says "freelance student" in text and description
-  const fix = (field: Record<'nl' | 'en' | 'fr', any[]> | undefined) => {
+  const fix = (field: LocalizedBlocks | undefined) => {
     if (!field) return undefined;
-    const next: Record<string, any[]> = {};
+    const next: Record<string, PortableBlock[]> = {};
     for (const lang of ['nl', 'en', 'fr'] as const) {
-      next[lang] = (field[lang] ?? []).map((b: any) => {
-        const plain = (b.children ?? []).map((s: any) => s.text).join('');
+      next[lang] = (field[lang] ?? []).map((b) => {
+        const plain = (b.children ?? []).map((s) => s.text ?? '').join('');
         return /freelance|Zes maanden|six months|six mois/i.test(plain)
           ? { ...block(STUDENT_TEXT[lang]), _key: b._key }
           : b;
