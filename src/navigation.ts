@@ -19,8 +19,7 @@ export const pathnames = {
     'mailto:jacob.salazaku@student.kdg.be',
 };
 
-export const { Link, redirect, usePathname, useRouter } =
-  createNavigation({
+export const { Link, redirect, usePathname, useRouter } = createNavigation({
   locales,
   defaultLocale,
   localePrefix,

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { Lexend } from 'next/font/google';
 import { Navigation } from '@/components/navigation';
+import { SITE_URL } from '@/utils/site-url';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import '../globals.css';
@@ -11,7 +12,7 @@ const Lexendfont = Lexend({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_BASE_URL ?? ''),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Jacob Salazaku ',
     template: ' %s | Jacob Salazaku',
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   keywords: ['developer, front-end develop,'],
   openGraph: {
     type: 'website',
-    url: `${process.env.NEXT_BASE_URL}`,
+    url: SITE_URL,
     title: 'Website Jacob Salazaku',
     description:
       'Portfolio Jacob Salazaku met projecten en alle informatie over Jacob Salazaku',
