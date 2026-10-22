@@ -15,7 +15,7 @@ const SectionSteps: FC<SectionStepsProps> = ({ section, locale }) => (
         key={`${index}-${localize(step.title, locale)}`}
         className={`${PANEL} p-6`}
       >
-        <span className="mb-4 grid h-8 w-8 place-items-center rounded-full bg-beige-1/10 text-sm text-beige-1">
+        <span className="mb-4 grid h-8 w-8 place-items-center rounded-lg bg-beige-1/10 text-sm text-beige-1">
           {index + 1}
         </span>
         <h3 className="mb-2 text-lg font-normal text-white">

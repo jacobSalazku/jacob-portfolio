@@ -17,7 +17,7 @@ const SectionDecisions: FC<SectionDecisionsProps> = ({ section, locale }) => (
         <dt className="text-base font-normal text-beige-1">
           {localize(decision.title, locale)}
         </dt>
-        <dd className="text-[15px] leading-relaxed text-white/75">
+        <dd className="text-[0.9375rem] leading-relaxed text-white/75">
           {localize(decision.text, locale)}
         </dd>
       </div>

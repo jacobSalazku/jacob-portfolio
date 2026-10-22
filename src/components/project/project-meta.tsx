@@ -37,7 +37,7 @@ const ProjectMeta: FC<ProjectMetaProps> = async ({ project, locale }) => {
           <dt className="mb-2 text-xs uppercase tracking-[0.14em] text-white/55">
             {fact.label}
           </dt>
-          <dd className="text-[15px] text-white/75">{fact.value}</dd>
+          <dd className="text-[0.9375rem] text-white/75">{fact.value}</dd>
         </div>
       ))}
       {tags.length > 0 && (
