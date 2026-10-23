@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { BrowserWindow } from '@/components/browser-window';
-import { LibraryTag } from '@/components/library-tag';
+import { LibraryTag } from '@/components/content/library-tag';
+import { BrowserWindow } from '@/components/ui/browser-window';
 import { getExcerpt } from '@/graphql/excerpt';
 import { localize } from '@/graphql/localize';
 import type { ProjectView } from '@/graphql/types';

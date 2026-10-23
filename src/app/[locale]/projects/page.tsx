@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/breadcrums';
-import { PageHeader } from '@/components/page-header';
+import { Breadcrumbs } from '@/components/layout/breadcrums';
+import { PageHeader } from '@/components/layout/page-header';
+import { SuspensePulse } from '@/components/layout/suspense-fallback';
 import { ProjectRow } from '@/components/project/project-row';
-import { SuspensePulse } from '@/components/suspense-fallback';
 import { getProjects } from '@/graphql/queries';
 import { getTranslations } from 'next-intl/server';
 
@@ -30,9 +30,7 @@ export default async function ProjectOverview(props: {
 
   return (
     <Suspense fallback={<SuspensePulse />}>
-      <Breadcrumbs
-        items={[{ label: `${t('slug')}`, href: `/projects` }]}
-      />
+      <Breadcrumbs items={[{ label: `${t('slug')}`, href: `/projects` }]} />
       <main className="w-full px-6 pb-16 md:px-8">
         <PageHeader title={t('slug')} subtitle={t('projectsSub')} />
         <div className="flex flex-col divide-y divide-white/10">

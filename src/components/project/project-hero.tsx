@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { BrowserWindow } from '@/components/browser-window';
+import { BrowserWindow } from '@/components/ui/browser-window';
 import type { ProjectView } from '@/graphql/types';
 
 type ProjectHeroProps = {

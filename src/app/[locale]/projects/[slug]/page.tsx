@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { Breadcrumbs } from '@/components/breadcrums';
+import { Breadcrumbs } from '@/components/layout/breadcrums';
+import { SuspensePulse } from '@/components/layout/suspense-fallback';
 import { ProjectBody } from '@/components/project/project-body';
-import { SuspensePulse } from '@/components/suspense-fallback';
 import { getProject, getProjects } from '@/graphql/queries';
 import { getNextItem } from '@/utils/next-item';
 import { OG_IMAGE } from '@/utils/site-url';

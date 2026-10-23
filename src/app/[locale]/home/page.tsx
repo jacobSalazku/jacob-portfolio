@@ -1,9 +1,9 @@
+import { Stack } from '@/components/content/stack';
 import { ContactCta } from '@/components/home/contact-cta';
 import { HomeHero } from '@/components/home/home-hero';
 import { Interests } from '@/components/home/interests';
 import { LatestWork } from '@/components/home/latest-work';
 import { SectionDivider } from '@/components/home/section-divider';
-import { Stack } from '@/components/stack';
 
 export default async function Home(props: {
   params: Promise<{ locale: string }>;

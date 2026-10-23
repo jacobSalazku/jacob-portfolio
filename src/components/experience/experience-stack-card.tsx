@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { LibraryTag } from '@/components/library-tag';
+import { LibraryTag } from '@/components/content/library-tag';
 import type { TagView } from '@/graphql/types';
 import { IconCode } from '@tabler/icons-react';
 import { getTranslations } from 'next-intl/server';

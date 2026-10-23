@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { LibraryTag } from '@/components/library-tag';
+import { LibraryTag } from '@/components/content/library-tag';
 import { localize } from '@/graphql/localize';
 import type { ProjectView } from '@/graphql/types';
 import { getTranslations } from 'next-intl/server';

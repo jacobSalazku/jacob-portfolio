@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { BrowserWindow } from '@/components/browser-window';
 import { buttonVariants } from '@/components/Link/button-variants';
-import { ResumeButton } from '@/components/resume-button';
+import { ResumeButton } from '@/components/navigation/resume-button';
+import { BrowserWindow } from '@/components/ui/browser-window';
 import { LINKEDIN_URL } from '@/utils/contact';
 import { getTranslations } from 'next-intl/server';
 
