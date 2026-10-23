@@ -575,7 +575,7 @@ export const GetExperiencesDocument = {
             name: { kind: 'Name', value: 'limit' },
           },
           type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-          defaultValue: { kind: 'IntValue', value: '12' },
+          defaultValue: { kind: 'IntValue', value: '100' },
         },
       ],
       selectionSet: {
@@ -1276,7 +1276,7 @@ export const GetProjectsDocument = {
             name: { kind: 'Name', value: 'limit' },
           },
           type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
-          defaultValue: { kind: 'IntValue', value: '12' },
+          defaultValue: { kind: 'IntValue', value: '100' },
         },
       ],
       selectionSet: {

@@ -25,7 +25,7 @@ export async function generateMetadata({
     };
   }
 
-  const { title } = data;
+  const title = data.title ?? 'Jacob Salazaku';
 
   return {
     title: `${title}`,
