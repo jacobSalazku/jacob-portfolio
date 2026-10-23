@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { getSafeHref } from '@/utils/safe-href';
 import { PortableText, PortableTextComponents } from '@portabletext/react';
 import { IconChevronRight } from '@tabler/icons-react';
 import { TypedObject } from 'sanity';
@@ -70,22 +71,26 @@ const components: PortableTextComponents = {
       value,
       children,
     }: {
-      value?: { href: string };
+      value?: { href?: string };
       children: React.ReactNode;
-    }) => (
-      <Link
-        href={value?.href || '#'}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group inline-flex items-center text-beige-1 transition-colors duration-200 ease-in-out hover:text-sky-100"
-      >
-        {children}
-        <IconChevronRight
-          className="ml-1 transition-all duration-300 ease-in-out group-hover:ml-2 group-hover:text-sky-100"
-          size={24}
-        />
-      </Link>
-    ),
+    }) => {
+      const href = getSafeHref(value?.href);
+      if (!href) return <>{children}</>;
+      return (
+        <Link
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center text-beige-1 transition-colors duration-200 ease-in-out hover:text-sky-100"
+        >
+          {children}
+          <IconChevronRight
+            className="ml-1 transition-all duration-300 ease-in-out group-hover:ml-2 group-hover:text-sky-100"
+            size={24}
+          />
+        </Link>
+      );
+    },
   },
 };
 
