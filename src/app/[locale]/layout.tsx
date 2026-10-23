@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Navigation } from '@/components/navigation/navigation';
 import { SITE_URL } from '@/utils/site-url';
+import { Analytics } from '@vercel/analytics/next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 
 const interFont = Inter({
