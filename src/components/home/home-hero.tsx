@@ -25,7 +25,7 @@ const HomeHero: FC<{ locale: string }> = async ({ locale }) => {
         variant="wide"
         className="order-1 md:mx-auto lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0"
       />
-      <div className="order-2 flex flex-wrap justify-center gap-4 lg:order-none lg:col-start-1 lg:row-start-2 lg:justify-start lg:self-start">
+      <div className="order-3 flex flex-wrap justify-center gap-4 lg:order-none lg:col-start-1 lg:row-start-2 lg:justify-start lg:self-start">
         <ResumeButton
           locale={locale}
           variant="primary"
@@ -43,7 +43,7 @@ const HomeHero: FC<{ locale: string }> = async ({ locale }) => {
           Linkedin
         </a>
       </div>
-      <div className="order-3 flex flex-col items-center gap-6 text-center lg:order-none lg:col-start-1 lg:row-start-1 lg:items-start lg:self-end lg:text-left">
+      <div className="order-2 flex flex-col items-center gap-6 text-center lg:order-none lg:col-start-1 lg:row-start-1 lg:items-start lg:self-end lg:text-left">
         <h1 className="text-[clamp(24px,2.8vw,34px)] font-light leading-[1.1] tracking-[-0.02em] text-white">
           {t.rich('heroTitle', {
             accent: (chunks) => <span className="text-gradient">{chunks}</span>,

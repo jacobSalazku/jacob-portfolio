@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import { buttonVariants } from '@/components/Link/button-variants';
+import { PillList } from '@/components/pill-list';
 import { localize } from '@/graphql/localize';
 import type { ProjectView } from '@/graphql/types';
 import { IconArrowUpRight, IconCode } from '@tabler/icons-react';
@@ -24,22 +25,7 @@ const ProjectHeader: FC<ProjectHeaderProps> = async ({ project, locale }) => {
 
   return (
     <header className="flex flex-col items-start gap-5">
-      {pills.length > 0 && (
-        <ul className="flex flex-wrap gap-2">
-          {pills.map((pill, index) => (
-            <li
-              key={`${index}-${pill}`}
-              className={
-                index === 0
-                  ? 'rounded-md border border-beige-1/25 bg-beige-1/10 px-3.5 py-1 text-[0.8125rem] text-beige-1'
-                  : 'rounded-md border border-white/15 bg-white/5 px-3.5 py-1 text-[0.8125rem] text-white/75'
-              }
-            >
-              {pill}
-            </li>
-          ))}
-        </ul>
-      )}
+      <PillList items={pills} />
       <h1 className="text-[clamp(40px,6vw,64px)] font-light leading-[1.05] tracking-[-0.03em] text-white">
         {title}
       </h1>

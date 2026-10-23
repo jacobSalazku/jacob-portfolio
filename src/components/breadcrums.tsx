@@ -19,7 +19,7 @@ const Breadcrumbs: React.FC<Breadcrumbs> = ({ items }) => {
   const t = useTranslations('Navigation');
 
   return (
-    <section className="flex w-full justify-start px-4 py-4 md:px-8">
+    <section className="flex w-full justify-start px-6 py-4 md:px-8">
       <ul className="flex items-center space-x-2 text-base text-white/60">
         <li>
           <Link href="/home" className="font-thin hover:text-beige-1">

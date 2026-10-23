@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { buttonVariants } from '@/components/Link/button-variants';
-import { CONTACT_EMAIL } from '@/utils/contact';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '@/utils/contact';
 import { getTranslations } from 'next-intl/server';
 import { CopyAddressButton } from './copy-address-button';
 
@@ -22,7 +22,7 @@ const ContactCta: FC = async () => {
       </div>
       <div className="flex flex-wrap gap-4">
         <a
-          href={`mailto:${CONTACT_EMAIL}`}
+          href={CONTACT_MAILTO}
           className={buttonVariants({
             variant: 'primary',
             className: 'h-12 min-w-[150px] px-6 text-[0.9375rem]',

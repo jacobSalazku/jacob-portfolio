@@ -1,4 +1,4 @@
-query GetExperiences($limit: Int = 12) {
+query GetExperiences($limit: Int = 100) {
   allExperience(
     where: { slug: { current: { is_defined: true } } }
     sort: [{ publishedAt: DESC }]

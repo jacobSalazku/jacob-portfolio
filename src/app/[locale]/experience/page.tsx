@@ -32,7 +32,7 @@ export default async function ExperienceOverview(props: {
   return (
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
-        items={[{ label: `${t('slug')}`, href: `/${locale}/experience` }]}
+        items={[{ label: `${t('slug')}`, href: `/experience` }]}
       />
       <main className="w-full px-6 pb-16 md:px-8">
         <PageHeader title={t('slug')} subtitle={t('sub')} />

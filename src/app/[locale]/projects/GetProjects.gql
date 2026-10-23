@@ -1,4 +1,4 @@
-query GetProjects($limit: Int = 12) {
+query GetProjects($limit: Int = 100) {
   allProject(
     where: { slug: { current: { is_defined: true } } }
     sort: [{ publishedAt: DESC }]

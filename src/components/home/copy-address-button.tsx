@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FC } from 'react';
+import { useEffect, useRef, useState, type FC } from 'react';
 import { buttonVariants } from '@/components/Link/button-variants';
 
 type CopyAddressButtonProps = {
@@ -17,12 +17,18 @@ const CopyAddressButton: FC<CopyAddressButtonProps> = ({
   copiedLabel,
 }) => {
   const [copied, setCopied] = useState(false);
+  const timer = useRef<number | undefined>(undefined);
+
+  // Stop the pending reset when the button goes away
+  useEffect(() => () => window.clearTimeout(timer.current), []);
 
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(address);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), COPIED_MS);
+      // A second click restarts the countdown instead of racing the first one
+      window.clearTimeout(timer.current);
+      timer.current = window.setTimeout(() => setCopied(false), COPIED_MS);
     } catch {
       // Clipboard access can be blocked; the address is also in the text
     }

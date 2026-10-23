@@ -30,7 +30,9 @@ const FeatureText: FC<FeatureTextProps> = ({
   // the site. Older values were address bar labels and are ignored.
   const url = feature.url;
   const externalHref = url?.startsWith('https://') ? url : undefined;
-  const pageHref = url?.startsWith('/') ? url : undefined;
+  // `//host` is a protocol-relative address, not a page on this site
+  const pageHref =
+    url?.startsWith('/') && !url.startsWith('//') ? url : undefined;
   const points = (feature.points ?? []).flatMap((point) => {
     const text = localize(point, locale);
     return text ? [text] : [];

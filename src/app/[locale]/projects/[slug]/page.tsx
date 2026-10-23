@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrums';
 import { ProjectBody } from '@/components/project/project-body';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { getProject, getProjects } from '@/graphql/queries';
+import { getNextItem } from '@/utils/next-item';
 import { OG_IMAGE } from '@/utils/site-url';
 import { getTranslations } from 'next-intl/server';
 
@@ -25,7 +26,7 @@ export async function generateMetadata({
     };
   }
 
-  const { title } = data;
+  const title = data.title ?? 'Jacob Salazaku';
 
   return {
     title: `${title}`,
@@ -52,12 +53,7 @@ export default async function ProjectPage({
 
   if (!project) notFound();
 
-  // The next project in the list, wrapping around to the first one
-  const position = projects.findIndex((item) => item.slug?.current === slug);
-  const next =
-    projects.length > 1
-      ? projects[(position + 1) % projects.length]
-      : undefined;
+  const next = getNextItem(projects, slug);
 
   const t = await getTranslations('Projects');
 

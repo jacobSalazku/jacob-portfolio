@@ -7,7 +7,7 @@ import { SectionHeading } from './section-heading';
 
 const LatestWork: FC<{ locale: string }> = async ({ locale }) => {
   const t = await getTranslations('Home');
-  const [latest] = await getProjects();
+  const [latest] = await getProjects(1);
   if (!latest) return null;
 
   return (

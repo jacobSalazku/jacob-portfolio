@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { buttonVariants } from '@/components/Link/button-variants';
-import { CONTACT_EMAIL } from '@/utils/contact';
+import { CONTACT_MAILTO } from '@/utils/contact';
 import { cn } from '@/utils/utils';
 import { getTranslations } from 'next-intl/server';
 
@@ -9,7 +9,7 @@ const ContactButton: FC<{ className?: string }> = async ({ className }) => {
 
   return (
     <a
-      href={`mailto:${CONTACT_EMAIL}`}
+      href={CONTACT_MAILTO}
       className={cn(buttonVariants({ variant: 'primary' }), className)}
     >
       {t('contactMe')}

@@ -53,7 +53,6 @@ export type ProjectView = {
   publishedAt?: string;
   tags?: TagView[];
   text?: LocalizedBlocks;
-  features?: FeatureView[];
   // Case study header
   lede?: LocalizedString;
   role?: LocalizedString;

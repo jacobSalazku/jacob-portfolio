@@ -7,15 +7,9 @@ import {
   type PlainLocalized,
   type RawLocalized,
 } from './map-helpers';
-import {
-  mapFeature,
-  mapSections,
-  type GqlFeature,
-  type GqlSection,
-} from './map-sections';
+import { mapSections, type GqlSection } from './map-sections';
 import type {
   ExperienceView,
-  FeatureView,
   ProjectLanguage,
   ProjectView,
   TagView,
@@ -30,7 +24,6 @@ type GqlProject = {
   publishedAt?: string | null;
   tags?: (GqlTag | null)[] | null;
   text?: RawLocalized;
-  features?: (GqlFeature | null)[] | null;
   lede?: PlainLocalized;
   role?: PlainLocalized;
   timeline?: PlainLocalized;
@@ -68,11 +61,6 @@ const mapTags = (tags: GqlProject['tags']): TagView[] | undefined =>
     tag?._id ? [{ _id: tag._id, title: tag.title ?? undefined }] : [],
   );
 
-const mapFeatures = (
-  features: GqlProject['features'],
-): FeatureView[] | undefined =>
-  features?.flatMap((feature) => (feature ? [mapFeature(feature)] : []));
-
 export const mapProject = (item: GqlProject): ProjectView => ({
   _id: item._id ?? '',
   title: item.title ?? undefined,
@@ -80,7 +68,6 @@ export const mapProject = (item: GqlProject): ProjectView => ({
   publishedAt: item.publishedAt ?? undefined,
   tags: mapTags(item.tags),
   text: mapRawLocalized(item.text),
-  features: mapFeatures(item.features),
   lede: mapPlainLocalized(item.lede),
   role: mapPlainLocalized(item.role),
   timeline: mapPlainLocalized(item.timeline),

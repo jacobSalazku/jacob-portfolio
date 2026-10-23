@@ -11,26 +11,36 @@ import { MobileDeviceIcon } from '@sanity/icons/MobileDevice';
 import { RocketIcon } from '@sanity/icons/Rocket';
 import { SearchIcon } from '@sanity/icons/Search';
 import { ThLargeIcon } from '@sanity/icons/ThLarge';
+import {
+  FEATURE_ICONS,
+  type FeatureIconName,
+} from '../../graphql/feature-icons';
 
-// Icons a feature category (or a feature) can use. Keep in sync with
-// src/graphql/feature-icons.ts, which the site uses to draw them.
-export const featureIconOptions = [
-  { title: 'Code', value: 'code' },
-  { title: 'Database', value: 'database' },
-  { title: 'Eye (accessibility)', value: 'eye' },
-  { title: 'World (languages)', value: 'world' },
-  { title: 'Layout', value: 'layout' },
-  { title: 'Phone', value: 'device-mobile' },
-  { title: 'Palette (design)', value: 'palette' },
-  { title: 'Bolt (speed)', value: 'bolt' },
-  { title: 'Shield (security)', value: 'shield' },
-  { title: 'Rocket', value: 'rocket' },
-  { title: 'Puzzle', value: 'puzzle' },
-  { title: 'Search', value: 'search' },
-];
+// Icons a feature category (or a feature) can use. The names come from
+// FEATURE_ICONS, the list the site uses to draw them, so an icon cannot be
+// offered here without the site knowing it (both records below are typed on it).
+const ICON_TITLES: Record<FeatureIconName, string> = {
+  code: 'Code',
+  database: 'Database',
+  eye: 'Eye (accessibility)',
+  world: 'World (languages)',
+  layout: 'Layout',
+  'device-mobile': 'Phone',
+  palette: 'Palette (design)',
+  bolt: 'Bolt (speed)',
+  shield: 'Shield (security)',
+  rocket: 'Rocket',
+  puzzle: 'Puzzle',
+  search: 'Search',
+};
+
+export const featureIconOptions = FEATURE_ICONS.map((value) => ({
+  title: ICON_TITLES[value],
+  value,
+}));
 
 // The same icons as the ones drawn on the site, for the previews in Studio
-export const featureIconMedia: Record<string, ComponentType> = {
+export const featureIconMedia: Record<FeatureIconName, ComponentType> = {
   code: CodeIcon,
   database: DatabaseIcon,
   eye: EyeOpenIcon,
