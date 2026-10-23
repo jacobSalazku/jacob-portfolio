@@ -9,13 +9,7 @@ const NextIntlMiddleware = createMiddleware({
 });
 
 export function proxy(req: NextRequest): NextResponse {
-  const { pathname } = req.nextUrl;
-
-  // Redirect `/` to `/home`
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL('/home', req.url));
-  }
-
+  // `/` is redirected to `/home` in next.config.mjs, before this runs
   return NextIntlMiddleware(req);
 }
 
