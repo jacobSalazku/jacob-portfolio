@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Navigation } from '@/components/navigation';
+import { Navigation } from '@/components/navigation/navigation';
 import { SITE_URL } from '@/utils/site-url';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';

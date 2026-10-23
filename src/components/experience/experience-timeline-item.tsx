@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { LibraryTag } from '@/components/library-tag';
-import { PortableTextRenderer } from '@/components/portable-text-render';
+import { LibraryTag } from '@/components/content/library-tag';
+import { PortableTextRenderer } from '@/components/content/portable-text-render';
 import { localize } from '@/graphql/localize';
 import type { ExperienceView } from '@/graphql/types';
 import { Link } from '@/navigation';

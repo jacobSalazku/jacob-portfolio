@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { PortableTextRenderer } from '@/components/portable-text-render';
+import { PortableTextRenderer } from '@/components/content/portable-text-render';
 import { localize } from '@/graphql/localize';
 import type { SectionView } from '@/graphql/types';
 import { CheckList } from './check-list';

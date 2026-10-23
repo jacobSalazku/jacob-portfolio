@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import { PortableTextRenderer } from '@/components/portable-text-render';
-import { UpNext } from '@/components/up-next';
+import { PortableTextRenderer } from '@/components/content/portable-text-render';
+import { UpNext } from '@/components/layout/up-next';
 import { localize } from '@/graphql/localize';
 import type { ProjectView } from '@/graphql/types';
 import { cn } from '@/utils/utils';

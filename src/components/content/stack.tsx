@@ -1,7 +1,7 @@
 import type { FC } from 'react';
+import { SectionHeading } from '@/components/home/section-heading';
 import { STACK } from '@/utils/stack';
 import { getTranslations } from 'next-intl/server';
-import { SectionHeading } from './home/section-heading';
 
 const Stack: FC = async () => {
   const t = await getTranslations('Home');

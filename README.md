@@ -24,6 +24,4 @@ Zie `.env.example`. `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET
 | `pnpm lint` | ESLint |
 | `pnpm codegen` | Genereert de GraphQL-types in `src/graphql/` opnieuw (na een schemawijziging eerst `sanity graphql deploy`) |
 | `pnpm codegen:check` | Controleert of de gegenereerde bestanden up-to-date zijn |
-| `pnpm types` | Genereert `schema.json` en `sanity.types.ts` |
 
-De scripts in `scripts/` zijn eenmalige inhoudsupdates voor Sanity. Ze doen standaard een dry run en schrijven alleen met `--apply`.

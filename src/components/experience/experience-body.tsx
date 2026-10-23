@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import { BrowserWindow } from '@/components/browser-window';
+import { PillList } from '@/components/content/pill-list';
+import { PortableTextRenderer } from '@/components/content/portable-text-render';
+import { UpNext } from '@/components/layout/up-next';
 import { Link } from '@/components/Link/link';
-import { PillList } from '@/components/pill-list';
-import { PortableTextRenderer } from '@/components/portable-text-render';
 import { ProjectSection } from '@/components/project/project-section';
-import { UpNext } from '@/components/up-next';
+import { BrowserWindow } from '@/components/ui/browser-window';
 import { localize } from '@/graphql/localize';
 import type { ExperienceView } from '@/graphql/types';
 import { getTranslations } from 'next-intl/server';

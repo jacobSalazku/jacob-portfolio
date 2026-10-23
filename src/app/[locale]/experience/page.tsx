@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
-import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceTimeline } from '@/components/experience/experience-timeline';
-import { PageHeader } from '@/components/page-header';
-import { SuspensePulse } from '@/components/suspense-fallback';
+import { Breadcrumbs } from '@/components/layout/breadcrums';
+import { PageHeader } from '@/components/layout/page-header';
+import { SuspensePulse } from '@/components/layout/suspense-fallback';
 import { getExperiences } from '@/graphql/queries';
 import { getTranslations } from 'next-intl/server';
 
@@ -31,9 +31,7 @@ export default async function ExperienceOverview(props: {
 
   return (
     <Suspense fallback={<SuspensePulse />}>
-      <Breadcrumbs
-        items={[{ label: `${t('slug')}`, href: `/experience` }]}
-      />
+      <Breadcrumbs items={[{ label: `${t('slug')}`, href: `/experience` }]} />
       <main className="w-full px-6 pb-16 md:px-8">
         <PageHeader title={t('slug')} subtitle={t('sub')} />
         <ExperienceTimeline
