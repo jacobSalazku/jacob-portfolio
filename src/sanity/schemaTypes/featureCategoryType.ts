@@ -1,5 +1,6 @@
 import { TagIcon } from '@sanity/icons/Tag';
 import { defineField, defineType } from 'sanity';
+import type { FeatureIconName } from '../../graphql/feature-icons';
 import { featureIconMedia, featureIconOptions } from './featureIcons';
 
 export const featureCategoryType = defineType({
@@ -31,7 +32,7 @@ export const featureCategoryType = defineType({
     prepare: ({ title, fallbackTitle, icon }) => ({
       title: title || fallbackTitle || 'Untitled category',
       subtitle: icon,
-      media: featureIconMedia[icon] ?? TagIcon,
+      media: featureIconMedia[icon as FeatureIconName] ?? TagIcon,
     }),
   },
 });

@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { CONTACT_EMAIL } from '@/utils/contact';
+import { CONTACT_MAILTO } from '@/utils/contact';
 import { NAV_ITEMS } from '@/utils/nav-items';
 import { getTranslations } from 'next-intl/server';
 import { ContactButton } from './contact-button';
@@ -36,7 +36,7 @@ const Navigation: FC<{ locale: string }> = async ({ locale }) => {
             locale={locale}
             items={items}
             contact={{
-              href: `mailto:${CONTACT_EMAIL}`,
+              href: CONTACT_MAILTO,
               label: t('contactMe'),
             }}
             openLabel={t('openMenu')}
