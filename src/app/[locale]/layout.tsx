@@ -4,6 +4,7 @@ import { Navigation } from '@/components/navigation/navigation';
 import { SITE_URL } from '@/utils/site-url';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 
 const interFont = Inter({
@@ -69,6 +70,7 @@ export default async function RootLayout({
             <div className="w-full max-w-site flex-1 pt-2">{children}</div>
           </div>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );
