@@ -26,6 +26,7 @@
     "next-intl": "^4.14.9",
     "next-sanity": "^13.3.4",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "prismjs": "^1.30.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "sanity": "^6.20.0",
