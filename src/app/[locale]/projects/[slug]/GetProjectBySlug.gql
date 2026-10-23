@@ -41,17 +41,5 @@ query GetProjectBySlug($slug: String!) {
       enRaw
       frRaw
     }
-    features {
-      title {
-        nl
-        en
-        fr
-      }
-      content {
-        nlRaw
-        enRaw
-        frRaw
-      }
-    }
   }
 }

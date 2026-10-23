@@ -1,6 +1,9 @@
 import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 
+/* eslint-disable */
+/** Internal type. DO NOT USE DIRECTLY. */
 type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+/** Internal type. DO NOT USE DIRECTLY. */
 export type Incremental<T> =
   | T
   | {
@@ -258,10 +261,6 @@ export type GetProjectBySlugQuery = {
       } | null> | null;
     } | null> | null;
     text: { nlRaw: unknown; enRaw: unknown; frRaw: unknown } | null;
-    features: Array<{
-      title: { nl: string | null; en: string | null; fr: string | null } | null;
-      content: { nlRaw: unknown; enRaw: unknown; frRaw: unknown } | null;
-    } | null> | null;
   }>;
 };
 
@@ -1613,57 +1612,6 @@ export const GetProjectBySlugDocument = {
                       { kind: 'Field', name: { kind: 'Name', value: 'nlRaw' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'enRaw' } },
                       { kind: 'Field', name: { kind: 'Name', value: 'frRaw' } },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'features' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'title' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'nl' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'en' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'fr' },
-                            },
-                          ],
-                        },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'content' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'nlRaw' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'enRaw' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'frRaw' },
-                            },
-                          ],
-                        },
-                      },
                     ],
                   },
                 },
