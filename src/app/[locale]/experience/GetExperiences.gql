@@ -1,0 +1,43 @@
+query GetExperiences($limit: Int = 100) {
+  allExperience(
+    where: { slug: { current: { is_defined: true } } }
+    sort: [{ publishedAt: DESC }]
+    limit: $limit
+  ) {
+    _id
+    title
+    slug {
+      current
+    }
+    publishedAt
+    lede {
+      nl
+      en
+      fr
+    }
+    role {
+      nl
+      en
+      fr
+    }
+    duration {
+      nl
+      en
+      fr
+    }
+    initials
+    tags {
+      ...TagFields
+    }
+    timespan {
+      nl
+      en
+      fr
+    }
+    description {
+      nlRaw
+      enRaw
+      frRaw
+    }
+  }
+}

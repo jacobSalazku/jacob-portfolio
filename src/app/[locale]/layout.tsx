@@ -1,41 +1,44 @@
 import { Metadata } from 'next';
-import { Lexend } from 'next/font/google';
-import { Navigation } from '@/components/navigation';
+import { Inter } from 'next/font/google';
+import { Navigation } from '@/components/navigation/navigation';
+import { SITE_URL } from '@/utils/site-url';
+import { Analytics } from '@vercel/analytics/next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 
-const Lexendfont = Lexend({
-  weight: ['100', '200', '400', '300'],
+const interFont = Inter({
+  weight: ['200', '300', '400', '500'],
   subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_BASE_URL ?? ''),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'Jacob Salazaku ',
     template: ' %s | Jacob Salazaku',
   },
-  icons: [
-    {
-      url: '/jacob-app-icon.png',
-    },
-  ],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
   description:
     'Portfolio Jacob Salazaku met projecten en alle  informatie over Jacob Salazaku',
   keywords: ['developer, front-end develop,'],
   openGraph: {
     type: 'website',
-    url: `${process.env.NEXT_BASE_URL}`,
+    url: SITE_URL,
     title: 'Website Jacob Salazaku',
     description:
       'Portfolio Jacob Salazaku met projecten en alle informatie over Jacob Salazaku',
     images: [
       {
-        url: '/jacob-og.png',
-        width: 567,
-        height: 444,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: 'Jacob Salazaku Website',
       },
     ],
@@ -47,22 +50,24 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = params;
+  const { locale } = await params;
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={Lexendfont.className}>
+    <html
+      lang={locale}
+      className="motion-safe:scroll-smooth"
+      data-scroll-behavior="smooth"
+    >
+      {/* Browser extensions (e.g. ColorZilla's cz-shortcut-listen) add attributes
+          to <body> before React hydrates; only this element ignores the mismatch */}
+      <body className={interFont.className} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <div className="mx-auto my-0 flex min-h-screen w-full flex-col items-center overflow-hidden scroll-smooth bg-black-400">
-            <div className="max-w-screen-3xl flex w-screen flex-row items-start justify-center">
-              <Navigation locale={locale} />
-              <div className="sm:pt-18 h-full min-h-screen w-full flex-col items-center justify-start transition-all duration-150 ease-in-out xxxs:pt-20 xs:flex xl:w-8/12 xl:max-w-screen-lg xl:border-l xl:border-l-blue-50 xl:border-opacity-10 2xl:max-w-screen-xl">
-                {children}
-              </div>
-            </div>
+          <div className="bg-ambient flex min-h-screen w-full flex-col items-center overflow-x-clip">
+            <Navigation locale={locale} />
+            <div className="w-full max-w-site flex-1 pt-2">{children}</div>
           </div>
         </NextIntlClientProvider>
         <Analytics />

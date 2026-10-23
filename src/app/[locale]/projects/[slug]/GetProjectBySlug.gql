@@ -1,0 +1,45 @@
+query GetProjectBySlug($slug: String!) {
+  allProject(where: { slug: { current: { eq: $slug } } }, limit: 1) {
+    _id
+    title
+    slug {
+      current
+    }
+    publishedAt
+    tags {
+      ...TagFields
+    }
+    lede {
+      nl
+      en
+      fr
+    }
+    role {
+      nl
+      en
+      fr
+    }
+    timeline {
+      nl
+      en
+      fr
+    }
+    projectType {
+      nl
+      en
+      fr
+    }
+    languages
+    liveUrl
+    sourceUrl
+    url
+    sections {
+      ...SectionFields
+    }
+    text {
+      nlRaw
+      enRaw
+      frRaw
+    }
+  }
+}

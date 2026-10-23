@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Jacob Salazaku">
+  <defs>
+    <linearGradient id="j" gradientUnits="userSpaceOnUse" x1="190" y1="120" x2="330" y2="400">
+      <stop offset="0" stop-color="#fff0db"/>
+      <stop offset="1" stop-color="#ffd84a"/>
+    </linearGradient>
+  </defs>
+  <rect x="7" y="7" width="498" height="498" rx="109" fill="#1a1b1c" stroke="#fff0db" stroke-opacity="0.28" stroke-width="14"/>
+  <path transform="translate(30 0)" fill="url(#j)" d="M250 124h54v190c0 50-31 78-80 78-40 0-68-19-78-56l46-14c6 18 17 25 31 25 16 0 27-12 27-33z"/>
+</svg>

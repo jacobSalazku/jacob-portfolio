@@ -1,0 +1,33 @@
+query GetProjects($limit: Int = 100) {
+  allProject(
+    where: { slug: { current: { is_defined: true } } }
+    sort: [{ publishedAt: DESC }]
+    limit: $limit
+  ) {
+    _id
+    title
+    slug {
+      current
+    }
+    publishedAt
+    lede {
+      nl
+      en
+      fr
+    }
+    projectType {
+      nl
+      en
+      fr
+    }
+    url
+    text {
+      nlRaw
+      enRaw
+      frRaw
+    }
+    tags {
+      ...TagFields
+    }
+  }
+}

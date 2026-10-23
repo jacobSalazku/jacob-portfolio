@@ -28,9 +28,13 @@ yarn-error.log*
 # local env files
 .env*.local
 .env*
+!.env.example
 
 # vercel
 .vercel
+
+# local AI memory file
+ARCHITECTURE.md
 
 # typescript
 *.tsbuildinfo
