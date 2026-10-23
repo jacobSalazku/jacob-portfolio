@@ -1,9 +1,8 @@
 import React from 'react';
 import { cn } from '@/utils/utils';
-import { FeatureBlock } from '@root/sanity.types';
 
 interface IconTextCardProps {
-  title?: FeatureBlock['title'] | string;
+  title?: string;
   icon: React.ReactNode;
   children: React.ReactNode;
   className?: string;
@@ -19,18 +18,14 @@ const IconTextCard: React.FC<IconTextCardProps> = ({
     <div
       className={cn(
         className,
-        'flex flex-col gap-6 border border-beige-1 bg-beige-1 bg-opacity-10 p-6 text-beige-1 shadow-lg transition-colors duration-200 ease-in-out hover:bg-opacity-25',
+        'group flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.03] p-6 text-beige-1 shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:border-beige-1/40 hover:bg-beige-1/[0.06]',
       )}
     >
-      <div className="flex items-center justify-start gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-beige-1 bg-opacity-20 p-2">
-          {icon}
-        </div>
-        <h3 className="text-xl font-semibold text-white">
-          {typeof title === 'string' ? title : ''}
-        </h3>
+      <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/10 text-white/85 transition-colors duration-300 group-hover:border-beige-1/30 group-hover:text-beige-1">
+        {icon}
       </div>
-      <div className="flex items-center justify-center text-lg font-light text-white">
+      <h3 className="text-lg font-normal text-white">{title}</h3>
+      <div className="flex items-center justify-start text-base font-light leading-relaxed text-white/75">
         {children}
       </div>
     </div>

@@ -1,69 +1,56 @@
-'use client';
-
-import { useState } from 'react';
-import { cn } from '@/utils/utils';
-import { useTranslations } from 'next-intl';
-import { MenuButton } from './menu-button';
+import type { FC } from 'react';
+import { Link } from '@/navigation';
+import { CONTACT_MAILTO } from '@/utils/contact';
+import { NAV_ITEMS } from '@/utils/nav-items';
+import { getTranslations } from 'next-intl/server';
+import { ContactButton } from './contact-button';
+import { MobileMenu } from './mobile-menu';
 import { NavItems } from './nav-items';
 
-const Navigation = ({ locale }: { locale: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    const isMobileViewport = window.innerWidth < 1024;
-    setIsOpen(!isOpen);
-    if (isMobileViewport) {
-      document.body.classList.toggle('overflow-hidden', !isOpen);
-    }
-  };
-
-  const t = useTranslations('Navigation');
+// One rounded bar, sticky while scrolling: name on the left, the tabs in the
+// middle and a contact button on the right. Below md the tabs and the contact
+// button move into a menu that unfolds inside the bar, as wide as the bar.
+const Navigation: FC<{ locale: string }> = async ({ locale }) => {
+  const t = await getTranslations('Navigation');
+  const items = NAV_ITEMS.map(({ href, labelKey }) => ({
+    href,
+    label: t(labelKey),
+  }));
 
   return (
-    <>
-      <header
-        className={cn(
-          isOpen ? 'hidden' : 'flex',
-          'fixed z-20 h-20 w-full items-center justify-between border-b border-blue-100 border-opacity-50 bg-black-400 px-4 md:px-10 xl:absolute xl:hidden',
-        )}
-      >
-        <div className="text-white xl:hidden">
-          <h3 className="text-base font-bold xl:text-lg">Jacob Salazaku</h3>
-        </div>
-        <MenuButton onClick={toggleMenu} isActive={isOpen} />
-      </header>
-
-      <nav
-        className={cn(
-          isOpen
-            ? 'w-full translate-x-0 duration-300 xl:translate-x-0'
-            : '-translate-x-full xl:translate-x-0 ',
-          `fixed left-0 top-0 z-40 h-screen bg-black-400 bg-opacity-70 px-4 py-12 text-white backdrop-blur-md ease-out sm:px-4 md:px-6 xl:sticky xl:-left-3 xl:z-0 xl:w-4/12 xl:max-w-96 xl:px-4 xl:py-12 xl:opacity-100`,
-        )}
-      >
-        {isOpen && (
-          <div className="absolute right-6 top-7 xl:hidden">
-            <MenuButton onClick={toggleMenu} isActive={isOpen} />
+    <header className="sticky top-0 z-30 w-full bg-gradient-to-b from-black-400 from-65% to-transparent pb-3.5 pt-5">
+      {/* On a phone this box keeps the height of the closed bar, so the bar can
+            unfold over the page instead of pushing it down */}
+      <div className="relative mx-auto h-[calc(3.75rem+2px)] w-full max-w-site px-4 md:h-auto md:px-8">
+        <div className="absolute inset-x-6 top-0 flex flex-wrap items-center justify-between rounded-[30px] border border-white/10 bg-[#262729] p-1.5 pl-6 md:static md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full">
+          <Link
+            href="/home"
+            className="text-lg font-normal text-white transition-colors hover:text-beige-1"
+          >
+            Jacob Salazaku
+          </Link>
+          <nav
+            aria-label={t('main')}
+            className="hidden w-full gap-1 justify-self-center md:flex"
+          >
+            <NavItems locale={locale} />
+          </nav>
+          <div className="hidden justify-self-end md:block">
+            <ContactButton className="h-12 rounded-full px-7 text-base" />
           </div>
-        )}
-        <div className="flex h-full w-full flex-col items-center gap-12 md:items-start">
-          <div className="flex w-full items-center gap-2">
-            <div className="flex min-w-16 sm:flex sm:w-full sm:justify-start xl:hidden xl:w-auto">
-              <h3 className="text-base font-bold xl:text-lg">
-                {t('portfolio')}
-              </h3>
-            </div>
-            <div className="hidden px-4 xl:block">
-              <h3 className="text-base font-bold xl:text-lg">Jacob Salazaku</h3>
-              <p className="text-xs font-thin xl:text-sm">{t('position')}</p>
-            </div>
-          </div>
-          <ul className="gap flex w-full flex-col items-center">
-            <NavItems locale={locale} toggleMenu={toggleMenu} />
-          </ul>
+          <MobileMenu
+            locale={locale}
+            items={items}
+            contact={{
+              href: CONTACT_MAILTO,
+              label: t('contactMe'),
+            }}
+            openLabel={t('openMenu')}
+            closeLabel={t('closeMenu')}
+          />
         </div>
-      </nav>
-    </>
+      </div>
+    </header>
   );
 };
 

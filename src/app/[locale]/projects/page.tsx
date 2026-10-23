@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrums';
-import { ProjectCard } from '@/components/project/project-card';
+import { PageHeader } from '@/components/page-header';
+import { ProjectRow } from '@/components/project/project-row';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { getProjects } from '@/graphql/queries';
-import { Project } from '@root/sanity.types';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,32 +24,29 @@ export default async function ProjectOverview(props: {
 }) {
   const { locale } = await props.params;
 
-  const data = await getProjects();
+  const projects = await getProjects();
 
   const t = await getTranslations('Projects');
 
   return (
     <Suspense fallback={<SuspensePulse />}>
       <Breadcrumbs
-        items={[{ label: `${t('slug')}`, href: `/${locale}/projects` }]}
+        items={[{ label: `${t('slug')}`, href: `/projects` }]}
       />
-      <main className="flex w-full flex-col items-start px-4 pb-10 md:px-8 xl:max-w-screen-lg">
-        {data &&
-          data.map((project, index) => (
-            <Suspense
-              key={`${project._id}-${project.title}`}
-              fallback={<SuspensePulse />}
-            >
-              <ProjectCard
+      <main className="w-full px-6 pb-16 md:px-8">
+        <PageHeader title={t('slug')} subtitle={t('projectsSub')} />
+        <div className="flex flex-col divide-y divide-white/10">
+          {projects.map((project) => (
+            <div key={project._id} className="py-14 first:pt-4">
+              <ProjectRow
                 project={project}
                 locale={locale}
-                tags={project.tags as Project['tags']}
+                cta={t('viewProject')}
+                flip
               />
-              {index < data.length - 1 && (
-                <div className="w-full border-t border-blue-50 border-opacity-50 md:hidden"></div>
-              )}
-            </Suspense>
+            </div>
           ))}
+        </div>
       </main>
     </Suspense>
   );

@@ -30,6 +30,19 @@ const config: Config = {
         'beige-2': '#FFD700',
         'pastel-red': '#FF3131',
       },
+      boxShadow: {
+        glow: '0 0 0 1px rgba(255,240,219,0.25), 0 10px 40px -10px rgba(255,240,219,0.25)',
+        card: '0 1px 0 0 rgba(255,255,255,0.04) inset, 0 20px 40px -24px rgba(0,0,0,0.8)',
+      },
+      keyframes: {
+        'fade-up': {
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-up': 'fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both',
+      },
       screens: {
         xxxs: '320px',
         xxs: '385px',
@@ -48,6 +61,8 @@ const config: Config = {
         '570': '2160px',
       },
       maxWidth: {
+        // Width of the page content, also used by the navigation bar
+        site: '1240px',
         '3xl': '1920px',
         '90': '22.5rem',
       },

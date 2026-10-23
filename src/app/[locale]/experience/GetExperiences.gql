@@ -1,4 +1,4 @@
-query GetExperiences($limit: Int = 12) {
+query GetExperiences($limit: Int = 100) {
   allExperience(
     where: { slug: { current: { is_defined: true } } }
     sort: [{ publishedAt: DESC }]
@@ -10,9 +10,22 @@ query GetExperiences($limit: Int = 12) {
       current
     }
     publishedAt
-    mainImage {
-      ...ImageFields
+    lede {
+      nl
+      en
+      fr
     }
+    role {
+      nl
+      en
+      fr
+    }
+    duration {
+      nl
+      en
+      fr
+    }
+    initials
     tags {
       ...TagFields
     }

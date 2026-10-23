@@ -4,13 +4,12 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import urlBuilder from '@sanity/image-url';
-import { Experience } from '../../sanity.types';
 
 const TextImageComponent = ({
   value,
   isInline,
 }: {
-  value: Experience['mainImage'];
+  value: { alt?: string; asset?: { _ref: string; _type?: string } };
   isInline: boolean;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,4 +1,3 @@
-import 'server-only';
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import {
   Kind,
@@ -6,6 +5,7 @@ import {
   type DocumentNode,
   type OperationDefinitionNode,
 } from 'graphql';
+import 'server-only';
 
 type ExecuteOptions = {
   revalidate?: number | false;
@@ -16,6 +16,19 @@ type GraphQLResponse<TData> = {
   data?: TData | null;
   errors?: { message: string }[];
 };
+
+const getGraphQLUrl = () => {
+  const url = process.env.SANITY_GRAPHQL_URL;
+  if (!url) {
+    throw new Error('Missing environment variable: SANITY_GRAPHQL_URL');
+  }
+  return url;
+};
+// Only published documents: with a token the API would also return drafts,
+// which shows up as duplicate projects
+const graphqlUrl = new URL(getGraphQLUrl());
+graphqlUrl.searchParams.set('perspective', 'published');
+const GRAPHQL_URL = graphqlUrl.toString();
 
 const DEFAULT_REVALIDATE = 30;
 const REQUEST_TIMEOUT_MS = 10_000;
@@ -31,15 +44,10 @@ export async function executeGraphQL<TData, TVariables>(
   variables: TVariables,
   options: ExecuteOptions = {},
 ): Promise<TData> {
-  const url = process.env.SANITY_GRAPHQL_URL;
-  if (!url) {
-    throw new Error('Missing environment variable: SANITY_GRAPHQL_URL');
-  }
-
   const token = process.env.SANITY_API_READ_TOKEN;
   const { revalidate = DEFAULT_REVALIDATE, tags } = options;
 
-  const response = await fetch(url, {
+  const response = await fetch(GRAPHQL_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

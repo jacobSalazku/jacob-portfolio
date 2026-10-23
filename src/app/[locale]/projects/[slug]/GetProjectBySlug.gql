@@ -6,28 +6,40 @@ query GetProjectBySlug($slug: String!) {
       current
     }
     publishedAt
-    mainImage {
-      ...ImageFields
-    }
     tags {
       ...TagFields
+    }
+    lede {
+      nl
+      en
+      fr
+    }
+    role {
+      nl
+      en
+      fr
+    }
+    timeline {
+      nl
+      en
+      fr
+    }
+    projectType {
+      nl
+      en
+      fr
+    }
+    languages
+    liveUrl
+    sourceUrl
+    url
+    sections {
+      ...SectionFields
     }
     text {
       nlRaw
       enRaw
       frRaw
-    }
-    features {
-      title {
-        nl
-        en
-        fr
-      }
-      content {
-        nlRaw
-        enRaw
-        frRaw
-      }
     }
   }
 }

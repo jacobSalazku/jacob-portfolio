@@ -1,0 +1,82 @@
+fragment SectionFields on ProjectSection {
+  type
+  anchor {
+    current
+  }
+  title {
+    nl
+    en
+    fr
+  }
+  body {
+    nlRaw
+    enRaw
+    frRaw
+  }
+  points {
+    nl
+    en
+    fr
+  }
+  steps {
+    title {
+      nl
+      en
+      fr
+    }
+    text {
+      nl
+      en
+      fr
+    }
+  }
+  features {
+    label
+    icon
+    category {
+      _id
+      title {
+        nl
+        en
+        fr
+      }
+      icon
+    }
+    title {
+      nl
+      en
+      fr
+    }
+    content {
+      nlRaw
+      enRaw
+      frRaw
+    }
+    points {
+      nl
+      en
+      fr
+    }
+    url
+  }
+  decisions {
+    title {
+      nl
+      en
+      fr
+    }
+    text {
+      nl
+      en
+      fr
+    }
+  }
+  images {
+    caption {
+      nl
+      en
+      fr
+    }
+    url
+  }
+}
