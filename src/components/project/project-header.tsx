@@ -1,6 +1,6 @@
 import type { FC } from 'react';
+import { PillList } from '@/components/content/pill-list';
 import { buttonVariants } from '@/components/Link/button-variants';
-import { PillList } from '@/components/pill-list';
 import { localize } from '@/graphql/localize';
 import type { ProjectView } from '@/graphql/types';
 import { IconArrowUpRight, IconCode } from '@tabler/icons-react';
