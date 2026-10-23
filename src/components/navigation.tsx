@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from '@/navigation';
 import { CONTACT_MAILTO } from '@/utils/contact';
 import { NAV_ITEMS } from '@/utils/nav-items';
 import { getTranslations } from 'next-intl/server';
@@ -21,8 +22,13 @@ const Navigation: FC<{ locale: string }> = async ({ locale }) => {
       {/* On a phone this box keeps the height of the closed bar, so the bar can
             unfold over the page instead of pushing it down */}
       <div className="relative mx-auto h-[calc(3.75rem+2px)] w-full max-w-site px-4 md:h-auto md:px-8">
-        <div className="absolute inset-x-6 top-0 z-10 flex flex-wrap items-center justify-between rounded-[30px] border border-white/10 bg-[#262729] p-1.5 pl-6 md:static md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full">
-          <span className="text-lg font-normal text-white">Jacob Salazaku</span>
+        <div className="absolute inset-x-6 top-0 flex flex-wrap items-center justify-between rounded-[30px] border border-white/10 bg-[#262729] p-1.5 pl-6 md:static md:grid md:grid-cols-[1fr_auto_1fr] md:rounded-full">
+          <Link
+            href="/home"
+            className="text-lg font-normal text-white transition-colors hover:text-beige-1"
+          >
+            Jacob Salazaku
+          </Link>
           <nav
             aria-label={t('main')}
             className="hidden w-full gap-1 justify-self-center md:flex"
