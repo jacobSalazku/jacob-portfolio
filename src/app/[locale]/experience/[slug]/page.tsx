@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrums';
 import { ExperienceBody } from '@/components/experience/experience-body';
 import { SuspensePulse } from '@/components/suspense-fallback';
 import { getExperience, getExperiences } from '@/graphql/queries';
+import { getNextItem } from '@/utils/next-item';
 import { OG_IMAGE } from '@/utils/site-url';
 import { getTranslations } from 'next-intl/server';
 
@@ -52,12 +53,7 @@ export default async function ExperiencePage({
 
   if (!experience) notFound();
 
-  // The next experience in the list, wrapping around to the first one
-  const position = experiences.findIndex((item) => item.slug?.current === slug);
-  const next =
-    experiences.length > 1
-      ? experiences[(position + 1) % experiences.length]
-      : undefined;
+  const next = getNextItem(experiences, slug);
 
   const t = await getTranslations('Experience');
 

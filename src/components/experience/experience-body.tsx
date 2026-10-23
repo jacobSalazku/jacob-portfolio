@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { BrowserWindow } from '@/components/browser-window';
 import { Link } from '@/components/Link/link';
+import { PillList } from '@/components/pill-list';
 import { PortableTextRenderer } from '@/components/portable-text-render';
 import { ProjectSection } from '@/components/project/project-section';
 import { UpNext } from '@/components/up-next';
@@ -37,22 +38,7 @@ const ExperienceBody: FC<ExperienceBodyProps> = async ({
   return (
     <main className="flex w-full flex-col items-start gap-12 px-6 pb-16 md:gap-14 md:px-8">
       <header className="flex flex-col items-start gap-6 pt-6">
-        {pills.length > 0 && (
-          <ul className="flex flex-wrap gap-2">
-            {pills.map((pill, index) => (
-              <li
-                key={`${index}-${pill}`}
-                className={
-                  index === 0
-                    ? 'rounded-md border border-beige-1/25 bg-beige-1/10 px-3.5 py-1 text-[0.8125rem] text-beige-1'
-                    : 'rounded-md border border-white/15 bg-white/5 px-3.5 py-1 text-[0.8125rem] text-white/75'
-                }
-              >
-                {pill}
-              </li>
-            ))}
-          </ul>
-        )}
+        <PillList items={pills} />
         <h1 className="text-[clamp(34px,5vw,48px)] font-light leading-[1.05] tracking-[-0.03em] text-white">
           {title}
         </h1>
