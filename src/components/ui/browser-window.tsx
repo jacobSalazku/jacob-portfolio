@@ -18,11 +18,8 @@ const bodyVariants = cva(
   {
     variants: {
       variant: {
-        // Fixed ratio, used for gallery windows
         default: 'aspect-[4/3]',
-        // Fixed height that grows with the viewport, used for hero and features
         wide: 'h-[clamp(180px,28vh,260px)] md:h-[clamp(220px,30vh,320px)]',
-        // Taller than wide, for the detail page of an experience
         tall: 'h-[clamp(240px,36vh,340px)] md:h-[clamp(300px,44vh,420px)]',
       },
     },
@@ -30,8 +27,6 @@ const bodyVariants = cva(
   },
 );
 
-// Windows keep their size when the page gets wider, and sit in the middle on
-// small screens
 const frameVariants = cva(
   'mx-auto w-full min-w-[260px] overflow-hidden rounded-xl md:mx-0 border border-white/[0.14] bg-black-700 shadow-[0_24px_48px_-28px_rgba(0,0,0,0.8)]',
   {
